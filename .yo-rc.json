@@ -1,0 +1,40 @@
+{
+  "generator-jhipster": {
+    "promptValues": {
+      "packageName": "tr.com.mavi.oto",
+      "nativeLanguage": "tr"
+    },
+    "jhipsterVersion": "6.0.1",
+    "applicationType": "monolith",
+    "baseName": "otoBakim",
+    "packageName": "tr.com.mavi.oto",
+    "packageFolder": "tr/com/mavi/oto",
+    "serverPort": "8080",
+    "authenticationType": "jwt",
+    "cacheProvider": "ehcache",
+    "enableHibernateCache": true,
+    "websocket": "spring-websocket",
+    "databaseType": "sql",
+    "devDatabaseType": "postgresql",
+    "prodDatabaseType": "postgresql",
+    "searchEngine": "elasticsearch",
+    "messageBroker": false,
+    "serviceDiscoveryType": false,
+    "buildTool": "maven",
+    "enableSwaggerCodegen": false,
+    "jwtSecretKey": "NzllYTBiYzFmMDEwZjc3ZGQ2MzEyNGM2NTVkNjI0YTAyMjc5YmU5OWQwMzc5Njg2YmNkYTgyNDI5M2U2MDBlMWEwZmUyZDQ1MmExODBjMWU1MGIyMDY5ZmUxZjljZGQ4YzkwMTYwNTQ4YzQyYmY5MjdhZDZlYTg5YzI3NDkwZGE=",
+    "clientFramework": "angularX",
+    "clientTheme": "none",
+    "clientThemeVariant": "",
+    "useSass": true,
+    "clientPackageManager": "npm",
+    "testFrameworks": ["gatling", "cucumber", "protractor"],
+    "jhiPrefix": "jhi",
+    "entitySuffix": "",
+    "dtoSuffix": "DTO",
+    "otherModules": [],
+    "enableTranslation": true,
+    "nativeLanguage": "tr",
+    "languages": ["tr", "en"]
+  }
+}
