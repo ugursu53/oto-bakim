@@ -1,0 +1,122 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-arac-heading" jhiTranslate="otoBakimApp.arac.home.createOrEditLabel">Create or edit a Arac</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!arac.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.arac.plakaNo" for="field_plakaNo">Plaka No</label>
+                    <input type="text" class="form-control" name="plakaNo" id="field_plakaNo"
+                           formControlName="plakaNo"/>
+                    <div *ngIf="editForm.get('plakaNo').invalid && (editForm.get('plakaNo').dirty || editForm.get('plakaNo').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('plakaNo').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.arac.modelYili" for="field_modelYili">Model Yili</label>
+                    <input type="number" class="form-control" name="modelYili" id="field_modelYili"
+                           formControlName="modelYili"/>
+                    <div *ngIf="editForm.get('modelYili').invalid && (editForm.get('modelYili').dirty || editForm.get('modelYili').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('modelYili').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                        <small class="form-text text-danger"
+                            [hidden]="!editForm.get('modelYili')?.errors?.number" jhiTranslate="entity.validation.number">
+                            This field should be a number.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.arac.rengi" for="field_rengi">Rengi</label>
+                    <input type="text" class="form-control" name="rengi" id="field_rengi"
+                           formControlName="rengi"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.arac.yakitTuru" for="field_yakitTuru">Yakit Turu</label>
+                    <select class="form-control" name="yakitTuru" formControlName="yakitTuru" id="field_yakitTuru">
+                        <option value="BENZIN">{{'otoBakimApp.YakitTuru.BENZIN' | translate}}</option>
+                        <option value="DIZEL">{{'otoBakimApp.YakitTuru.DIZEL' | translate}}</option>
+                        <option value="LPG">{{'otoBakimApp.YakitTuru.LPG' | translate}}</option>
+                        <option value="HYBRID">{{'otoBakimApp.YakitTuru.HYBRID' | translate}}</option>
+                        <option value="ELEKTRIK">{{'otoBakimApp.YakitTuru.ELEKTRIK' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('yakitTuru').invalid && (editForm.get('yakitTuru').dirty || editForm.get('yakitTuru').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('yakitTuru').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.arac.vitesTuru" for="field_vitesTuru">Vites Turu</label>
+                    <select class="form-control" name="vitesTuru" formControlName="vitesTuru" id="field_vitesTuru">
+                        <option value="MANUEL">{{'otoBakimApp.VitesTuru.MANUEL' | translate}}</option>
+                        <option value="YARI_OTOMATIK">{{'otoBakimApp.VitesTuru.YARI_OTOMATIK' | translate}}</option>
+                        <option value="OTOMATIK">{{'otoBakimApp.VitesTuru.OTOMATIK' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('vitesTuru').invalid && (editForm.get('vitesTuru').dirty || editForm.get('vitesTuru').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('vitesTuru').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.arac.motorNo" for="field_motorNo">Motor No</label>
+                    <input type="text" class="form-control" name="motorNo" id="field_motorNo"
+                           formControlName="motorNo"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.arac.sasiNo" for="field_sasiNo">Sasi No</label>
+                    <input type="text" class="form-control" name="sasiNo" id="field_sasiNo"
+                           formControlName="sasiNo"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.arac.kullanimSekli" for="field_kullanimSekli">Kullanim Sekli</label>
+                    <select class="form-control" name="kullanimSekli" formControlName="kullanimSekli" id="field_kullanimSekli">
+                        <option value="HUSISI">{{'otoBakimApp.KullanimSekli.HUSISI' | translate}}</option>
+                        <option value="SIRKET">{{'otoBakimApp.KullanimSekli.SIRKET' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.arac.aracTipi" for="field_aracTipi">Arac Tipi</label>
+                    <select class="form-control" name="aracTipi" formControlName="aracTipi" id="field_aracTipi">
+                        <option value="HATCHBACK">{{'otoBakimApp.AracTipi.HATCHBACK' | translate}}</option>
+                        <option value="SEDAN">{{'otoBakimApp.AracTipi.SEDAN' | translate}}</option>
+                        <option value="STAION_WAGON">{{'otoBakimApp.AracTipi.STAION_WAGON' | translate}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.arac.aciklama" for="field_aciklama">Aciklama</label>
+                    <input type="text" class="form-control" name="aciklama" id="field_aciklama"
+                           formControlName="aciklama"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.arac.model" for="field_model">Model</label>
+                    <select class="form-control" id="field_model" name="model" formControlName="model">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="modelOption.id === editForm.get('model').value?.id ? editForm.get('model').value : modelOption" *ngFor="let modelOption of models; trackBy: trackModelById">{{modelOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

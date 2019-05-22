@@ -7,6 +7,19 @@
       "jhipster-needle-menu-add-element": "JHipster will add additional menu entries here (do not translate!)",
       "entities": {
         "main": "Entities",
+        "cari": "Cari",
+        "hesap": "Hesap",
+        "arac": "Arac",
+        "aracCarisi": "Arac Carisi",
+        "marka": "Marka",
+        "model": "Model",
+        "isEmri": "Is Emri",
+        "iscilik": "Iscilik",
+        "iscilikGrubu": "Iscilik Grubu",
+        "iscilikTipi": "Iscilik Tipi",
+        "personel": "Personel",
+        "parca": "Parca",
+        "parcaTipi": "Parca Tipi",
         "jhipster-needle-menu-add-entry": "JHipster will add additional entities here (do not translate!)"
       },
       "account": {

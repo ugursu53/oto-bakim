@@ -1,0 +1,31 @@
+{
+    "name": "IscilikTipi",
+    "fields": [
+        {
+            "fieldName": "ad",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "varsayilanFiyat",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "iscilikGrubu",
+            "otherEntityRelationshipName": "iscilikTipi",
+            "relationshipName": "grubu",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190519140014",
+    "entityTableName": "iscilik_tipi",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

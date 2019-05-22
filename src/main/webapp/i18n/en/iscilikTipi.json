@@ -1,0 +1,24 @@
+{
+  "otoBakimApp": {
+    "iscilikTipi": {
+      "home": {
+        "title": "Iscilik Tipis",
+        "createLabel": "Create a new Iscilik Tipi",
+        "createOrEditLabel": "Create or edit a Iscilik Tipi",
+        "search": "Search for Iscilik Tipi"
+      },
+      "created": "A new Iscilik Tipi is created with identifier {{ param }}",
+      "updated": "A Iscilik Tipi is updated with identifier {{ param }}",
+      "deleted": "A Iscilik Tipi is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Iscilik Tipi {{ id }}?"
+      },
+      "detail": {
+        "title": "Iscilik Tipi"
+      },
+      "ad": "Ad",
+      "varsayilanFiyat": "Varsayilan Fiyat",
+      "grubu": "Grubu"
+    }
+  }
+}

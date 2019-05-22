@@ -1,0 +1,60 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-iscilik-heading" jhiTranslate="otoBakimApp.iscilik.home.createOrEditLabel">Create or edit a Iscilik</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!iscilik.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.iscilik.aciklama" for="field_aciklama">Aciklama</label>
+                    <input type="text" class="form-control" name="aciklama" id="field_aciklama"
+                           formControlName="aciklama"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.iscilik.fiyat" for="field_fiyat">Fiyat</label>
+                    <input type="number" class="form-control" name="fiyat" id="field_fiyat"
+                           formControlName="fiyat"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.iscilik.iskonto" for="field_iskonto">Iskonto</label>
+                    <input type="number" class="form-control" name="iskonto" id="field_iskonto"
+                           formControlName="iskonto"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.iscilik.isEmri" for="field_isEmri">Is Emri</label>
+                    <select class="form-control" id="field_isEmri" name="isEmri" formControlName="isEmri">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="isEmriOption.id === editForm.get('isEmri').value?.id ? editForm.get('isEmri').value : isEmriOption" *ngFor="let isEmriOption of isemris; trackBy: trackIsEmriById">{{isEmriOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.iscilik.tipi" for="field_tipi">Tipi</label>
+                    <select class="form-control" id="field_tipi" name="tipi" formControlName="tipi">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="iscilikTipiOption.id === editForm.get('tipi').value?.id ? editForm.get('tipi').value : iscilikTipiOption" *ngFor="let iscilikTipiOption of isciliktipis; trackBy: trackIscilikTipiById">{{iscilikTipiOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.iscilik.personel" for="field_personel">Personel</label>
+                    <select class="form-control" id="field_personel" name="personel" formControlName="personel">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="personelOption.id === editForm.get('personel').value?.id ? editForm.get('personel').value : personelOption" *ngFor="let personelOption of personels; trackBy: trackPersonelById">{{personelOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

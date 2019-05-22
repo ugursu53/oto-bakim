@@ -1,0 +1,24 @@
+{
+  "otoBakimApp": {
+    "personel": {
+      "home": {
+        "title": "Personels",
+        "createLabel": "Create a new Personel",
+        "createOrEditLabel": "Create or edit a Personel",
+        "search": "Search for Personel"
+      },
+      "created": "A new Personel is created with identifier {{ param }}",
+      "updated": "A Personel is updated with identifier {{ param }}",
+      "deleted": "A Personel is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Personel {{ id }}?"
+      },
+      "detail": {
+        "title": "Personel"
+      },
+      "ad": "Ad",
+      "soyad": "Soyad",
+      "gorevi": "Gorevi"
+    }
+  }
+}

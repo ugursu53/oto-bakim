@@ -1,0 +1,12 @@
+{
+  "otoBakimApp": {
+    "YakitTuru": {
+      "null": "",
+      "BENZIN": "BENZIN",
+      "DIZEL": "DIZEL",
+      "LPG": "LPG",
+      "HYBRID": "HYBRID",
+      "ELEKTRIK": "ELEKTRIK"
+    }
+  }
+}

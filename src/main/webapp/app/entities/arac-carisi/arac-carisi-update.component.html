@@ -1,0 +1,49 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-arac-carisi-heading" jhiTranslate="otoBakimApp.aracCarisi.home.createOrEditLabel">Create or edit a Arac Carisi</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!aracCarisi.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.aracCarisi.aktif" for="field_aktif">Aktif</label>
+                    <input type="checkbox" class="form-control" name="aktif" id="field_aktif"
+                           formControlName="aktif"/>
+                    <div *ngIf="editForm.get('aktif').invalid && (editForm.get('aktif').dirty || editForm.get('aktif').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('aktif').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.aracCarisi.arac" for="field_arac">Arac</label>
+                    <select class="form-control" id="field_arac" name="arac" formControlName="arac">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="aracOption.id === editForm.get('arac').value?.id ? editForm.get('arac').value : aracOption" *ngFor="let aracOption of aracs; trackBy: trackAracById">{{aracOption.id}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.aracCarisi.cari" for="field_cari">Cari</label>
+                    <select class="form-control" id="field_cari" name="cari" formControlName="cari">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="cariOption.id === editForm.get('cari').value?.id ? editForm.get('cari').value : cariOption" *ngFor="let cariOption of caris; trackBy: trackCariById">{{cariOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

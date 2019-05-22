@@ -1,0 +1,28 @@
+{
+  "otoBakimApp": {
+    "isEmri": {
+      "home": {
+        "title": "Is Emris",
+        "createLabel": "Create a new Is Emri",
+        "createOrEditLabel": "Create or edit a Is Emri",
+        "search": "Search for Is Emri"
+      },
+      "created": "A new Is Emri is created with identifier {{ param }}",
+      "updated": "A Is Emri is updated with identifier {{ param }}",
+      "deleted": "A Is Emri is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Is Emri {{ id }}?"
+      },
+      "detail": {
+        "title": "Is Emri"
+      },
+      "gelisZamani": "Gelis Zamani",
+      "aciklama": "Aciklama",
+      "kabulTarihi": "Kabul Tarihi",
+      "tipi": "Tipi",
+      "iscilikler": "Iscilikler",
+      "parcalar": "Parcalar",
+      "arac": "Arac"
+    }
+  }
+}

@@ -1,0 +1,19 @@
+{
+    "name": "IscilikGrubu",
+    "fields": [
+        {
+            "fieldName": "ad",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190519140013",
+    "entityTableName": "iscilik_grubu",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

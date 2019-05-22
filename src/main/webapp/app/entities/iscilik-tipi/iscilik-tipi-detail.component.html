@@ -1,0 +1,37 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="iscilikTipi">
+            <h2><span jhiTranslate="otoBakimApp.iscilikTipi.detail.title">Iscilik Tipi</span> {{iscilikTipi.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="otoBakimApp.iscilikTipi.ad">Ad</span></dt>
+                <dd>
+                    <span>{{iscilikTipi.ad}}</span>
+                </dd>
+                <dt><span jhiTranslate="otoBakimApp.iscilikTipi.varsayilanFiyat">Varsayilan Fiyat</span></dt>
+                <dd>
+                    <span>{{iscilikTipi.varsayilanFiyat}}</span>
+                </dd>
+                <dt><span jhiTranslate="otoBakimApp.iscilikTipi.grubu">Grubu</span></dt>
+                <dd>
+                    <div *ngIf="iscilikTipi.grubu">
+                        <a [routerLink]="['/iscilik-grubu', iscilikTipi.grubu?.id, 'view']">{{iscilikTipi.grubu?.id}}</a>
+                    </div>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/iscilik-tipi', iscilikTipi.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

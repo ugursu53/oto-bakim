@@ -1,0 +1,33 @@
+{
+    "name": "Parca",
+    "fields": [
+        {
+            "fieldName": "fiyati",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "isEmri",
+            "otherEntityName": "isEmri",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "parcaTipi",
+            "otherEntityRelationshipName": "parca",
+            "relationshipName": "tipi",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190519140016",
+    "entityTableName": "parca",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -11,6 +11,27 @@
     <property name="floatType" value="float" dbms="mysql, oracle, mssql, mariadb"/>
 
     <include file="config/liquibase/changelog/00000000000000_initial_schema.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140005_added_entity_Cari.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140006_added_entity_Hesap.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140007_added_entity_Arac.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140008_added_entity_AracCarisi.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140009_added_entity_Marka.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140010_added_entity_Model.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140011_added_entity_IsEmri.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140012_added_entity_Iscilik.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140013_added_entity_IscilikGrubu.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140014_added_entity_IscilikTipi.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140015_added_entity_Personel.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140016_added_entity_Parca.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140017_added_entity_ParcaTipi.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-changelog - JHipster will add liquibase changelogs here -->
+    <include file="config/liquibase/changelog/20190519140005_added_entity_constraints_Cari.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140007_added_entity_constraints_Arac.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140008_added_entity_constraints_AracCarisi.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140010_added_entity_constraints_Model.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140011_added_entity_constraints_IsEmri.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140012_added_entity_constraints_Iscilik.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140014_added_entity_constraints_IscilikTipi.xml" relativeToChangelogFile="false"/>
+    <include file="config/liquibase/changelog/20190519140016_added_entity_constraints_Parca.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
 </databaseChangeLog>

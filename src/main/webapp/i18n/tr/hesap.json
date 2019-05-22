@@ -1,0 +1,25 @@
+{
+  "otoBakimApp": {
+    "hesap": {
+      "home": {
+        "title": "Hesaps",
+        "createLabel": "Create a new Hesap",
+        "createOrEditLabel": "Create or edit a Hesap",
+        "search": "Search for Hesap"
+      },
+      "created": "A new Hesap is created with identifier {{ param }}",
+      "updated": "A Hesap is updated with identifier {{ param }}",
+      "deleted": "A Hesap is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Hesap {{ id }}?"
+      },
+      "detail": {
+        "title": "Hesap"
+      },
+      "banka": "Banka",
+      "sube": "Sube",
+      "hesapNo": "Hesap No",
+      "iban": "Iban"
+    }
+  }
+}

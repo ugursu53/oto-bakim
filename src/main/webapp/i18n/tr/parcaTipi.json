@@ -1,0 +1,25 @@
+{
+  "otoBakimApp": {
+    "parcaTipi": {
+      "home": {
+        "title": "Parca Tipis",
+        "createLabel": "Create a new Parca Tipi",
+        "createOrEditLabel": "Create or edit a Parca Tipi",
+        "search": "Search for Parca Tipi"
+      },
+      "created": "A new Parca Tipi is created with identifier {{ param }}",
+      "updated": "A Parca Tipi is updated with identifier {{ param }}",
+      "deleted": "A Parca Tipi is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Parca Tipi {{ id }}?"
+      },
+      "detail": {
+        "title": "Parca Tipi"
+      },
+      "ad": "Ad",
+      "kodu": "Kodu",
+      "varsayilanFiyati": "Varsayilan Fiyati",
+      "aciklama": "Aciklama"
+    }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "otoBakimApp": {
+    "AracTipi": {
+      "null": "",
+      "HATCHBACK": "HATCHBACK",
+      "SEDAN": "SEDAN",
+      "STAION_WAGON": "STAION_WAGON"
+    }
+  }
+}

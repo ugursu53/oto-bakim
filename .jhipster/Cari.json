@@ -1,0 +1,103 @@
+{
+    "name": "Cari",
+    "fields": [
+        {
+            "fieldName": "tipi",
+            "fieldType": "CariTipi",
+            "fieldValues": "MUSTERI,TEDARIKCI",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "kisiTipi",
+            "fieldType": "KisiTipi",
+            "fieldValues": "GERCEK,TUZEL",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "aktif",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "ad",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "adres",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "telefon",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "tcNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "vergiNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "yetkili",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fax",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "eposta",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "webAdresi",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "iskonto",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "efaturaKullanimi",
+            "fieldType": "Boolean"
+        },
+        {
+            "fieldName": "aciklama",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "varsayilanIsEmriTipi",
+            "fieldType": "IsEmriTipi",
+            "fieldValues": "SIGORTA,BAKIM,HASAR"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-one",
+            "otherEntityName": "hesap",
+            "otherEntityRelationshipName": "cari",
+            "relationshipName": "hesap",
+            "otherEntityField": "id",
+            "ownerSide": true
+        }
+    ],
+    "changelogDate": "20190519140005",
+    "entityTableName": "cari",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

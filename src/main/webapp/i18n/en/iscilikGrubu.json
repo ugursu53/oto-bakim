@@ -1,0 +1,22 @@
+{
+  "otoBakimApp": {
+    "iscilikGrubu": {
+      "home": {
+        "title": "Iscilik Grubus",
+        "createLabel": "Create a new Iscilik Grubu",
+        "createOrEditLabel": "Create or edit a Iscilik Grubu",
+        "search": "Search for Iscilik Grubu"
+      },
+      "created": "A new Iscilik Grubu is created with identifier {{ param }}",
+      "updated": "A Iscilik Grubu is updated with identifier {{ param }}",
+      "deleted": "A Iscilik Grubu is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Iscilik Grubu {{ id }}?"
+      },
+      "detail": {
+        "title": "Iscilik Grubu"
+      },
+      "ad": "Ad"
+    }
+  }
+}

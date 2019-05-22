@@ -1,0 +1,38 @@
+{
+  "otoBakimApp": {
+    "cari": {
+      "home": {
+        "title": "Caris",
+        "createLabel": "Create a new Cari",
+        "createOrEditLabel": "Create or edit a Cari",
+        "search": "Search for Cari"
+      },
+      "created": "A new Cari is created with identifier {{ param }}",
+      "updated": "A Cari is updated with identifier {{ param }}",
+      "deleted": "A Cari is deleted with identifier {{ param }}",
+      "delete": {
+        "question": "Are you sure you want to delete Cari {{ id }}?"
+      },
+      "detail": {
+        "title": "Cari"
+      },
+      "tipi": "Tipi",
+      "kisiTipi": "Kisi Tipi",
+      "aktif": "Aktif",
+      "ad": "Ad",
+      "adres": "Adres",
+      "telefon": "Telefon",
+      "tcNo": "Tc No",
+      "vergiNo": "Vergi No",
+      "yetkili": "Yetkili",
+      "fax": "Fax",
+      "eposta": "Eposta",
+      "webAdresi": "Web Adresi",
+      "iskonto": "Iskonto",
+      "efaturaKullanimi": "Efatura Kullanimi",
+      "aciklama": "Aciklama",
+      "varsayilanIsEmriTipi": "Varsayilan Is Emri Tipi",
+      "hesap": "Hesap"
+    }
+  }
+}

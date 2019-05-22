@@ -1,0 +1,178 @@
+entity Cari {
+   tipi CariTipi required
+    kisiTipi KisiTipi required
+    aktif Boolean required
+	ad String required
+    adres String
+    telefon String 
+    tcNo String
+    vergiNo String
+    yetkili String
+    fax String
+    eposta String
+    webAdresi String
+    iskonto Double
+    efaturaKullanimi Boolean
+    aciklama String
+    varsayilanIsEmriTipi IsEmriTipi
+}
+
+entity Hesap {
+	banka String
+    sube String
+    hesapNo String
+    iban String
+}
+
+relationship OneToOne {
+	Cari{hesap} to Hesap
+}
+
+enum CariTipi {
+    MUSTERI, TEDARIKCI
+}
+
+enum KisiTipi {
+    GERCEK, TUZEL
+}
+
+entity Arac {
+	plakaNo String required
+    modelYili Integer required
+    rengi String
+    yakitTuru YakitTuru required
+    vitesTuru VitesTuru required
+    motorNo String
+    sasiNo String
+    kullanimSekli KullanimSekli
+    aracTipi AracTipi
+    aciklama String
+}
+
+entity AracCarisi {
+   aktif Boolean required
+}
+
+relationship ManyToOne {
+	AracCarisi{cari} to Cari
+}
+
+relationship OneToMany {
+	Arac{cari} to AracCarisi
+}
+
+enum KullanimSekli {
+    HUSISI, SIRKET
+}
+
+enum AracTipi {
+    HATCHBACK, SEDAN, STAION_WAGON
+}
+
+enum YakitTuru {
+    BENZIN, DIZEL, LPG, HYBRID, ELEKTRIK
+}
+
+enum VitesTuru {
+    MANUEL, YARI_OTOMATIK, OTOMATIK
+}
+
+relationship ManyToOne {
+	Arac{model} to Model
+}
+
+entity Marka {
+	ad String
+}
+
+entity Model {
+	ad String
+}
+
+relationship OneToMany {
+	Marka{modeller} to Model
+}
+
+
+/**
+ * Task entity.
+ * @author The JHipster team.
+ */
+entity IsEmri {
+    gelisZamani Instant
+	aciklama String required
+    kabulTarihi Instant required
+    tipi IsEmriTipi required
+}
+
+relationship ManyToOne {
+	IsEmri{arac} to Arac
+}
+
+enum IsEmriTipi {
+    SIGORTA, BAKIM, HASAR
+}
+
+entity Iscilik {
+    aciklama String
+    fiyat Double
+    iskonto Double
+}
+
+relationship OneToMany {
+	IsEmri{iscilikler} to Iscilik
+}
+
+entity IscilikGrubu {
+    ad String 
+}
+
+entity IscilikTipi {
+    ad String
+    varsayilanFiyat Double
+}
+
+relationship ManyToOne {
+	 Iscilik{tipi} to IscilikTipi
+}
+
+relationship ManyToOne {
+	 IscilikTipi{grubu} to IscilikGrubu
+}
+
+entity Personel {
+	ad String required
+	soyad String required
+	gorevi String required
+}
+
+relationship ManyToOne {
+	Iscilik{personel} to Personel
+}
+
+entity Parca {
+    fiyati Double
+}
+
+entity ParcaTipi {
+	ad String required
+	kodu String
+    varsayilanFiyati Double
+    aciklama String
+}
+
+relationship ManyToOne {
+	Parca{tipi} to ParcaTipi
+}
+
+relationship OneToMany {
+	IsEmri{parcalar} to Parca
+}
+
+// Set pagination options
+paginate Cari, Arac, IsEmri, Personel, Iscilik, IscilikTipi, IscilikGrubu, Parca, ParcaTipi, Marka, Model with pagination
+
+// Set service options to all except few
+
+// Set an angular suffix
+// angularSuffix * with mySuffix

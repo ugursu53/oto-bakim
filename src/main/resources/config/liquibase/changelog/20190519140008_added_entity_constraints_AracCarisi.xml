@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity AracCarisi.
+    -->
+    <changeSet id="20190519140008-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="arac_id"
+                                 baseTableName="arac_carisi"
+                                 constraintName="fk_arac_carisi_arac_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="arac"/>
+
+        <addForeignKeyConstraint baseColumnNames="cari_id"
+                                 baseTableName="arac_carisi"
+                                 constraintName="fk_arac_carisi_cari_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="cari"/>
+
+    </changeSet>
+</databaseChangeLog>

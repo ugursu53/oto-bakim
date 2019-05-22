@@ -1,0 +1,36 @@
+{
+    "name": "AracCarisi",
+    "fields": [
+        {
+            "fieldName": "aktif",
+            "fieldType": "Boolean",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "arac",
+            "otherEntityName": "arac",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "cari",
+            "otherEntityRelationshipName": "aracCarisi",
+            "relationshipName": "cari",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190519140008",
+    "entityTableName": "arac_carisi",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

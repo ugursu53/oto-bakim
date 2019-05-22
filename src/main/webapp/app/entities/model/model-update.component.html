@@ -1,0 +1,36 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-model-heading" jhiTranslate="otoBakimApp.model.home.createOrEditLabel">Create or edit a Model</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!model.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.model.ad" for="field_ad">Ad</label>
+                    <input type="text" class="form-control" name="ad" id="field_ad"
+                           formControlName="ad"/>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.model.marka" for="field_marka">Marka</label>
+                    <select class="form-control" id="field_marka" name="marka" formControlName="marka">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="markaOption.id === editForm.get('marka').value?.id ? editForm.get('marka').value : markaOption" *ngFor="let markaOption of markas; trackBy: trackMarkaById">{{markaOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

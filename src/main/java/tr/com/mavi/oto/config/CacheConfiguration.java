@@ -43,6 +43,23 @@ public class CacheConfiguration {
             createCache(cm, tr.com.mavi.oto.domain.User.class.getName());
             createCache(cm, tr.com.mavi.oto.domain.Authority.class.getName());
             createCache(cm, tr.com.mavi.oto.domain.User.class.getName() + ".authorities");
+            createCache(cm, tr.com.mavi.oto.domain.Cari.class.getName());
+            createCache(cm, tr.com.mavi.oto.domain.Hesap.class.getName());
+            createCache(cm, tr.com.mavi.oto.domain.Arac.class.getName());
+            createCache(cm, tr.com.mavi.oto.domain.Arac.class.getName() + ".caris");
+            createCache(cm, tr.com.mavi.oto.domain.AracCarisi.class.getName());
+            createCache(cm, tr.com.mavi.oto.domain.Marka.class.getName());
+            createCache(cm, tr.com.mavi.oto.domain.Marka.class.getName() + ".modellers");
+            createCache(cm, tr.com.mavi.oto.domain.Model.class.getName());
+            createCache(cm, tr.com.mavi.oto.domain.IsEmri.class.getName());
+            createCache(cm, tr.com.mavi.oto.domain.IsEmri.class.getName() + ".isciliklers");
+            createCache(cm, tr.com.mavi.oto.domain.IsEmri.class.getName() + ".parcalars");
+            createCache(cm, tr.com.mavi.oto.domain.Iscilik.class.getName());
+            createCache(cm, tr.com.mavi.oto.domain.IscilikGrubu.class.getName());
+            createCache(cm, tr.com.mavi.oto.domain.IscilikTipi.class.getName());
+            createCache(cm, tr.com.mavi.oto.domain.Personel.class.getName());
+            createCache(cm, tr.com.mavi.oto.domain.Parca.class.getName());
+            createCache(cm, tr.com.mavi.oto.domain.ParcaTipi.class.getName());
             // jhipster-needle-ehcache-add-entry
         };
     }

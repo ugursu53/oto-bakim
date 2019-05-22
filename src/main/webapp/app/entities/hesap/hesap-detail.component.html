@@ -1,0 +1,39 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="hesap">
+            <h2><span jhiTranslate="otoBakimApp.hesap.detail.title">Hesap</span> {{hesap.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="otoBakimApp.hesap.banka">Banka</span></dt>
+                <dd>
+                    <span>{{hesap.banka}}</span>
+                </dd>
+                <dt><span jhiTranslate="otoBakimApp.hesap.sube">Sube</span></dt>
+                <dd>
+                    <span>{{hesap.sube}}</span>
+                </dd>
+                <dt><span jhiTranslate="otoBakimApp.hesap.hesapNo">Hesap No</span></dt>
+                <dd>
+                    <span>{{hesap.hesapNo}}</span>
+                </dd>
+                <dt><span jhiTranslate="otoBakimApp.hesap.iban">Iban</span></dt>
+                <dd>
+                    <span>{{hesap.iban}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/hesap', hesap.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

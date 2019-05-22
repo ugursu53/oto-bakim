@@ -1,0 +1,48 @@
+{
+    "name": "Iscilik",
+    "fields": [
+        {
+            "fieldName": "aciklama",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "fiyat",
+            "fieldType": "Double"
+        },
+        {
+            "fieldName": "iskonto",
+            "fieldType": "Double"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipName": "isEmri",
+            "otherEntityName": "isEmri",
+            "relationshipType": "many-to-one",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "iscilikTipi",
+            "otherEntityRelationshipName": "iscilik",
+            "relationshipName": "tipi",
+            "otherEntityField": "id"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "personel",
+            "otherEntityRelationshipName": "iscilik",
+            "relationshipName": "personel",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190519140012",
+    "entityTableName": "iscilik",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

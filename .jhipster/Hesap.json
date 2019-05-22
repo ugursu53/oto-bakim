@@ -1,0 +1,31 @@
+{
+    "name": "Hesap",
+    "fields": [
+        {
+            "fieldName": "banka",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sube",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "hesapNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "iban",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [],
+    "changelogDate": "20190519140006",
+    "entityTableName": "hesap",
+    "dto": "no",
+    "pagination": "no",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

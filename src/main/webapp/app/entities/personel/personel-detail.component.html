@@ -1,0 +1,35 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <div *ngIf="personel">
+            <h2><span jhiTranslate="otoBakimApp.personel.detail.title">Personel</span> {{personel.id}}</h2>
+            <hr>
+            <jhi-alert-error></jhi-alert-error>
+            <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="otoBakimApp.personel.ad">Ad</span></dt>
+                <dd>
+                    <span>{{personel.ad}}</span>
+                </dd>
+                <dt><span jhiTranslate="otoBakimApp.personel.soyad">Soyad</span></dt>
+                <dd>
+                    <span>{{personel.soyad}}</span>
+                </dd>
+                <dt><span jhiTranslate="otoBakimApp.personel.gorevi">Gorevi</span></dt>
+                <dd>
+                    <span>{{personel.gorevi}}</span>
+                </dd>
+            </dl>
+
+            <button type="submit"
+                    (click)="previousState()"
+                    class="btn btn-info">
+                <fa-icon [icon]="'arrow-left'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.back"> Back</span>
+            </button>
+
+            <button type="button"
+                    [routerLink]="['/personel', personel.id, 'edit']"
+                    class="btn btn-primary">
+                <fa-icon [icon]="'pencil-alt'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.edit"> Edit</span>
+            </button>
+        </div>
+    </div>
+</div>

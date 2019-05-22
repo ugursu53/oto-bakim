@@ -1,0 +1,10 @@
+{
+  "otoBakimApp": {
+    "IsEmriTipi": {
+      "null": "",
+      "SIGORTA": "SIGORTA",
+      "BAKIM": "BAKIM",
+      "HASAR": "HASAR"
+    }
+  }
+}

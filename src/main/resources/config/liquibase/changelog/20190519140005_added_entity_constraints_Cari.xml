@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd">
+    <!--
+        Added the constraints for entity Cari.
+    -->
+    <changeSet id="20190519140005-2" author="jhipster">
+        
+        <addForeignKeyConstraint baseColumnNames="hesap_id"
+                                 baseTableName="cari"
+                                 constraintName="fk_cari_hesap_id"
+                                 referencedColumnNames="id"
+                                 referencedTableName="hesap"/>
+
+    </changeSet>
+</databaseChangeLog>

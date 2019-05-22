@@ -1,0 +1,142 @@
+<div class="row justify-content-center">
+    <div class="col-8">
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <h2 id="jhi-cari-heading" jhiTranslate="otoBakimApp.cari.home.createOrEditLabel">Create or edit a Cari</h2>
+            <div>
+                <jhi-alert-error></jhi-alert-error>
+                <div class="form-group" [hidden]="!cari.id">
+                    <label for="id" jhiTranslate="global.field.id">ID</label>
+                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
+                        readonly />
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.tipi" for="field_tipi">Tipi</label>
+                    <select class="form-control" name="tipi" formControlName="tipi" id="field_tipi">
+                        <option value="MUSTERI">{{'otoBakimApp.CariTipi.MUSTERI' | translate}}</option>
+                        <option value="TEDARIKCI">{{'otoBakimApp.CariTipi.TEDARIKCI' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('tipi').invalid && (editForm.get('tipi').dirty || editForm.get('tipi').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('tipi').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.kisiTipi" for="field_kisiTipi">Kisi Tipi</label>
+                    <select class="form-control" name="kisiTipi" formControlName="kisiTipi" id="field_kisiTipi">
+                        <option value="GERCEK">{{'otoBakimApp.KisiTipi.GERCEK' | translate}}</option>
+                        <option value="TUZEL">{{'otoBakimApp.KisiTipi.TUZEL' | translate}}</option>
+                    </select>
+                    <div *ngIf="editForm.get('kisiTipi').invalid && (editForm.get('kisiTipi').dirty || editForm.get('kisiTipi').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('kisiTipi').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.aktif" for="field_aktif">Aktif</label>
+                    <input type="checkbox" class="form-control" name="aktif" id="field_aktif"
+                           formControlName="aktif"/>
+                    <div *ngIf="editForm.get('aktif').invalid && (editForm.get('aktif').dirty || editForm.get('aktif').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('aktif').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.ad" for="field_ad">Ad</label>
+                    <input type="text" class="form-control" name="ad" id="field_ad"
+                           formControlName="ad"/>
+                    <div *ngIf="editForm.get('ad').invalid && (editForm.get('ad').dirty || editForm.get('ad').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('ad').errors.required" jhiTranslate="entity.validation.required">
+                        This field is required.
+                        </small>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.adres" for="field_adres">Adres</label>
+                    <input type="text" class="form-control" name="adres" id="field_adres"
+                           formControlName="adres"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.telefon" for="field_telefon">Telefon</label>
+                    <input type="text" class="form-control" name="telefon" id="field_telefon"
+                           formControlName="telefon"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.tcNo" for="field_tcNo">Tc No</label>
+                    <input type="text" class="form-control" name="tcNo" id="field_tcNo"
+                           formControlName="tcNo"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.vergiNo" for="field_vergiNo">Vergi No</label>
+                    <input type="text" class="form-control" name="vergiNo" id="field_vergiNo"
+                           formControlName="vergiNo"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.yetkili" for="field_yetkili">Yetkili</label>
+                    <input type="text" class="form-control" name="yetkili" id="field_yetkili"
+                           formControlName="yetkili"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.fax" for="field_fax">Fax</label>
+                    <input type="text" class="form-control" name="fax" id="field_fax"
+                           formControlName="fax"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.eposta" for="field_eposta">Eposta</label>
+                    <input type="text" class="form-control" name="eposta" id="field_eposta"
+                           formControlName="eposta"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.webAdresi" for="field_webAdresi">Web Adresi</label>
+                    <input type="text" class="form-control" name="webAdresi" id="field_webAdresi"
+                           formControlName="webAdresi"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.iskonto" for="field_iskonto">Iskonto</label>
+                    <input type="number" class="form-control" name="iskonto" id="field_iskonto"
+                           formControlName="iskonto"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.efaturaKullanimi" for="field_efaturaKullanimi">Efatura Kullanimi</label>
+                    <input type="checkbox" class="form-control" name="efaturaKullanimi" id="field_efaturaKullanimi"
+                           formControlName="efaturaKullanimi"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.aciklama" for="field_aciklama">Aciklama</label>
+                    <input type="text" class="form-control" name="aciklama" id="field_aciklama"
+                           formControlName="aciklama"/>
+                </div>
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.varsayilanIsEmriTipi" for="field_varsayilanIsEmriTipi">Varsayilan Is Emri Tipi</label>
+                    <select class="form-control" name="varsayilanIsEmriTipi" formControlName="varsayilanIsEmriTipi" id="field_varsayilanIsEmriTipi">
+                        <option value="SIGORTA">{{'otoBakimApp.IsEmriTipi.SIGORTA' | translate}}</option>
+                        <option value="BAKIM">{{'otoBakimApp.IsEmriTipi.BAKIM' | translate}}</option>
+                        <option value="HASAR">{{'otoBakimApp.IsEmriTipi.HASAR' | translate}}</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.hesap" for="field_hesap">Hesap</label>
+                    <select class="form-control" id="field_hesap" name="hesap" formControlName="hesap">
+                        <option [ngValue]="null"></option>
+                        <option [ngValue]="hesapOption.id === editForm.get('hesap').value?.id ? editForm.get('hesap').value : hesapOption" *ngFor="let hesapOption of hesaps; trackBy: trackHesapById">{{hesapOption.id}}</option>
+                    </select>
+                </div>
+            </div>
+            <div>
+                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+                </button>
+                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+                </button>
+            </div>
+        </form>
+    </div>
+</div>

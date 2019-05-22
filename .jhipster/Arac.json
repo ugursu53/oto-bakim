@@ -1,0 +1,85 @@
+{
+    "name": "Arac",
+    "fields": [
+        {
+            "fieldName": "plakaNo",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "modelYili",
+            "fieldType": "Integer",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "rengi",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "yakitTuru",
+            "fieldType": "YakitTuru",
+            "fieldValues": "BENZIN,DIZEL,LPG,HYBRID,ELEKTRIK",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "vitesTuru",
+            "fieldType": "VitesTuru",
+            "fieldValues": "MANUEL,YARI_OTOMATIK,OTOMATIK",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "motorNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "sasiNo",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "kullanimSekli",
+            "fieldType": "KullanimSekli",
+            "fieldValues": "HUSISI,SIRKET"
+        },
+        {
+            "fieldName": "aracTipi",
+            "fieldType": "AracTipi",
+            "fieldValues": "HATCHBACK,SEDAN,STAION_WAGON"
+        },
+        {
+            "fieldName": "aciklama",
+            "fieldType": "String"
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "aracCarisi",
+            "otherEntityRelationshipName": "arac",
+            "relationshipName": "cari"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "model",
+            "otherEntityRelationshipName": "arac",
+            "relationshipName": "model",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190519140007",
+    "entityTableName": "arac",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}

@@ -1,0 +1,62 @@
+{
+    "name": "IsEmri",
+    "fields": [
+        {
+            "fieldName": "gelisZamani",
+            "fieldType": "Instant"
+        },
+        {
+            "fieldName": "aciklama",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "kabulTarihi",
+            "fieldType": "Instant",
+            "fieldValidateRules": [
+                "required"
+            ]
+        },
+        {
+            "fieldName": "tipi",
+            "fieldType": "IsEmriTipi",
+            "fieldValues": "SIGORTA,BAKIM,HASAR",
+            "fieldValidateRules": [
+                "required"
+            ]
+        }
+    ],
+    "relationships": [
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "iscilik",
+            "otherEntityRelationshipName": "isEmri",
+            "relationshipName": "iscilikler"
+        },
+        {
+            "relationshipType": "one-to-many",
+            "otherEntityName": "parca",
+            "otherEntityRelationshipName": "isEmri",
+            "relationshipName": "parcalar"
+        },
+        {
+            "relationshipType": "many-to-one",
+            "otherEntityName": "arac",
+            "otherEntityRelationshipName": "isEmri",
+            "relationshipName": "arac",
+            "otherEntityField": "id"
+        }
+    ],
+    "changelogDate": "20190519140011",
+    "javadoc": "Task entity.\n@author The JHipster team.",
+    "entityTableName": "is_emri",
+    "dto": "no",
+    "pagination": "pagination",
+    "service": "no",
+    "jpaMetamodelFiltering": false,
+    "fluentMethods": true,
+    "clientRootFolder": "",
+    "applications": "*"
+}
