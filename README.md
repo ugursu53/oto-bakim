@@ -18,6 +18,8 @@ After finishing the below steps, go to idea terminal window and run this command
 
 2- npm install @angular/animations
 
+3- npm run webpack:build
+
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
