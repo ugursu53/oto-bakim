@@ -6,7 +6,7 @@ This application was generated using JHipster 6.0.1, you can find documentation 
 
 1- AdoptOpenJdk 11 or one of the jdk 10
 
-2- Intellij Idea 2018.1.3 (has crack key in internet)
+2- Intellij Idea 2018.1.3 (has crack key in internet)https://www.licensez.com/
 
 3- git, node.js, postgresql 10
 
