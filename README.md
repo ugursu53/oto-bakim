@@ -15,6 +15,7 @@ This application was generated using JHipster 6.0.1, you can find documentation 
 After finishing the below steps, go to idea terminal window and run this commands:
 
 1- npm install primeng
+
 2- npm install @angular/animations
 
 ## Development
