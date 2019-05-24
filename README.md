@@ -2,6 +2,21 @@
 
 This application was generated using JHipster 6.0.1, you can find documentation and help at [https://www.jhipster.tech/documentation-archive/v6.0.1](https://www.jhipster.tech/documentation-archive/v6.0.1).
 
+## Installation
+
+1- AdoptOpenJdk 11 or one of the jdk 10
+
+2- Intellij Idea 2018.1.3 (has crack key in internet)
+
+3- git, node.js, postgresql 10
+
+# Primeng Intallation
+
+After finishing the below steps, go to idea terminal window and run this commands:
+
+1- npm install primeng
+2- npm install @angular/animations
+
 ## Development
 
 Before you can build this project, you must install and configure the following dependencies on your machine:
