@@ -10,7 +10,7 @@ This application was generated using JHipster 6.0.1, you can find documentation 
 
 3- git, node.js, postgresql 10
 
-# Primeng Intallation
+## Primeng Intallation
 
 After finishing the below steps, go to idea terminal window and run this commands:
 
