@@ -20,6 +20,8 @@ After finishing the below steps, go to idea terminal window and run this command
 
 npm install primeicons
 
+npm install @angular/cdk --save
+
 3- npm run webpack:build
 
 ## Development
