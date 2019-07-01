@@ -18,6 +18,8 @@ After finishing the below steps, go to idea terminal window and run this command
 
 2- npm install @angular/animations
 
+npm install primeicons
+
 3- npm run webpack:build
 
 ## Development
