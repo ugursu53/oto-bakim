@@ -15,7 +15,6 @@ import { MarkaService } from 'app/entities/marka';
   templateUrl: './model-update.component.html'
 })
 export class ModelUpdateComponent implements OnInit {
-  model: IModel;
   isSaving: boolean;
 
   markas: IMarka[];
@@ -38,7 +37,6 @@ export class ModelUpdateComponent implements OnInit {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ model }) => {
       this.updateForm(model);
-      this.model = model;
     });
     this.markaService
       .query()
@@ -72,17 +70,16 @@ export class ModelUpdateComponent implements OnInit {
   }
 
   private createFromForm(): IModel {
-    const entity = {
+    return {
       ...new Model(),
       id: this.editForm.get(['id']).value,
       ad: this.editForm.get(['ad']).value,
       marka: this.editForm.get(['marka']).value
     };
-    return entity;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IModel>>) {
-    result.subscribe((res: HttpResponse<IModel>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
   }
 
   protected onSaveSuccess() {

@@ -5,7 +5,8 @@
         "title": "Arac Carisis",
         "createLabel": "Create a new Arac Carisi",
         "createOrEditLabel": "Create or edit a Arac Carisi",
-        "search": "Search for Arac Carisi"
+        "search": "Search for Arac Carisi",
+        "notFound": "No Arac Carisi found"
       },
       "created": "A new Arac Carisi is created with identifier {{ param }}",
       "updated": "A Arac Carisi is updated with identifier {{ param }}",

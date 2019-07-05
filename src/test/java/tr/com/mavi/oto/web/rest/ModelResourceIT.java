@@ -256,7 +256,7 @@ public class ModelResourceIT {
             .accept(TestUtil.APPLICATION_JSON_UTF8))
             .andExpect(status().isNoContent());
 
-        // Validate the database is empty
+        // Validate the database contains one less item
         List<Model> modelList = modelRepository.findAll();
         assertThat(modelList).hasSize(databaseSizeBeforeDelete - 1);
 

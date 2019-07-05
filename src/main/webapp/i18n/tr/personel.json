@@ -5,7 +5,8 @@
         "title": "Personels",
         "createLabel": "Create a new Personel",
         "createOrEditLabel": "Create or edit a Personel",
-        "search": "Search for Personel"
+        "search": "Search for Personel",
+        "notFound": "No Personel found"
       },
       "created": "A new Personel is created with identifier {{ param }}",
       "updated": "A Personel is updated with identifier {{ param }}",

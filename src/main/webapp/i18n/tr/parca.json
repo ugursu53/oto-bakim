@@ -5,7 +5,8 @@
         "title": "Parcas",
         "createLabel": "Create a new Parca",
         "createOrEditLabel": "Create or edit a Parca",
-        "search": "Search for Parca"
+        "search": "Search for Parca",
+        "notFound": "No Parca found"
       },
       "created": "A new Parca is created with identifier {{ param }}",
       "updated": "A Parca is updated with identifier {{ param }}",

@@ -5,7 +5,8 @@
         "title": "Is Emris",
         "createLabel": "Create a new Is Emri",
         "createOrEditLabel": "Create or edit a Is Emri",
-        "search": "Search for Is Emri"
+        "search": "Search for Is Emri",
+        "notFound": "No Is Emri found"
       },
       "created": "A new Is Emri is created with identifier {{ param }}",
       "updated": "A Is Emri is updated with identifier {{ param }}",

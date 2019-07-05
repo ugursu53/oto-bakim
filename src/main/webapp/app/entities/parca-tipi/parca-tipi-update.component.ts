@@ -11,7 +11,6 @@ import { ParcaTipiService } from './parca-tipi.service';
   templateUrl: './parca-tipi-update.component.html'
 })
 export class ParcaTipiUpdateComponent implements OnInit {
-  parcaTipi: IParcaTipi;
   isSaving: boolean;
 
   editForm = this.fb.group({
@@ -28,7 +27,6 @@ export class ParcaTipiUpdateComponent implements OnInit {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ parcaTipi }) => {
       this.updateForm(parcaTipi);
-      this.parcaTipi = parcaTipi;
     });
   }
 
@@ -57,7 +55,7 @@ export class ParcaTipiUpdateComponent implements OnInit {
   }
 
   private createFromForm(): IParcaTipi {
-    const entity = {
+    return {
       ...new ParcaTipi(),
       id: this.editForm.get(['id']).value,
       ad: this.editForm.get(['ad']).value,
@@ -65,11 +63,10 @@ export class ParcaTipiUpdateComponent implements OnInit {
       varsayilanFiyati: this.editForm.get(['varsayilanFiyati']).value,
       aciklama: this.editForm.get(['aciklama']).value
     };
-    return entity;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IParcaTipi>>) {
-    result.subscribe((res: HttpResponse<IParcaTipi>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
   }
 
   protected onSaveSuccess() {

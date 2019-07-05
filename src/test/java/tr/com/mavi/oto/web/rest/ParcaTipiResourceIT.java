@@ -304,7 +304,7 @@ public class ParcaTipiResourceIT {
             .accept(TestUtil.APPLICATION_JSON_UTF8))
             .andExpect(status().isNoContent());
 
-        // Validate the database is empty
+        // Validate the database contains one less item
         List<ParcaTipi> parcaTipiList = parcaTipiRepository.findAll();
         assertThat(parcaTipiList).hasSize(databaseSizeBeforeDelete - 1);
 

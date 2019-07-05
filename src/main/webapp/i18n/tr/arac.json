@@ -5,7 +5,8 @@
         "title": "Aracs",
         "createLabel": "Create a new Arac",
         "createOrEditLabel": "Create or edit a Arac",
-        "search": "Search for Arac"
+        "search": "Search for Arac",
+        "notFound": "No Arac found"
       },
       "created": "A new Arac is created with identifier {{ param }}",
       "updated": "A Arac is updated with identifier {{ param }}",

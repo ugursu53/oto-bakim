@@ -5,7 +5,8 @@
         "title": "Caris",
         "createLabel": "Create a new Cari",
         "createOrEditLabel": "Create or edit a Cari",
-        "search": "Search for Cari"
+        "search": "Search for Cari",
+        "notFound": "No Cari found"
       },
       "created": "A new Cari is created with identifier {{ param }}",
       "updated": "A Cari is updated with identifier {{ param }}",

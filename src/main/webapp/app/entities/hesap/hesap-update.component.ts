@@ -11,7 +11,6 @@ import { HesapService } from './hesap.service';
   templateUrl: './hesap-update.component.html'
 })
 export class HesapUpdateComponent implements OnInit {
-  hesap: IHesap;
   isSaving: boolean;
 
   editForm = this.fb.group({
@@ -28,7 +27,6 @@ export class HesapUpdateComponent implements OnInit {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ hesap }) => {
       this.updateForm(hesap);
-      this.hesap = hesap;
     });
   }
 
@@ -57,7 +55,7 @@ export class HesapUpdateComponent implements OnInit {
   }
 
   private createFromForm(): IHesap {
-    const entity = {
+    return {
       ...new Hesap(),
       id: this.editForm.get(['id']).value,
       banka: this.editForm.get(['banka']).value,
@@ -65,11 +63,10 @@ export class HesapUpdateComponent implements OnInit {
       hesapNo: this.editForm.get(['hesapNo']).value,
       iban: this.editForm.get(['iban']).value
     };
-    return entity;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IHesap>>) {
-    result.subscribe((res: HttpResponse<IHesap>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
   }
 
   protected onSaveSuccess() {

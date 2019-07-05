@@ -17,7 +17,6 @@ import { CariService } from 'app/entities/cari';
   templateUrl: './arac-carisi-update.component.html'
 })
 export class AracCarisiUpdateComponent implements OnInit {
-  aracCarisi: IAracCarisi;
   isSaving: boolean;
 
   aracs: IArac[];
@@ -44,7 +43,6 @@ export class AracCarisiUpdateComponent implements OnInit {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ aracCarisi }) => {
       this.updateForm(aracCarisi);
-      this.aracCarisi = aracCarisi;
     });
     this.aracService
       .query()
@@ -86,18 +84,17 @@ export class AracCarisiUpdateComponent implements OnInit {
   }
 
   private createFromForm(): IAracCarisi {
-    const entity = {
+    return {
       ...new AracCarisi(),
       id: this.editForm.get(['id']).value,
       aktif: this.editForm.get(['aktif']).value,
       arac: this.editForm.get(['arac']).value,
       cari: this.editForm.get(['cari']).value
     };
-    return entity;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IAracCarisi>>) {
-    result.subscribe((res: HttpResponse<IAracCarisi>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
   }
 
   protected onSaveSuccess() {

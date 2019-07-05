@@ -5,7 +5,8 @@
         "title": "Models",
         "createLabel": "Create a new Model",
         "createOrEditLabel": "Create or edit a Model",
-        "search": "Search for Model"
+        "search": "Search for Model",
+        "notFound": "No Model found"
       },
       "created": "A new Model is created with identifier {{ param }}",
       "updated": "A Model is updated with identifier {{ param }}",

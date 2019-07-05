@@ -11,7 +11,6 @@ import { MarkaService } from './marka.service';
   templateUrl: './marka-update.component.html'
 })
 export class MarkaUpdateComponent implements OnInit {
-  marka: IMarka;
   isSaving: boolean;
 
   editForm = this.fb.group({
@@ -25,7 +24,6 @@ export class MarkaUpdateComponent implements OnInit {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ marka }) => {
       this.updateForm(marka);
-      this.marka = marka;
     });
   }
 
@@ -51,16 +49,15 @@ export class MarkaUpdateComponent implements OnInit {
   }
 
   private createFromForm(): IMarka {
-    const entity = {
+    return {
       ...new Marka(),
       id: this.editForm.get(['id']).value,
       ad: this.editForm.get(['ad']).value
     };
-    return entity;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IMarka>>) {
-    result.subscribe((res: HttpResponse<IMarka>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
   }
 
   protected onSaveSuccess() {

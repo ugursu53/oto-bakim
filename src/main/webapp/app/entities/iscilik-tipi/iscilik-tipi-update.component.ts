@@ -15,7 +15,6 @@ import { IscilikGrubuService } from 'app/entities/iscilik-grubu';
   templateUrl: './iscilik-tipi-update.component.html'
 })
 export class IscilikTipiUpdateComponent implements OnInit {
-  iscilikTipi: IIscilikTipi;
   isSaving: boolean;
 
   iscilikgrubus: IIscilikGrubu[];
@@ -39,7 +38,6 @@ export class IscilikTipiUpdateComponent implements OnInit {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ iscilikTipi }) => {
       this.updateForm(iscilikTipi);
-      this.iscilikTipi = iscilikTipi;
     });
     this.iscilikGrubuService
       .query()
@@ -74,18 +72,17 @@ export class IscilikTipiUpdateComponent implements OnInit {
   }
 
   private createFromForm(): IIscilikTipi {
-    const entity = {
+    return {
       ...new IscilikTipi(),
       id: this.editForm.get(['id']).value,
       ad: this.editForm.get(['ad']).value,
       varsayilanFiyat: this.editForm.get(['varsayilanFiyat']).value,
       grubu: this.editForm.get(['grubu']).value
     };
-    return entity;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IIscilikTipi>>) {
-    result.subscribe((res: HttpResponse<IIscilikTipi>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
   }
 
   protected onSaveSuccess() {

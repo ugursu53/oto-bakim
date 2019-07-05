@@ -19,7 +19,6 @@ import { PersonelService } from 'app/entities/personel';
   templateUrl: './iscilik-update.component.html'
 })
 export class IscilikUpdateComponent implements OnInit {
-  iscilik: IIscilik;
   isSaving: boolean;
 
   isemris: IIsEmri[];
@@ -52,7 +51,6 @@ export class IscilikUpdateComponent implements OnInit {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ iscilik }) => {
       this.updateForm(iscilik);
-      this.iscilik = iscilik;
     });
     this.isEmriService
       .query()
@@ -104,7 +102,7 @@ export class IscilikUpdateComponent implements OnInit {
   }
 
   private createFromForm(): IIscilik {
-    const entity = {
+    return {
       ...new Iscilik(),
       id: this.editForm.get(['id']).value,
       aciklama: this.editForm.get(['aciklama']).value,
@@ -114,11 +112,10 @@ export class IscilikUpdateComponent implements OnInit {
       tipi: this.editForm.get(['tipi']).value,
       personel: this.editForm.get(['personel']).value
     };
-    return entity;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IIscilik>>) {
-    result.subscribe((res: HttpResponse<IIscilik>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
   }
 
   protected onSaveSuccess() {

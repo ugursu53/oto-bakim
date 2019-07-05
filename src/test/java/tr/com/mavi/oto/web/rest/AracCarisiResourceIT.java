@@ -272,7 +272,7 @@ public class AracCarisiResourceIT {
             .accept(TestUtil.APPLICATION_JSON_UTF8))
             .andExpect(status().isNoContent());
 
-        // Validate the database is empty
+        // Validate the database contains one less item
         List<AracCarisi> aracCarisiList = aracCarisiRepository.findAll();
         assertThat(aracCarisiList).hasSize(databaseSizeBeforeDelete - 1);
 

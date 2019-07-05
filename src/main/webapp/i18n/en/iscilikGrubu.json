@@ -5,7 +5,8 @@
         "title": "Iscilik Grubus",
         "createLabel": "Create a new Iscilik Grubu",
         "createOrEditLabel": "Create or edit a Iscilik Grubu",
-        "search": "Search for Iscilik Grubu"
+        "search": "Search for Iscilik Grubu",
+        "notFound": "No Iscilik Grubu found"
       },
       "created": "A new Iscilik Grubu is created with identifier {{ param }}",
       "updated": "A Iscilik Grubu is updated with identifier {{ param }}",

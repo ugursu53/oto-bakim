@@ -5,7 +5,8 @@
         "title": "Markas",
         "createLabel": "Create a new Marka",
         "createOrEditLabel": "Create or edit a Marka",
-        "search": "Search for Marka"
+        "search": "Search for Marka",
+        "notFound": "No Marka found"
       },
       "created": "A new Marka is created with identifier {{ param }}",
       "updated": "A Marka is updated with identifier {{ param }}",

@@ -11,7 +11,6 @@ import { IscilikGrubuService } from './iscilik-grubu.service';
   templateUrl: './iscilik-grubu-update.component.html'
 })
 export class IscilikGrubuUpdateComponent implements OnInit {
-  iscilikGrubu: IIscilikGrubu;
   isSaving: boolean;
 
   editForm = this.fb.group({
@@ -25,7 +24,6 @@ export class IscilikGrubuUpdateComponent implements OnInit {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ iscilikGrubu }) => {
       this.updateForm(iscilikGrubu);
-      this.iscilikGrubu = iscilikGrubu;
     });
   }
 
@@ -51,16 +49,15 @@ export class IscilikGrubuUpdateComponent implements OnInit {
   }
 
   private createFromForm(): IIscilikGrubu {
-    const entity = {
+    return {
       ...new IscilikGrubu(),
       id: this.editForm.get(['id']).value,
       ad: this.editForm.get(['ad']).value
     };
-    return entity;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IIscilikGrubu>>) {
-    result.subscribe((res: HttpResponse<IIscilikGrubu>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
   }
 
   protected onSaveSuccess() {

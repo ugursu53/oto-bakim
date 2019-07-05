@@ -5,7 +5,8 @@
         "title": "Hesaps",
         "createLabel": "Create a new Hesap",
         "createOrEditLabel": "Create or edit a Hesap",
-        "search": "Search for Hesap"
+        "search": "Search for Hesap",
+        "notFound": "No Hesap found"
       },
       "created": "A new Hesap is created with identifier {{ param }}",
       "updated": "A Hesap is updated with identifier {{ param }}",

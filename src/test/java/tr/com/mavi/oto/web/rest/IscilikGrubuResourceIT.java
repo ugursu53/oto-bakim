@@ -256,7 +256,7 @@ public class IscilikGrubuResourceIT {
             .accept(TestUtil.APPLICATION_JSON_UTF8))
             .andExpect(status().isNoContent());
 
-        // Validate the database is empty
+        // Validate the database contains one less item
         List<IscilikGrubu> iscilikGrubuList = iscilikGrubuRepository.findAll();
         assertThat(iscilikGrubuList).hasSize(databaseSizeBeforeDelete - 1);
 

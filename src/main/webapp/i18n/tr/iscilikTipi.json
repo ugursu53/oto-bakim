@@ -5,7 +5,8 @@
         "title": "Iscilik Tipis",
         "createLabel": "Create a new Iscilik Tipi",
         "createOrEditLabel": "Create or edit a Iscilik Tipi",
-        "search": "Search for Iscilik Tipi"
+        "search": "Search for Iscilik Tipi",
+        "notFound": "No Iscilik Tipi found"
       },
       "created": "A new Iscilik Tipi is created with identifier {{ param }}",
       "updated": "A Iscilik Tipi is updated with identifier {{ param }}",

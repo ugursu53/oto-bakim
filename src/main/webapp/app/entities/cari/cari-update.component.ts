@@ -15,7 +15,6 @@ import { HesapService } from 'app/entities/hesap';
   templateUrl: './cari-update.component.html'
 })
 export class CariUpdateComponent implements OnInit {
-  cari: ICari;
   isSaving: boolean;
 
   hesaps: IHesap[];
@@ -53,7 +52,6 @@ export class CariUpdateComponent implements OnInit {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ cari }) => {
       this.updateForm(cari);
-      this.cari = cari;
     });
     this.hesapService
       .query({ filter: 'cari-is-null' })
@@ -63,11 +61,11 @@ export class CariUpdateComponent implements OnInit {
       )
       .subscribe(
         (res: IHesap[]) => {
-          if (!this.cari.hesap || !this.cari.hesap.id) {
+          if (!this.editForm.get('hesap').value || !this.editForm.get('hesap').value.id) {
             this.hesaps = res;
           } else {
             this.hesapService
-              .find(this.cari.hesap.id)
+              .find(this.editForm.get('hesap').value.id)
               .pipe(
                 filter((subResMayBeOk: HttpResponse<IHesap>) => subResMayBeOk.ok),
                 map((subResponse: HttpResponse<IHesap>) => subResponse.body)
@@ -120,7 +118,7 @@ export class CariUpdateComponent implements OnInit {
   }
 
   private createFromForm(): ICari {
-    const entity = {
+    return {
       ...new Cari(),
       id: this.editForm.get(['id']).value,
       tipi: this.editForm.get(['tipi']).value,
@@ -141,11 +139,10 @@ export class CariUpdateComponent implements OnInit {
       varsayilanIsEmriTipi: this.editForm.get(['varsayilanIsEmriTipi']).value,
       hesap: this.editForm.get(['hesap']).value
     };
-    return entity;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<ICari>>) {
-    result.subscribe((res: HttpResponse<ICari>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
   }
 
   protected onSaveSuccess() {

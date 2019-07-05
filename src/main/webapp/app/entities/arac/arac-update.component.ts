@@ -15,7 +15,6 @@ import { ModelService } from 'app/entities/model';
   templateUrl: './arac-update.component.html'
 })
 export class AracUpdateComponent implements OnInit {
-  arac: IArac;
   isSaving: boolean;
 
   models: IModel[];
@@ -47,7 +46,6 @@ export class AracUpdateComponent implements OnInit {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ arac }) => {
       this.updateForm(arac);
-      this.arac = arac;
     });
     this.modelService
       .query()
@@ -90,7 +88,7 @@ export class AracUpdateComponent implements OnInit {
   }
 
   private createFromForm(): IArac {
-    const entity = {
+    return {
       ...new Arac(),
       id: this.editForm.get(['id']).value,
       plakaNo: this.editForm.get(['plakaNo']).value,
@@ -105,11 +103,10 @@ export class AracUpdateComponent implements OnInit {
       aciklama: this.editForm.get(['aciklama']).value,
       model: this.editForm.get(['model']).value
     };
-    return entity;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IArac>>) {
-    result.subscribe((res: HttpResponse<IArac>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
   }
 
   protected onSaveSuccess() {

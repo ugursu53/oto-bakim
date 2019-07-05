@@ -5,7 +5,8 @@
         "title": "Parca Tipis",
         "createLabel": "Create a new Parca Tipi",
         "createOrEditLabel": "Create or edit a Parca Tipi",
-        "search": "Search for Parca Tipi"
+        "search": "Search for Parca Tipi",
+        "notFound": "No Parca Tipi found"
       },
       "created": "A new Parca Tipi is created with identifier {{ param }}",
       "updated": "A Parca Tipi is updated with identifier {{ param }}",

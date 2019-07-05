@@ -11,7 +11,6 @@ import { PersonelService } from './personel.service';
   templateUrl: './personel-update.component.html'
 })
 export class PersonelUpdateComponent implements OnInit {
-  personel: IPersonel;
   isSaving: boolean;
 
   editForm = this.fb.group({
@@ -27,7 +26,6 @@ export class PersonelUpdateComponent implements OnInit {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ personel }) => {
       this.updateForm(personel);
-      this.personel = personel;
     });
   }
 
@@ -55,18 +53,17 @@ export class PersonelUpdateComponent implements OnInit {
   }
 
   private createFromForm(): IPersonel {
-    const entity = {
+    return {
       ...new Personel(),
       id: this.editForm.get(['id']).value,
       ad: this.editForm.get(['ad']).value,
       soyad: this.editForm.get(['soyad']).value,
       gorevi: this.editForm.get(['gorevi']).value
     };
-    return entity;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IPersonel>>) {
-    result.subscribe((res: HttpResponse<IPersonel>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
   }
 
   protected onSaveSuccess() {

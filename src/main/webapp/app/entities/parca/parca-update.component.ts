@@ -17,7 +17,6 @@ import { ParcaTipiService } from 'app/entities/parca-tipi';
   templateUrl: './parca-update.component.html'
 })
 export class ParcaUpdateComponent implements OnInit {
-  parca: IParca;
   isSaving: boolean;
 
   isemris: IIsEmri[];
@@ -44,7 +43,6 @@ export class ParcaUpdateComponent implements OnInit {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ parca }) => {
       this.updateForm(parca);
-      this.parca = parca;
     });
     this.isEmriService
       .query()
@@ -86,18 +84,17 @@ export class ParcaUpdateComponent implements OnInit {
   }
 
   private createFromForm(): IParca {
-    const entity = {
+    return {
       ...new Parca(),
       id: this.editForm.get(['id']).value,
       fiyati: this.editForm.get(['fiyati']).value,
       isEmri: this.editForm.get(['isEmri']).value,
       tipi: this.editForm.get(['tipi']).value
     };
-    return entity;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IParca>>) {
-    result.subscribe((res: HttpResponse<IParca>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
   }
 
   protected onSaveSuccess() {

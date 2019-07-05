@@ -17,7 +17,6 @@ import { AracService } from 'app/entities/arac';
   templateUrl: './is-emri-update.component.html'
 })
 export class IsEmriUpdateComponent implements OnInit {
-  isEmri: IIsEmri;
   isSaving: boolean;
 
   aracs: IArac[];
@@ -43,7 +42,6 @@ export class IsEmriUpdateComponent implements OnInit {
     this.isSaving = false;
     this.activatedRoute.data.subscribe(({ isEmri }) => {
       this.updateForm(isEmri);
-      this.isEmri = isEmri;
     });
     this.aracService
       .query()
@@ -80,7 +78,7 @@ export class IsEmriUpdateComponent implements OnInit {
   }
 
   private createFromForm(): IIsEmri {
-    const entity = {
+    return {
       ...new IsEmri(),
       id: this.editForm.get(['id']).value,
       gelisZamani:
@@ -91,11 +89,10 @@ export class IsEmriUpdateComponent implements OnInit {
       tipi: this.editForm.get(['tipi']).value,
       arac: this.editForm.get(['arac']).value
     };
-    return entity;
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IIsEmri>>) {
-    result.subscribe((res: HttpResponse<IIsEmri>) => this.onSaveSuccess(), (res: HttpErrorResponse) => this.onSaveError());
+    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
   }
 
   protected onSaveSuccess() {

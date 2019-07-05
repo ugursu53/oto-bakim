@@ -422,7 +422,7 @@ public class AracResourceIT {
             .accept(TestUtil.APPLICATION_JSON_UTF8))
             .andExpect(status().isNoContent());
 
-        // Validate the database is empty
+        // Validate the database contains one less item
         List<Arac> aracList = aracRepository.findAll();
         assertThat(aracList).hasSize(databaseSizeBeforeDelete - 1);
 
