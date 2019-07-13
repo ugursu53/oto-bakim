@@ -16,7 +16,6 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "iscilik")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "iscilik")
 public class Iscilik implements Serializable {
 

@@ -26,7 +26,6 @@ import tr.com.mavi.oto.domain.enumeration.IsEmriTipi;
 @ApiModel(description = "Task entity. @author The JHipster team.")
 @Entity
 @Table(name = "is_emri")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "isemri")
 public class IsEmri implements Serializable {
 
