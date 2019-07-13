@@ -5,14 +5,14 @@
         "title": "Cariler",
         "createLabel": "Yeni Cari",
         "createOrEditLabel": "Cari",
-        "search": "Search for Cari",
-        "notFound": "No Cari found"
+        "search": "Cari Ara",
+        "notFound": "Cari bulunamadı"
       },
-      "created": "A new Cari is created with identifier {{ param }}",
-      "updated": "A Cari is updated with identifier {{ param }}",
-      "deleted": "A Cari is deleted with identifier {{ param }}",
+      "created": "Yeni Cari eklendi id:{{ param }}",
+      "updated": "Cari güncellendi id:{{ param }}",
+      "deleted": "Cari silindi id:{{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Cari {{ id }}?"
+        "question": "Cari'yi silmek istediğinizden emin misiniz? id:{{ id }}"
       },
       "detail": {
         "title": "Cari"
