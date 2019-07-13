@@ -32,7 +32,6 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="id"><span jhiTranslate="global.field.id">ID</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="tipi"><span jhiTranslate="otoBakimApp.cari.tipi">Tipi</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="kisiTipi"><span jhiTranslate="otoBakimApp.cari.kisiTipi">Kisi Tipi</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="aktif"><span jhiTranslate="otoBakimApp.cari.aktif">Aktif</span> <fa-icon [icon]="'sort'"></fa-icon></th>
@@ -55,7 +54,6 @@
             </thead>
             <tbody>
             <tr *ngFor="let cari of caris ;trackBy: trackId">
-                <td><a [routerLink]="['/cari', cari.id, 'view' ]">{{cari.id}}</a></td>
                 <td jhiTranslate="{{'otoBakimApp.CariTipi.' + cari.tipi}}">{{cari.tipi}}</td>
                 <td jhiTranslate="{{'otoBakimApp.KisiTipi.' + cari.kisiTipi}}">{{cari.kisiTipi}}</td>
                 <td>{{cari.aktif}}</td>
@@ -83,13 +81,11 @@
                                 [routerLink]="['/cari', cari.id, 'view' ]"
                                 class="btn btn-info btn-sm">
                             <fa-icon [icon]="'eye'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.view">View</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/cari', cari.id, 'edit']"
                                 class="btn btn-primary btn-sm">
                             <fa-icon [icon]="'pencil-alt'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.edit">Edit</span>
                         </button>
                         <button type="submit"
                                 [routerLink]="['/', 'cari', { outlets: { popup: cari.id + '/delete'} }]"
@@ -97,7 +93,6 @@
                                 queryParamsHandling="merge"
                                 class="btn btn-danger btn-sm">
                             <fa-icon [icon]="'times'"></fa-icon>
-                            <span class="d-none d-md-inline" jhiTranslate="entity.action.delete">Delete</span>
                         </button>
                     </div>
                 </td>

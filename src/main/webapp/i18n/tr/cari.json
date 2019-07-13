@@ -2,9 +2,9 @@
   "otoBakimApp": {
     "cari": {
       "home": {
-        "title": "Caris",
-        "createLabel": "Create a new Cari",
-        "createOrEditLabel": "Create or edit a Cari",
+        "title": "Cariler",
+        "createLabel": "Yeni Cari",
+        "createOrEditLabel": "Cari",
         "search": "Search for Cari",
         "notFound": "No Cari found"
       },

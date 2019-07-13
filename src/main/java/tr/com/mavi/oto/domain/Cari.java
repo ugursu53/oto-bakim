@@ -31,7 +31,6 @@ public class Cari implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
-    @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Keyword)
     private Long id;
 
     @NotNull
@@ -50,6 +49,7 @@ public class Cari implements Serializable {
 
     @NotNull
     @Column(name = "ad", nullable = false)
+    @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Text)
     private String ad;
 
     @Column(name = "adres")
@@ -59,6 +59,7 @@ public class Cari implements Serializable {
     private String telefon;
 
     @Column(name = "tc_no")
+    @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Text)
     private String tcNo;
 
     @Column(name = "vergi_no")
@@ -89,7 +90,7 @@ public class Cari implements Serializable {
     @Column(name = "varsayilan_is_emri_tipi")
     private IsEmriTipi varsayilanIsEmriTipi;
 
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(unique = true)
     private Hesap hesap;
 
