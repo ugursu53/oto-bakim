@@ -99,7 +99,9 @@
     "ribbon": {
       "dev": "Development"
     },
-    "item-count": "Toplam {{total}} kaydın {{first}} - {{second}} arası gösteriliyor."
+    "item-count": "Toplam {{total}} kaydın {{first}} - {{second}} arası gösteriliyor.",
+    "evet": "Evet",
+    "hayir": "Hayır"
   },
   "entity": {
     "action": {
