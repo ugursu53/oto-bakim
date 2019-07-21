@@ -57,12 +57,10 @@ public class IsEmri implements Serializable {
     @Column(name = "tipi", nullable = false)
     private IsEmriTipi tipi;
 
-    @OneToMany(mappedBy = "isEmri")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @OneToMany(mappedBy = "isEmri", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Iscilik> isciliklers = new HashSet<>();
 
-    @OneToMany(mappedBy = "isEmri")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
+    @OneToMany(mappedBy = "isEmri", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     private Set<Parca> parcalars = new HashSet<>();
 
     @ManyToOne
