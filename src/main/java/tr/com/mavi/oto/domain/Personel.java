@@ -1,6 +1,8 @@
 package tr.com.mavi.oto.domain;
 
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -14,6 +16,8 @@ import java.util.Objects;
 /**
  * A Personel.
  */
+@Setter
+@Getter
 @Entity
 @Table(name = "personel")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -40,30 +44,9 @@ public class Personel implements Serializable {
     @Column(name = "gorevi", nullable = false)
     private String gorevi;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getAd() {
-        return ad;
-    }
-
     public Personel ad(String ad) {
         this.ad = ad;
         return this;
-    }
-
-    public void setAd(String ad) {
-        this.ad = ad;
-    }
-
-    public String getSoyad() {
-        return soyad;
     }
 
     public Personel soyad(String soyad) {
@@ -71,22 +54,11 @@ public class Personel implements Serializable {
         return this;
     }
 
-    public void setSoyad(String soyad) {
-        this.soyad = soyad;
-    }
-
-    public String getGorevi() {
-        return gorevi;
-    }
-
     public Personel gorevi(String gorevi) {
         this.gorevi = gorevi;
         return this;
     }
 
-    public void setGorevi(String gorevi) {
-        this.gorevi = gorevi;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

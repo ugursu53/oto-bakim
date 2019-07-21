@@ -2,6 +2,8 @@ package tr.com.mavi.oto.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -14,6 +16,8 @@ import java.util.Objects;
 /**
  * A Model.
  */
+@Setter
+@Getter
 @Entity
 @Table(name = "model")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -35,30 +39,9 @@ public class Model implements Serializable {
     @JsonIgnoreProperties("models")
     private Marka marka;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getAd() {
-        return ad;
-    }
-
     public Model ad(String ad) {
         this.ad = ad;
         return this;
-    }
-
-    public void setAd(String ad) {
-        this.ad = ad;
-    }
-
-    public Marka getMarka() {
-        return marka;
     }
 
     public Model marka(Marka marka) {
@@ -66,9 +49,6 @@ public class Model implements Serializable {
         return this;
     }
 
-    public void setMarka(Marka marka) {
-        this.marka = marka;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override
