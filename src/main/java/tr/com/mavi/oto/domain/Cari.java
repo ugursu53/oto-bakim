@@ -22,7 +22,6 @@ import tr.com.mavi.oto.domain.enumeration.IsEmriTipi;
  */
 @Entity
 @Table(name = "cari")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "cari")
 public class Cari implements Serializable {
 

@@ -28,7 +28,6 @@ import tr.com.mavi.oto.domain.enumeration.AracTipi;
  */
 @Entity
 @Table(name = "arac")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "arac")
 public class Arac implements Serializable {
 
