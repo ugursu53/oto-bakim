@@ -2,6 +2,8 @@ package tr.com.mavi.oto.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -14,6 +16,8 @@ import java.util.Objects;
 /**
  * A Iscilik.
  */
+@Setter
+@Getter
 @Entity
 @Table(name = "iscilik")
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "iscilik")
@@ -48,30 +52,9 @@ public class Iscilik implements Serializable {
     @JsonIgnoreProperties("isciliks")
     private Personel personel;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getAciklama() {
-        return aciklama;
-    }
-
     public Iscilik aciklama(String aciklama) {
         this.aciklama = aciklama;
         return this;
-    }
-
-    public void setAciklama(String aciklama) {
-        this.aciklama = aciklama;
-    }
-
-    public Double getFiyat() {
-        return fiyat;
     }
 
     public Iscilik fiyat(Double fiyat) {
@@ -79,25 +62,9 @@ public class Iscilik implements Serializable {
         return this;
     }
 
-    public void setFiyat(Double fiyat) {
-        this.fiyat = fiyat;
-    }
-
-    public Double getIskonto() {
-        return iskonto;
-    }
-
     public Iscilik iskonto(Double iskonto) {
         this.iskonto = iskonto;
         return this;
-    }
-
-    public void setIskonto(Double iskonto) {
-        this.iskonto = iskonto;
-    }
-
-    public IsEmri getIsEmri() {
-        return isEmri;
     }
 
     public Iscilik isEmri(IsEmri isEmri) {
@@ -105,25 +72,9 @@ public class Iscilik implements Serializable {
         return this;
     }
 
-    public void setIsEmri(IsEmri isEmri) {
-        this.isEmri = isEmri;
-    }
-
-    public IscilikTipi getTipi() {
-        return tipi;
-    }
-
     public Iscilik tipi(IscilikTipi iscilikTipi) {
         this.tipi = iscilikTipi;
         return this;
-    }
-
-    public void setTipi(IscilikTipi iscilikTipi) {
-        this.tipi = iscilikTipi;
-    }
-
-    public Personel getPersonel() {
-        return personel;
     }
 
     public Iscilik personel(Personel personel) {
@@ -131,9 +82,6 @@ public class Iscilik implements Serializable {
         return this;
     }
 
-    public void setPersonel(Personel personel) {
-        this.personel = personel;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

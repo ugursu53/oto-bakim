@@ -1,6 +1,8 @@
 package tr.com.mavi.oto.domain;
 
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -13,6 +15,8 @@ import java.util.Objects;
 /**
  * A IscilikGrubu.
  */
+@Setter
+@Getter
 @Entity
 @Table(name = "iscilik_grubu")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -30,27 +34,11 @@ public class IscilikGrubu implements Serializable {
     @Column(name = "ad")
     private String ad;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getAd() {
-        return ad;
-    }
-
     public IscilikGrubu ad(String ad) {
         this.ad = ad;
         return this;
     }
 
-    public void setAd(String ad) {
-        this.ad = ad;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

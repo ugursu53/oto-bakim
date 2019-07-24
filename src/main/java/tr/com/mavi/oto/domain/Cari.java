@@ -1,6 +1,8 @@
 package tr.com.mavi.oto.domain;
 
 
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -20,9 +22,10 @@ import tr.com.mavi.oto.domain.enumeration.IsEmriTipi;
 /**
  * A Cari.
  */
+@Setter
+@Getter
 @Entity
 @Table(name = "cari")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "cari")
 public class Cari implements Serializable {
 
@@ -94,39 +97,14 @@ public class Cari implements Serializable {
     @JoinColumn(unique = true)
     private Hesap hesap;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public CariTipi getTipi() {
-        return tipi;
-    }
-
     public Cari tipi(CariTipi tipi) {
         this.tipi = tipi;
         return this;
     }
 
-    public void setTipi(CariTipi tipi) {
-        this.tipi = tipi;
-    }
-
-    public KisiTipi getKisiTipi() {
-        return kisiTipi;
-    }
-
     public Cari kisiTipi(KisiTipi kisiTipi) {
         this.kisiTipi = kisiTipi;
         return this;
-    }
-
-    public void setKisiTipi(KisiTipi kisiTipi) {
-        this.kisiTipi = kisiTipi;
     }
 
     public Boolean isAktif() {
@@ -138,25 +116,9 @@ public class Cari implements Serializable {
         return this;
     }
 
-    public void setAktif(Boolean aktif) {
-        this.aktif = aktif;
-    }
-
-    public String getAd() {
-        return ad;
-    }
-
     public Cari ad(String ad) {
         this.ad = ad;
         return this;
-    }
-
-    public void setAd(String ad) {
-        this.ad = ad;
-    }
-
-    public String getAdres() {
-        return adres;
     }
 
     public Cari adres(String adres) {
@@ -164,25 +126,9 @@ public class Cari implements Serializable {
         return this;
     }
 
-    public void setAdres(String adres) {
-        this.adres = adres;
-    }
-
-    public String getTelefon() {
-        return telefon;
-    }
-
     public Cari telefon(String telefon) {
         this.telefon = telefon;
         return this;
-    }
-
-    public void setTelefon(String telefon) {
-        this.telefon = telefon;
-    }
-
-    public String getTcNo() {
-        return tcNo;
     }
 
     public Cari tcNo(String tcNo) {
@@ -190,25 +136,9 @@ public class Cari implements Serializable {
         return this;
     }
 
-    public void setTcNo(String tcNo) {
-        this.tcNo = tcNo;
-    }
-
-    public String getVergiNo() {
-        return vergiNo;
-    }
-
     public Cari vergiNo(String vergiNo) {
         this.vergiNo = vergiNo;
         return this;
-    }
-
-    public void setVergiNo(String vergiNo) {
-        this.vergiNo = vergiNo;
-    }
-
-    public String getYetkili() {
-        return yetkili;
     }
 
     public Cari yetkili(String yetkili) {
@@ -216,25 +146,9 @@ public class Cari implements Serializable {
         return this;
     }
 
-    public void setYetkili(String yetkili) {
-        this.yetkili = yetkili;
-    }
-
-    public String getFax() {
-        return fax;
-    }
-
     public Cari fax(String fax) {
         this.fax = fax;
         return this;
-    }
-
-    public void setFax(String fax) {
-        this.fax = fax;
-    }
-
-    public String getEposta() {
-        return eposta;
     }
 
     public Cari eposta(String eposta) {
@@ -242,34 +156,14 @@ public class Cari implements Serializable {
         return this;
     }
 
-    public void setEposta(String eposta) {
-        this.eposta = eposta;
-    }
-
-    public String getWebAdresi() {
-        return webAdresi;
-    }
-
     public Cari webAdresi(String webAdresi) {
         this.webAdresi = webAdresi;
         return this;
     }
 
-    public void setWebAdresi(String webAdresi) {
-        this.webAdresi = webAdresi;
-    }
-
-    public Double getIskonto() {
-        return iskonto;
-    }
-
     public Cari iskonto(Double iskonto) {
         this.iskonto = iskonto;
         return this;
-    }
-
-    public void setIskonto(Double iskonto) {
-        this.iskonto = iskonto;
     }
 
     public Boolean isEfaturaKullanimi() {
@@ -281,25 +175,9 @@ public class Cari implements Serializable {
         return this;
     }
 
-    public void setEfaturaKullanimi(Boolean efaturaKullanimi) {
-        this.efaturaKullanimi = efaturaKullanimi;
-    }
-
-    public String getAciklama() {
-        return aciklama;
-    }
-
     public Cari aciklama(String aciklama) {
         this.aciklama = aciklama;
         return this;
-    }
-
-    public void setAciklama(String aciklama) {
-        this.aciklama = aciklama;
-    }
-
-    public IsEmriTipi getVarsayilanIsEmriTipi() {
-        return varsayilanIsEmriTipi;
     }
 
     public Cari varsayilanIsEmriTipi(IsEmriTipi varsayilanIsEmriTipi) {
@@ -307,22 +185,11 @@ public class Cari implements Serializable {
         return this;
     }
 
-    public void setVarsayilanIsEmriTipi(IsEmriTipi varsayilanIsEmriTipi) {
-        this.varsayilanIsEmriTipi = varsayilanIsEmriTipi;
-    }
-
-    public Hesap getHesap() {
-        return hesap;
-    }
-
     public Cari hesap(Hesap hesap) {
         this.hesap = hesap;
         return this;
     }
 
-    public void setHesap(Hesap hesap) {
-        this.hesap = hesap;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

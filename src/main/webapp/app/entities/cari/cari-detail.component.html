@@ -6,6 +6,12 @@
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details ui-g">
                 <div class="col-lg-4 col-md-6 col-xs-12">
+                    <dt><span jhiTranslate="otoBakimApp.cari.ad">Ad</span></dt>
+                    <dd>
+                        <span>{{cari.ad}}</span>
+                    </dd>
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
                     <dt><span jhiTranslate="otoBakimApp.cari.tipi">Tipi</span></dt>
                     <dd>
                         <span jhiTranslate="{{'otoBakimApp.CariTipi.' + cari.tipi}}">{{cari.tipi}}</span>
@@ -21,12 +27,6 @@
                     <dt><span jhiTranslate="otoBakimApp.cari.aktif">Aktif</span></dt>
                     <dd>
                         <span jhiTranslate="{{cari.aktif? 'global.evet' : 'global.hayir'}}">{{cari.aktif}}</span>
-                    </dd>
-                </div>
-                <div class="col-lg-4 col-md-6 col-xs-12">
-                    <dt><span jhiTranslate="otoBakimApp.cari.ad">Ad</span></dt>
-                    <dd>
-                        <span>{{cari.ad}}</span>
                     </dd>
                 </div>
                 <div class="col-lg-4 col-md-6 col-xs-12">

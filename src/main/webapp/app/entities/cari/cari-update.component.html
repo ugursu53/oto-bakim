@@ -2,8 +2,19 @@
     <div class="col-10">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <h2 id="jhi-cari-heading" jhiTranslate="otoBakimApp.cari.home.createOrEditLabel">Create or edit a Cari</h2>
-            <div class="row">
+            <div class="row-md ui-g">
                 <jhi-alert-error></jhi-alert-error>
+                <div class="form-group col-lg-4 col-md-6 col-xs-12">
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.ad" for="field_ad">Ad</label>
+                    <input type="text" class="form-control" name="ad" id="field_ad"
+                           formControlName="ad"/>
+                    <div *ngIf="editForm.get('ad').invalid && (editForm.get('ad').dirty || editForm.get('ad').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('ad').errors.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
+                </div>
                 <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.cari.tipi" for="field_tipi">Tipi</label>
                     <select class="form-control" name="tipi" formControlName="tipi" id="field_tipi">
@@ -36,17 +47,6 @@
                     <div *ngIf="editForm.get('aktif').invalid && (editForm.get('aktif').dirty || editForm.get('aktif').touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('aktif').errors.required" jhiTranslate="entity.validation.required">
-                        This field is required.
-                        </small>
-                    </div>
-                </div>
-                <div class="form-group col-lg-4 col-md-6 col-xs-12">
-                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.ad" for="field_ad">Ad</label>
-                    <input type="text" class="form-control" name="ad" id="field_ad"
-                           formControlName="ad"/>
-                    <div *ngIf="editForm.get('ad').invalid && (editForm.get('ad').dirty || editForm.get('ad').touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('ad').errors.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
                     </div>
@@ -114,13 +114,34 @@
                     </select>
                 </div>
 
-                <div class="form-group col-lg-4 col-md-6 col-xs-12">
-                    <label class="form-control-label" jhiTranslate="otoBakimApp.cari.hesap" for="field_hesap">Hesap</label>
-                    <select class="form-control" id="field_hesap" name="hesap" formControlName="hesap">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="hesapOption.id === editForm.get('hesap').value?.id ? editForm.get('hesap').value : hesapOption" *ngFor="let hesapOption of hesaps; trackBy: trackHesapById">{{hesapOption.id}}</option>
-                    </select>
-                </div>
+                <p-fieldset class="col-12">
+                    <p-header>
+                        <span jhiTranslate="otoBakimApp.cari.hesap">Hesap</span>
+                    </p-header>
+                    <div class="row-md ui-g">
+                        <div class="form-group col-lg-4 col-md-6 col-xs-12">
+                            <label class="form-control-label" jhiTranslate="otoBakimApp.hesap.banka" for="field_banka">Banka</label>
+                            <input type="text" class="form-control" name="banka" id="field_banka"
+                                   formControlName="banka"/>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-6 col-xs-12">
+                            <label class="form-control-label" jhiTranslate="otoBakimApp.hesap.sube" for="field_sube">Sube</label>
+                            <input type="text" class="form-control" name="sube" id="field_sube"
+                                   formControlName="sube"/>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-6 col-xs-12">
+                            <label class="form-control-label" jhiTranslate="otoBakimApp.hesap.hesapNo"
+                                   for="field_hesapNo">Hesap No</label>
+                            <input type="text" class="form-control" name="hesapNo" id="field_hesapNo"
+                                   formControlName="hesapNo"/>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-6 col-xs-12">
+                            <label class="form-control-label" jhiTranslate="otoBakimApp.hesap.iban" for="field_iban">Iban</label>
+                            <input type="text" class="form-control" name="iban" id="field_iban"
+                                   formControlName="iban"/>
+                        </div>
+                    </div>
+                </p-fieldset>
             </div>
             <div>
                 <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">

@@ -3,6 +3,8 @@ package tr.com.mavi.oto.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -26,9 +28,10 @@ import tr.com.mavi.oto.domain.enumeration.AracTipi;
 /**
  * A Arac.
  */
+@Setter
+@Getter
 @Entity
 @Table(name = "arac")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "arac")
 public class Arac implements Serializable {
 
@@ -86,30 +89,9 @@ public class Arac implements Serializable {
     @JsonIgnoreProperties("aracs")
     private Model model;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getPlakaNo() {
-        return plakaNo;
-    }
-
     public Arac plakaNo(String plakaNo) {
         this.plakaNo = plakaNo;
         return this;
-    }
-
-    public void setPlakaNo(String plakaNo) {
-        this.plakaNo = plakaNo;
-    }
-
-    public Integer getModelYili() {
-        return modelYili;
     }
 
     public Arac modelYili(Integer modelYili) {
@@ -117,25 +99,9 @@ public class Arac implements Serializable {
         return this;
     }
 
-    public void setModelYili(Integer modelYili) {
-        this.modelYili = modelYili;
-    }
-
-    public String getRengi() {
-        return rengi;
-    }
-
     public Arac rengi(String rengi) {
         this.rengi = rengi;
         return this;
-    }
-
-    public void setRengi(String rengi) {
-        this.rengi = rengi;
-    }
-
-    public YakitTuru getYakitTuru() {
-        return yakitTuru;
     }
 
     public Arac yakitTuru(YakitTuru yakitTuru) {
@@ -143,25 +109,9 @@ public class Arac implements Serializable {
         return this;
     }
 
-    public void setYakitTuru(YakitTuru yakitTuru) {
-        this.yakitTuru = yakitTuru;
-    }
-
-    public VitesTuru getVitesTuru() {
-        return vitesTuru;
-    }
-
     public Arac vitesTuru(VitesTuru vitesTuru) {
         this.vitesTuru = vitesTuru;
         return this;
-    }
-
-    public void setVitesTuru(VitesTuru vitesTuru) {
-        this.vitesTuru = vitesTuru;
-    }
-
-    public String getMotorNo() {
-        return motorNo;
     }
 
     public Arac motorNo(String motorNo) {
@@ -169,25 +119,9 @@ public class Arac implements Serializable {
         return this;
     }
 
-    public void setMotorNo(String motorNo) {
-        this.motorNo = motorNo;
-    }
-
-    public String getSasiNo() {
-        return sasiNo;
-    }
-
     public Arac sasiNo(String sasiNo) {
         this.sasiNo = sasiNo;
         return this;
-    }
-
-    public void setSasiNo(String sasiNo) {
-        this.sasiNo = sasiNo;
-    }
-
-    public KullanimSekli getKullanimSekli() {
-        return kullanimSekli;
     }
 
     public Arac kullanimSekli(KullanimSekli kullanimSekli) {
@@ -195,38 +129,14 @@ public class Arac implements Serializable {
         return this;
     }
 
-    public void setKullanimSekli(KullanimSekli kullanimSekli) {
-        this.kullanimSekli = kullanimSekli;
-    }
-
-    public AracTipi getAracTipi() {
-        return aracTipi;
-    }
-
     public Arac aracTipi(AracTipi aracTipi) {
         this.aracTipi = aracTipi;
         return this;
     }
 
-    public void setAracTipi(AracTipi aracTipi) {
-        this.aracTipi = aracTipi;
-    }
-
-    public String getAciklama() {
-        return aciklama;
-    }
-
     public Arac aciklama(String aciklama) {
         this.aciklama = aciklama;
         return this;
-    }
-
-    public void setAciklama(String aciklama) {
-        this.aciklama = aciklama;
-    }
-
-    public Set<AracCarisi> getCaris() {
-        return caris;
     }
 
     public Arac caris(Set<AracCarisi> aracCarisis) {
@@ -246,22 +156,11 @@ public class Arac implements Serializable {
         return this;
     }
 
-    public void setCaris(Set<AracCarisi> aracCarisis) {
-        this.caris = aracCarisis;
-    }
-
-    public Model getModel() {
-        return model;
-    }
-
     public Arac model(Model model) {
         this.model = model;
         return this;
     }
 
-    public void setModel(Model model) {
-        this.model = model;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

@@ -2,6 +2,8 @@ package tr.com.mavi.oto.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -14,6 +16,8 @@ import java.util.Objects;
 /**
  * A IscilikTipi.
  */
+@Setter
+@Getter
 @Entity
 @Table(name = "iscilik_tipi")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
@@ -38,30 +42,9 @@ public class IscilikTipi implements Serializable {
     @JsonIgnoreProperties("iscilikTipis")
     private IscilikGrubu grubu;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getAd() {
-        return ad;
-    }
-
     public IscilikTipi ad(String ad) {
         this.ad = ad;
         return this;
-    }
-
-    public void setAd(String ad) {
-        this.ad = ad;
-    }
-
-    public Double getVarsayilanFiyat() {
-        return varsayilanFiyat;
     }
 
     public IscilikTipi varsayilanFiyat(Double varsayilanFiyat) {
@@ -69,22 +52,11 @@ public class IscilikTipi implements Serializable {
         return this;
     }
 
-    public void setVarsayilanFiyat(Double varsayilanFiyat) {
-        this.varsayilanFiyat = varsayilanFiyat;
-    }
-
-    public IscilikGrubu getGrubu() {
-        return grubu;
-    }
-
     public IscilikTipi grubu(IscilikGrubu iscilikGrubu) {
         this.grubu = iscilikGrubu;
         return this;
     }
 
-    public void setGrubu(IscilikGrubu iscilikGrubu) {
-        this.grubu = iscilikGrubu;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

@@ -2,6 +2,8 @@ package tr.com.mavi.oto.domain;
 
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Getter;
+import lombok.Setter;
 import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
@@ -15,9 +17,10 @@ import java.util.Objects;
 /**
  * A AracCarisi.
  */
+@Setter
+@Getter
 @Entity
 @Table(name = "arac_carisi")
-@Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "araccarisi")
 public class AracCarisi implements Serializable {
 
@@ -41,15 +44,6 @@ public class AracCarisi implements Serializable {
     @JsonIgnoreProperties("aracCarisis")
     private Cari cari;
 
-    // jhipster-needle-entity-add-field - JHipster will add fields here, do not remove
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     public Boolean isAktif() {
         return aktif;
     }
@@ -59,25 +53,9 @@ public class AracCarisi implements Serializable {
         return this;
     }
 
-    public void setAktif(Boolean aktif) {
-        this.aktif = aktif;
-    }
-
-    public Arac getArac() {
-        return arac;
-    }
-
     public AracCarisi arac(Arac arac) {
         this.arac = arac;
         return this;
-    }
-
-    public void setArac(Arac arac) {
-        this.arac = arac;
-    }
-
-    public Cari getCari() {
-        return cari;
     }
 
     public AracCarisi cari(Cari cari) {
@@ -85,9 +63,6 @@ public class AracCarisi implements Serializable {
         return this;
     }
 
-    public void setCari(Cari cari) {
-        this.cari = cari;
-    }
     // jhipster-needle-entity-add-getters-setters - JHipster will add getters and setters here, do not remove
 
     @Override

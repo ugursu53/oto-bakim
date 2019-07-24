@@ -7,6 +7,7 @@ import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { CookieModule } from 'ngx-cookie';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { FieldsetModule, CheckboxModule } from 'primeng/primeng';
+import { TableModule } from 'primeng/table';
 
 @NgModule({
   imports: [NgbModule, InfiniteScrollModule, CookieModule.forRoot(), FontAwesomeModule, ReactiveFormsModule],
@@ -19,7 +20,8 @@ import { FieldsetModule, CheckboxModule } from 'primeng/primeng';
     FontAwesomeModule,
     ReactiveFormsModule,
     FieldsetModule,
-    CheckboxModule
+    CheckboxModule,
+    TableModule
   ]
 })
 export class OtoBakimSharedLibsModule {

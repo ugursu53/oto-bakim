@@ -7,7 +7,7 @@ import { filter, map } from 'rxjs/operators';
 import { JhiAlertService } from 'ng-jhipster';
 import { ICari, Cari } from 'app/shared/model/cari.model';
 import { CariService } from './cari.service';
-import { IHesap } from 'app/shared/model/hesap.model';
+import { Hesap, IHesap } from 'app/shared/model/hesap.model';
 import { HesapService } from 'app/entities/hesap';
 
 @Component({
@@ -16,8 +16,6 @@ import { HesapService } from 'app/entities/hesap';
 })
 export class CariUpdateComponent implements OnInit {
   isSaving: boolean;
-
-  hesaps: IHesap[];
 
   editForm = this.fb.group({
     id: [],
@@ -37,13 +35,16 @@ export class CariUpdateComponent implements OnInit {
     efaturaKullanimi: [],
     aciklama: [],
     varsayilanIsEmriTipi: [],
-    hesap: []
+    hesapId: [],
+    banka: [],
+    sube: [],
+    hesapNo: [],
+    iban: []
   });
 
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected cariService: CariService,
-    protected hesapService: HesapService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -53,31 +54,6 @@ export class CariUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ cari }) => {
       this.updateForm(cari);
     });
-    this.hesapService
-      .query({ filter: 'cari-is-null' })
-      .pipe(
-        filter((mayBeOk: HttpResponse<IHesap[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IHesap[]>) => response.body)
-      )
-      .subscribe(
-        (res: IHesap[]) => {
-          if (!this.editForm.get('hesap').value || !this.editForm.get('hesap').value.id) {
-            this.hesaps = res;
-          } else {
-            this.hesapService
-              .find(this.editForm.get('hesap').value.id)
-              .pipe(
-                filter((subResMayBeOk: HttpResponse<IHesap>) => subResMayBeOk.ok),
-                map((subResponse: HttpResponse<IHesap>) => subResponse.body)
-              )
-              .subscribe(
-                (subRes: IHesap) => (this.hesaps = [subRes].concat(res)),
-                (subRes: HttpErrorResponse) => this.onError(subRes.message)
-              );
-          }
-        },
-        (res: HttpErrorResponse) => this.onError(res.message)
-      );
   }
 
   updateForm(cari: ICari) {
@@ -99,7 +75,11 @@ export class CariUpdateComponent implements OnInit {
       efaturaKullanimi: cari.efaturaKullanimi,
       aciklama: cari.aciklama,
       varsayilanIsEmriTipi: cari.varsayilanIsEmriTipi,
-      hesap: cari.hesap
+      hesapId: cari.hesap === null ? null : cari.hesap.id,
+      banka: cari.hesap === null ? null : cari.hesap.banka,
+      sube: cari.hesap === null ? null : cari.hesap.sube,
+      hesapNo: cari.hesap === null ? null : cari.hesap.hesapNo,
+      iban: cari.hesap === null ? null : cari.hesap.iban
     });
   }
 
@@ -137,7 +117,18 @@ export class CariUpdateComponent implements OnInit {
       efaturaKullanimi: this.editForm.get(['efaturaKullanimi']).value,
       aciklama: this.editForm.get(['aciklama']).value,
       varsayilanIsEmriTipi: this.editForm.get(['varsayilanIsEmriTipi']).value,
-      hesap: this.editForm.get(['hesap']).value
+      hesap: this.createHesapFromForm()
+    };
+  }
+
+  private createHesapFromForm(): IHesap {
+    return {
+      ...new Hesap(),
+      id: this.editForm.get(['hesapId']).value,
+      banka: this.editForm.get(['banka']).value,
+      sube: this.editForm.get(['sube']).value,
+      hesapNo: this.editForm.get(['hesapNo']).value,
+      iban: this.editForm.get(['iban']).value
     };
   }
 
