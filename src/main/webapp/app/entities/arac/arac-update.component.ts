@@ -18,6 +18,7 @@ export class AracUpdateComponent implements OnInit {
   isSaving: boolean;
 
   models: IModel[];
+  filteredModels: any[];
 
   editForm = this.fb.group({
     id: [],
@@ -123,5 +124,18 @@ export class AracUpdateComponent implements OnInit {
 
   trackModelById(index: number, item: IModel) {
     return item.id;
+  }
+
+  filterModels(event) {
+    this.filteredModels = [];
+    for (let i = 0; i < this.models.length; i++) {
+      let model = this.models[i];
+      if (
+        model.ad.toLowerCase().indexOf(event.query.toLowerCase()) == 0 ||
+        (model.marka != null && model.marka.ad.toLowerCase().indexOf(event.query.toLowerCase()) == 0)
+      ) {
+        this.filteredModels.push(model);
+      }
+    }
   }
 }

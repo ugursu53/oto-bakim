@@ -103,10 +103,16 @@
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.model" for="field_model">Model</label>
-                    <select class="form-control" id="field_model" name="model" formControlName="model">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="modelOption.id === editForm.get('model').value?.id ? editForm.get('model').value : modelOption" *ngFor="let modelOption of models; trackBy: trackModelById">{{modelOption.marka === null ? modelOption.ad : modelOption.marka.ad + ', ' + modelOption.ad}}</option>
-                    </select>
+                    <p-autoComplete class="form-control" id="field_model" name="model" formControlName="model" [suggestions]="filteredModels"
+                                    (completeMethod)="filterModels($event)" [size]="10"
+                                    field="ad" [minLength]="1" [dropdown]="true">
+                        <ng-template let-model pTemplate="item">
+                            {{model.marka === null ? model.ad : model.marka.ad + ', ' + model.ad}}
+                        </ng-template>
+                        <ng-template let-model pTemplate="selectedItem">
+                            {{model.ad}}
+                        </ng-template>
+                    </p-autoComplete>
                 </div>
             </div>
             <div>
