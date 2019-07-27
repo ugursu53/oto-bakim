@@ -2,31 +2,31 @@
   "otoBakimApp": {
     "arac": {
       "home": {
-        "title": "Aracs",
-        "createLabel": "Create a new Arac",
-        "createOrEditLabel": "Create or edit a Arac",
-        "search": "Search for Arac",
-        "notFound": "No Arac found"
+        "title": "Araçlar",
+        "createLabel": "Yeni Araç",
+        "createOrEditLabel": "Araç",
+        "search": "Araç Ara",
+        "notFound": "Araç Bulunamadı"
       },
-      "created": "A new Arac is created with identifier {{ param }}",
-      "updated": "A Arac is updated with identifier {{ param }}",
-      "deleted": "A Arac is deleted with identifier {{ param }}",
+      "created": "Yeni Araç eklendi id:{{ param }}",
+      "updated": "Araç güncellendi id:{{ param }}",
+      "deleted": "Araç silindi id:{{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Arac {{ id }}?"
+        "question": "Araç'ı silmek istediğinizden emin misiniz? id:{{ id }}?"
       },
       "detail": {
         "title": "Arac"
       },
       "plakaNo": "Plaka No",
-      "modelYili": "Model Yili",
+      "modelYili": "Model Yılı",
       "rengi": "Rengi",
-      "yakitTuru": "Yakit Turu",
+      "yakitTuru": "Yakıt Türü",
       "vitesTuru": "Vites Turu",
       "motorNo": "Motor No",
-      "sasiNo": "Sasi No",
-      "kullanimSekli": "Kullanim Sekli",
+      "sasiNo": "Şasi No",
+      "kullanimSekli": "Kullanım Şekli",
       "aracTipi": "Arac Tipi",
-      "aciklama": "Aciklama",
+      "aciklama": "Açıklama",
       "cari": "Cari",
       "model": "Model"
     }

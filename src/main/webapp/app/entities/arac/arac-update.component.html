@@ -1,15 +1,16 @@
 <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-10">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <h2 id="jhi-arac-heading" jhiTranslate="otoBakimApp.arac.home.createOrEditLabel">Create or edit a Arac</h2>
-            <div>
+            <div class="row-md ui-g">
                 <jhi-alert-error></jhi-alert-error>
-                <div class="form-group" [hidden]="!editForm.get('id').value">
+        <!--        <div class="form-group" [hidden]="!editForm.get('id').value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id"
                         readonly />
-                </div>
-                <div class="form-group">
+              </div>
+-->
+                <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.plakaNo" for="field_plakaNo">Plaka No</label>
                     <input type="text" class="form-control" name="plakaNo" id="field_plakaNo"
                            formControlName="plakaNo"/>
@@ -20,7 +21,7 @@
                         </small>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.modelYili" for="field_modelYili">Model Yili</label>
                     <input type="number" class="form-control" name="modelYili" id="field_modelYili"
                            formControlName="modelYili"/>
@@ -35,12 +36,12 @@
                         </small>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.rengi" for="field_rengi">Rengi</label>
                     <input type="text" class="form-control" name="rengi" id="field_rengi"
                            formControlName="rengi"/>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.yakitTuru" for="field_yakitTuru">Yakit Turu</label>
                     <select class="form-control" name="yakitTuru" formControlName="yakitTuru" id="field_yakitTuru">
                         <option value="BENZIN">{{'otoBakimApp.YakitTuru.BENZIN' | translate}}</option>
@@ -56,7 +57,7 @@
                         </small>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.vitesTuru" for="field_vitesTuru">Vites Turu</label>
                     <select class="form-control" name="vitesTuru" formControlName="vitesTuru" id="field_vitesTuru">
                         <option value="MANUEL">{{'otoBakimApp.VitesTuru.MANUEL' | translate}}</option>
@@ -70,24 +71,24 @@
                         </small>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.motorNo" for="field_motorNo">Motor No</label>
                     <input type="text" class="form-control" name="motorNo" id="field_motorNo"
                            formControlName="motorNo"/>
                 </div>
-                <div class="form-group">
+                <div class="form-groupcol-lg-4 col-md-6 col-xs-12 ">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.sasiNo" for="field_sasiNo">Sasi No</label>
                     <input type="text" class="form-control" name="sasiNo" id="field_sasiNo"
                            formControlName="sasiNo"/>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.kullanimSekli" for="field_kullanimSekli">Kullanim Sekli</label>
                     <select class="form-control" name="kullanimSekli" formControlName="kullanimSekli" id="field_kullanimSekli">
                         <option value="HUSISI">{{'otoBakimApp.KullanimSekli.HUSISI' | translate}}</option>
                         <option value="SIRKET">{{'otoBakimApp.KullanimSekli.SIRKET' | translate}}</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.aracTipi" for="field_aracTipi">Arac Tipi</label>
                     <select class="form-control" name="aracTipi" formControlName="aracTipi" id="field_aracTipi">
                         <option value="HATCHBACK">{{'otoBakimApp.AracTipi.HATCHBACK' | translate}}</option>
@@ -95,13 +96,13 @@
                         <option value="STAION_WAGON">{{'otoBakimApp.AracTipi.STAION_WAGON' | translate}}</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.aciklama" for="field_aciklama">Aciklama</label>
                     <input type="text" class="form-control" name="aciklama" id="field_aciklama"
                            formControlName="aciklama"/>
                 </div>
 
-                <div class="form-group">
+                <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.model" for="field_model">Model</label>
                     <select class="form-control" id="field_model" name="model" formControlName="model">
                         <option [ngValue]="null"></option>
