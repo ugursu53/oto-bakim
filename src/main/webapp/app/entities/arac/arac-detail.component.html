@@ -1,56 +1,78 @@
 <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-10">
         <div *ngIf="arac">
             <h2><span jhiTranslate="otoBakimApp.arac.detail.title">Arac</span> {{arac.id}}</h2>
             <hr>
             <jhi-alert-error></jhi-alert-error>
-            <dl class="row-md jh-entity-details">
-                <dt><span jhiTranslate="otoBakimApp.arac.plakaNo">Plaka No</span></dt>
-                <dd>
-                    <span>{{arac.plakaNo}}</span>
-                </dd>
-                <dt><span jhiTranslate="otoBakimApp.arac.modelYili">Model Yili</span></dt>
-                <dd>
-                    <span>{{arac.modelYili}}</span>
-                </dd>
-                <dt><span jhiTranslate="otoBakimApp.arac.rengi">Rengi</span></dt>
-                <dd>
-                    <span>{{arac.rengi}}</span>
-                </dd>
-                <dt><span jhiTranslate="otoBakimApp.arac.yakitTuru">Yakit Turu</span></dt>
-                <dd>
-                    <span jhiTranslate="{{'otoBakimApp.YakitTuru.' + arac.yakitTuru}}">{{arac.yakitTuru}}</span>
-                </dd>
-                <dt><span jhiTranslate="otoBakimApp.arac.vitesTuru">Vites Turu</span></dt>
-                <dd>
-                    <span jhiTranslate="{{'otoBakimApp.VitesTuru.' + arac.vitesTuru}}">{{arac.vitesTuru}}</span>
-                </dd>
-                <dt><span jhiTranslate="otoBakimApp.arac.motorNo">Motor No</span></dt>
-                <dd>
-                    <span>{{arac.motorNo}}</span>
-                </dd>
-                <dt><span jhiTranslate="otoBakimApp.arac.sasiNo">Sasi No</span></dt>
-                <dd>
-                    <span>{{arac.sasiNo}}</span>
-                </dd>
-                <dt><span jhiTranslate="otoBakimApp.arac.kullanimSekli">Kullanim Sekli</span></dt>
-                <dd>
-                    <span jhiTranslate="{{'otoBakimApp.KullanimSekli.' + arac.kullanimSekli}}">{{arac.kullanimSekli}}</span>
-                </dd>
-                <dt><span jhiTranslate="otoBakimApp.arac.aracTipi">Arac Tipi</span></dt>
-                <dd>
-                    <span jhiTranslate="{{'otoBakimApp.AracTipi.' + arac.aracTipi}}">{{arac.aracTipi}}</span>
-                </dd>
-                <dt><span jhiTranslate="otoBakimApp.arac.aciklama">Aciklama</span></dt>
-                <dd>
-                    <span>{{arac.aciklama}}</span>
-                </dd>
-                <dt><span jhiTranslate="otoBakimApp.arac.model">Model</span></dt>
-                <dd>
-                    <div *ngIf="arac.model">
-                        <a [routerLink]="['/model', arac.model?.id, 'view']">{{arac.model?.id}}</a>
-                    </div>
-                </dd>
+            <dl class="row-md jh-entity-details ui-g">
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <dt><span jhiTranslate="otoBakimApp.arac.plakaNo">Plaka No</span></dt>
+                    <dd>
+                        <span>{{arac.plakaNo}}</span>
+                    </dd>
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <dt><span jhiTranslate="otoBakimApp.arac.modelYili">Model Yili</span></dt>
+                    <dd>
+                        <span>{{arac.modelYili}}</span>
+                    </dd>
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <dt><span jhiTranslate="otoBakimApp.arac.rengi">Rengi</span></dt>
+                    <dd>
+                        <span>{{arac.rengi}}</span>
+                    </dd>
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <dt><span jhiTranslate="otoBakimApp.arac.yakitTuru">Yakit Turu</span></dt>
+                    <dd>
+                        <span jhiTranslate="{{'otoBakimApp.YakitTuru.' + arac.yakitTuru}}">{{arac.yakitTuru}}</span>
+                    </dd>
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <dt><span jhiTranslate="otoBakimApp.arac.vitesTuru">Vites Turu</span></dt>
+                    <dd>
+                        <span jhiTranslate="{{'otoBakimApp.VitesTuru.' + arac.vitesTuru}}">{{arac.vitesTuru}}</span>
+                    </dd>
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <dt><span jhiTranslate="otoBakimApp.arac.motorNo">Motor No</span></dt>
+                    <dd>
+                        <span>{{arac.motorNo}}</span>
+                    </dd>
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <dt><span jhiTranslate="otoBakimApp.arac.sasiNo">Sasi No</span></dt>
+                    <dd>
+                        <span>{{arac.sasiNo}}</span>
+                    </dd>
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <dt><span jhiTranslate="otoBakimApp.arac.kullanimSekli">Kullanim Sekli</span></dt>
+                    <dd>
+                        <span jhiTranslate="{{'otoBakimApp.KullanimSekli.' + arac.kullanimSekli}}">{{arac.kullanimSekli}}</span>
+                    </dd>
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <dt><span jhiTranslate="otoBakimApp.arac.aracTipi">Arac Tipi</span></dt>
+                    <dd>
+                        <span jhiTranslate="{{'otoBakimApp.AracTipi.' + arac.aracTipi}}">{{arac.aracTipi}}</span>
+                    </dd>
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <dt><span jhiTranslate="otoBakimApp.arac.aciklama">Aciklama</span></dt>
+                    <dd>
+                        <span>{{arac.aciklama}}</span>
+                    </dd>
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <dt><span jhiTranslate="otoBakimApp.arac.model">Model</span></dt>
+                    <dd>
+                        <div *ngIf="arac.model">
+                            <a [routerLink]="['/model', arac.model?.id, 'view']">{{arac.model?.id}}</a>
+                        </div>
+                    </dd>
+                </div>
             </dl>
 
             <button type="submit"

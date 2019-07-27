@@ -40,11 +40,11 @@ public class Arac implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
-    @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Keyword)
     private Long id;
 
     @NotNull
     @Column(name = "plaka_no", nullable = false)
+    @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Keyword)
     private String plakaNo;
 
     @NotNull
@@ -82,7 +82,6 @@ public class Arac implements Serializable {
     private String aciklama;
 
     @OneToMany(mappedBy = "arac")
-    @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
     private Set<AracCarisi> caris = new HashSet<>();
 
     @ManyToOne
