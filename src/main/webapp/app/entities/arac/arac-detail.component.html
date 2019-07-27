@@ -69,7 +69,7 @@
                     <dt><span jhiTranslate="otoBakimApp.arac.model">Model</span></dt>
                     <dd>
                         <div *ngIf="arac.model">
-                            <a [routerLink]="['/model', arac.model?.id, 'view']">{{arac.model?.id}}</a>
+                            <a [routerLink]="['/model', arac.model?.id, 'edit']">{{arac.model.marka === null ? arac.model.ad : arac.model.marka.ad + ', ' + arac.model.ad}}</a>
                         </div>
                     </dd>
                 </div>
