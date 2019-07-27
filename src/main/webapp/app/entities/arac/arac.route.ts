@@ -25,7 +25,10 @@ export class AracResolve implements Resolve<IArac> {
         map((arac: HttpResponse<Arac>) => arac.body)
       );
     }
-    return of(new Arac());
+    const arac = new Arac();
+    const query = route.queryParams['query'] ? route.queryParams['query'] : null;
+    arac.plakaNo = query;
+    return of(arac);
   }
 }
 

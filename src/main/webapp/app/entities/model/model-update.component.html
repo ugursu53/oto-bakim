@@ -19,7 +19,7 @@
                     <label class="form-control-label" jhiTranslate="otoBakimApp.model.marka" for="field_marka">Marka</label>
                     <select class="form-control" id="field_marka" name="marka" formControlName="marka">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="markaOption.id === editForm.get('marka').value?.id ? editForm.get('marka').value : markaOption" *ngFor="let markaOption of markas; trackBy: trackMarkaById">{{markaOption.id}}</option>
+                        <option [ngValue]="markaOption.id === editForm.get('marka').value?.id ? editForm.get('marka').value : markaOption" *ngFor="let markaOption of markas; trackBy: trackMarkaById">{{markaOption.ad}}</option>
                     </select>
                 </div>
             </div>

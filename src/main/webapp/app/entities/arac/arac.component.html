@@ -1,7 +1,8 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="otoBakimApp.arac.home.title">Aracs</span>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-arac" [routerLink]="['/arac/new']">
+        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-arac" [routerLink]="['/arac/new']"
+                [queryParams]="{query: currentSearch}" >
             <fa-icon [icon]="'plus'"></fa-icon>
             <span class="hidden-sm-down"  jhiTranslate="otoBakimApp.arac.home.createLabel">
             Create new Arac
@@ -38,31 +39,31 @@
             <th jhiSortBy="rengi"><span jhiTranslate="otoBakimApp.arac.rengi">Rengi</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="yakitTuru"><span jhiTranslate="otoBakimApp.arac.yakitTuru">Yakit Turu</span> <fa-icon [icon]="'sort'"></fa-icon></th>
             <th jhiSortBy="vitesTuru"><span jhiTranslate="otoBakimApp.arac.vitesTuru">Vites Turu</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="motorNo"><span jhiTranslate="otoBakimApp.arac.motorNo">Motor No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="sasiNo"><span jhiTranslate="otoBakimApp.arac.sasiNo">Sasi No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="kullanimSekli"><span jhiTranslate="otoBakimApp.arac.kullanimSekli">Kullanim Sekli</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="aracTipi"><span jhiTranslate="otoBakimApp.arac.aracTipi">Arac Tipi</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="aciklama"><span jhiTranslate="otoBakimApp.arac.aciklama">Aciklama</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="model.id"><span jhiTranslate="otoBakimApp.arac.model">Model</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr *ngFor="let arac of aracs ;trackBy: trackId">
-                <!--<td><a [routerLink]="['/arac', arac.id, 'view' ]">{{arac.id}}</a></td>-->
+                <!--<th jhiSortBy="motorNo"><span jhiTranslate="otoBakimApp.arac.motorNo">Motor No</span> <fa-icon [icon]="'sort'"></fa-icon></th> -->
+                <th jhiSortBy="sasiNo"><span jhiTranslate="otoBakimApp.arac.sasiNo">Sasi No</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="kullanimSekli"><span jhiTranslate="otoBakimApp.arac.kullanimSekli">Kullanim Sekli</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th jhiSortBy="aracTipi"><span jhiTranslate="otoBakimApp.arac.aracTipi">Arac Tipi</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                    <!--<th jhiSortBy="aciklama"><span jhiTranslate="otoBakimApp.arac.aciklama">Aciklama</span> <fa-icon [icon]="'sort'"></fa-icon></th> -->
+                <th jhiSortBy="model.id"><span jhiTranslate="otoBakimApp.arac.model">Model</span> <fa-icon [icon]="'sort'"></fa-icon></th>
+                <th></th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr *ngFor="let arac of aracs ;trackBy: trackId">
+                    <!--<td><a [routerLink]="['/arac', arac.id, 'view' ]">{{arac.id}}</a></td>-->
                 <td>{{arac.plakaNo}}</td>
                 <td>{{arac.modelYili}}</td>
                 <td>{{arac.rengi}}</td>
                 <td jhiTranslate="{{'otoBakimApp.YakitTuru.' + arac.yakitTuru}}">{{arac.yakitTuru}}</td>
                 <td jhiTranslate="{{'otoBakimApp.VitesTuru.' + arac.vitesTuru}}">{{arac.vitesTuru}}</td>
-                <td>{{arac.motorNo}}</td>
+                <!-- <td>{{arac.motorNo}}</td> -->
                 <td>{{arac.sasiNo}}</td>
                 <td jhiTranslate="{{'otoBakimApp.KullanimSekli.' + arac.kullanimSekli}}">{{arac.kullanimSekli}}</td>
                 <td jhiTranslate="{{'otoBakimApp.AracTipi.' + arac.aracTipi}}">{{arac.aracTipi}}</td>
-                <td>{{arac.aciklama}}</td>
+                <!--<td>{{arac.aciklama}}</td> -->
                 <td>
                     <div *ngIf="arac.model">
-                        <a [routerLink]="['../model', arac.model?.id, 'view' ]" >{{arac.model?.id}}</a>
+                        <a [routerLink]="['../model', arac.model?.id, 'edit' ]" >{{arac.model.marka === null ? arac.model.ad : arac.model.marka.ad + ', ' + arac.model.ad}}</a>
                     </div>
                 </td>
                 <td class="text-right">

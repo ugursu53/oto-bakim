@@ -148,6 +148,7 @@ public class AracResource {
     @GetMapping("/_search/aracs")
     public ResponseEntity<List<Arac>> searchAracs(@RequestParam String query, Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to search for a page of Aracs for query {}", query);
+        aracSearchRepository.refresh();
         Page<Arac> page = aracSearchRepository.search(queryStringQuery(query), pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
