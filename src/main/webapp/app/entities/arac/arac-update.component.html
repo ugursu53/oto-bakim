@@ -2,8 +2,8 @@
     <div class="col-10">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <h2 id="jhi-arac-heading" jhiTranslate="otoBakimApp.arac.home.createOrEditLabel">Create or edit a Arac</h2>
+            <jhi-alert-error></jhi-alert-error>
             <div class="row-md ui-g">
-                <jhi-alert-error></jhi-alert-error>
         <!--        <div class="form-group" [hidden]="!editForm.get('id').value">
                     <label for="id" jhiTranslate="global.field.id">ID</label>
                     <input type="text" class="form-control" id="id" name="id" formControlName="id"
@@ -104,7 +104,7 @@
                 <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.model" for="field_model">Model</label>
                     <p-autoComplete class="form-control" id="field_model" name="model" formControlName="model" [suggestions]="filteredModels"
-                                    (completeMethod)="filterModels($event)" [size]="10"
+                                    (completeMethod)="filterModels($event)" [size]="10" [required]="true"
                                     field="ad" [minLength]="1" [dropdown]="true">
                         <ng-template let-model pTemplate="item">
                             {{model.marka === null ? model.ad : model.marka.ad + ', ' + model.ad}}
@@ -113,6 +113,12 @@
                             {{model.ad}}
                         </ng-template>
                     </p-autoComplete>
+                    <div *ngIf="editForm.get('model').invalid && (editForm.get('model').dirty || editForm.get('model').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('model').errors.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
                 </div>
             </div>
             <div>
