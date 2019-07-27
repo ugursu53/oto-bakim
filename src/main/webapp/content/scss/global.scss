@@ -183,21 +183,21 @@ ui bootstrap tweaks
 
 /* primeng uyarlaması css */
 
-.ui-inputwrapper-filled {
+.primeng {
   padding: 0 0 0 0;
 }
-.ui-inputwrapper-filled .ui-autocomplete {
+.primeng .ui-autocomplete {
   width: 100%;
   height: 100%;
 }
-.ui-inputwrapper-filled .ui-autocomplete .ui-autocomplete-input {
+.primeng .ui-autocomplete .ui-autocomplete-input {
   width: 90%;
   border: none;
 }
-.ui-inputwrapper-filled .ui-autocomplete .ui-autocomplete-dropdown {
+.primeng .ui-autocomplete .ui-autocomplete-dropdown {
   width: 10%;
 }
-.ui-inputwrapper-filled.ng-valid {
+.primeng.ng-valid {
   border-left: 1px solid #ced4da;
 }
 

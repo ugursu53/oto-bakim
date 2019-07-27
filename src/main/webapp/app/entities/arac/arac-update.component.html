@@ -103,7 +103,7 @@
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.model" for="field_model">Model</label>
-                    <p-autoComplete class="form-control" id="field_model" name="model" formControlName="model" [suggestions]="filteredModels"
+                    <p-autoComplete class="form-control primeng" id="field_model" name="model" formControlName="model" [suggestions]="filteredModels"
                                     (completeMethod)="filterModels($event)" [size]="10" [required]="true"
                                     field="ad" [minLength]="1" [dropdown]="true">
                         <ng-template let-model pTemplate="item">
