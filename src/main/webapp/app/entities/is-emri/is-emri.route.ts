@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Resolve, ActivatedRouteSnapshot, RouterStateSnapshot, Routes } from '@angular/router';
 import { JhiPaginationUtil, JhiResolvePagingParams } from 'ng-jhipster';
 import { UserRouteAccessService } from 'app/core';
@@ -12,10 +12,12 @@ import { IsEmriDetailComponent } from './is-emri-detail.component';
 import { IsEmriUpdateComponent } from './is-emri-update.component';
 import { IsEmriDeletePopupComponent } from './is-emri-delete-dialog.component';
 import { IIsEmri } from 'app/shared/model/is-emri.model';
+import { AracService } from '../arac/arac.service';
+import { Arac, IArac } from 'app/shared/model/arac.model';
 
 @Injectable({ providedIn: 'root' })
 export class IsEmriResolve implements Resolve<IIsEmri> {
-  constructor(private service: IsEmriService) {}
+  constructor(private service: IsEmriService, private aracService: AracService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<IIsEmri> {
     const id = route.params['id'] ? route.params['id'] : null;
@@ -25,6 +27,19 @@ export class IsEmriResolve implements Resolve<IIsEmri> {
         map((isEmri: HttpResponse<IsEmri>) => isEmri.body)
       );
     }
+
+    const aracId = route.queryParams['aracId'] ? route.queryParams['aracId'] : null;
+    if (aracId) {
+      return this.aracService.find(aracId).pipe(
+        filter((response: HttpResponse<Arac>) => response.ok),
+        map((arac: HttpResponse<Arac>) => {
+          const isEmri = new IsEmri();
+          isEmri.arac = arac.body;
+          return isEmri;
+        })
+      );
+    }
+
     return of(new IsEmri());
   }
 }

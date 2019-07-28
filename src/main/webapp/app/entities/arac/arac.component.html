@@ -2,7 +2,7 @@
     <h2 id="page-heading">
         <span jhiTranslate="otoBakimApp.arac.home.title">Aracs</span>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-arac" [routerLink]="['/arac/new']"
-                [queryParams]="{query: currentSearch}" >
+                [queryParams]="{'query': currentSearch}" >
             <fa-icon [icon]="'plus'"></fa-icon>
             <span class="hidden-sm-down"  jhiTranslate="otoBakimApp.arac.home.createLabel">
             Create new Arac
@@ -68,6 +68,12 @@
                 </td>
                 <td class="text-right">
                     <div class="btn-group">
+                        <button type="submit" title="{{'otoBakimApp.isEmri.home.createLabel' | translate}}"
+                                [routerLink]="['/is-emri/new']"
+                                [queryParams]="{'aracId': arac.id}"
+                                class="btn btn-dark btn-sm">
+                            <fa-icon [icon]="'wrench'"></fa-icon>
+                        </button>
                         <button type="submit"
                                 [routerLink]="['/arac', arac.id, 'view' ]"
                                 class="btn btn-info btn-sm">
