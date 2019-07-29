@@ -25,7 +25,10 @@ export class ModelResolve implements Resolve<IModel> {
         map((model: HttpResponse<Model>) => model.body)
       );
     }
-    return of(new Model());
+    const modell = new Model();
+    const modelAdi = route.queryParams['modelAdi'];
+    modell.ad = modelAdi;
+    return of(modell);
   }
 }
 

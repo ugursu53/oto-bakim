@@ -107,12 +107,19 @@
                                     (completeMethod)="filterModels($event)" [size]="10" [required]="true"
                                     field="ad" [minLength]="1" [dropdown]="true">
                         <ng-template let-model pTemplate="item">
-                            {{model.marka === null ? model.ad : model.marka.ad + ', ' + model.ad}}
+                            {{!model.marka ? model.ad : model.marka.ad + ', ' + model.ad}}
                         </ng-template>
                         <ng-template let-model pTemplate="selectedItem">
                             {{model.ad}}
                         </ng-template>
                     </p-autoComplete>
+                    <div *ngIf="!editForm.get('model').value.id && filteredModels.length === 0">
+                        <button id="jh-create-entity" class="btn btn-primary float-right btn-sm"
+                                [routerLink]="['/model/new']" title="{{'otoBakimApp.model.home.createLabel' | translate}}"
+                                [queryParams] = "{'modelAdi': modelQuery}" >
+                            <fa-icon [icon]="'plus'"></fa-icon>
+                        </button>
+                    </div>
                     <div *ngIf="editForm.get('model').invalid && (editForm.get('model').dirty || editForm.get('model').touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('model').errors.required" jhiTranslate="entity.validation.required">

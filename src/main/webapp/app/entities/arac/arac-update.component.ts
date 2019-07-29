@@ -19,6 +19,7 @@ export class AracUpdateComponent implements OnInit {
 
   models: IModel[];
   filteredModels: any[];
+  modelQuery: string;
 
   editForm = this.fb.group({
     id: [],
@@ -127,12 +128,13 @@ export class AracUpdateComponent implements OnInit {
   }
 
   filterModels(event) {
+    this.modelQuery = event.query;
     this.filteredModels = [];
     for (let i = 0; i < this.models.length; i++) {
-      let model = this.models[i];
+      const model = this.models[i];
       if (
-        model.ad.toLowerCase().indexOf(event.query.toLowerCase()) == 0 ||
-        (model.marka != null && model.marka.ad.toLowerCase().indexOf(event.query.toLowerCase()) == 0)
+        model.ad.toLowerCase().indexOf(event.query.toLowerCase()) === 0 ||
+        (model.marka != null && model.marka.ad.toLowerCase().indexOf(event.query.toLowerCase()) === 0)
       ) {
         this.filteredModels.push(model);
       }

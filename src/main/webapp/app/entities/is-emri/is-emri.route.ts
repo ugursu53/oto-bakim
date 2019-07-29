@@ -28,7 +28,7 @@ export class IsEmriResolve implements Resolve<IIsEmri> {
       );
     }
 
-    const aracId = route.queryParams['aracId'] ? route.queryParams['aracId'] : null;
+    const aracId = route.queryParams['aracId'];
     if (aracId) {
       return this.aracService.find(aracId).pipe(
         filter((response: HttpResponse<Arac>) => response.ok),
