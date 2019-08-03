@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -8,7 +8,6 @@ import { JhiAlertService } from 'ng-jhipster';
 import { ICari, Cari } from 'app/shared/model/cari.model';
 import { CariService } from './cari.service';
 import { Hesap, IHesap } from 'app/shared/model/hesap.model';
-import { HesapService } from 'app/entities/hesap';
 
 @Component({
   selector: 'jhi-cari-update',
@@ -16,12 +15,14 @@ import { HesapService } from 'app/entities/hesap';
 })
 export class CariUpdateComponent implements OnInit {
   isSaving: boolean;
+  @Input() isAltComponent: boolean;
+  @Output() saved = new EventEmitter();
 
-  editForm = this.fb.group({
+  editForm = this.fb.group<>({
     id: [],
     tipi: [null, [Validators.required]],
     kisiTipi: [null, [Validators.required]],
-    aktif: [null, [Validators.required]],
+    aktif: [true, [Validators.required]],
     ad: [null, [Validators.required]],
     adres: [],
     telefon: [],
@@ -51,9 +52,13 @@ export class CariUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.isSaving = false;
-    this.activatedRoute.data.subscribe(({ cari }) => {
-      this.updateForm(cari);
-    });
+    if (this.isAltComponent) {
+      this.updateForm(new Cari());
+    } else {
+      this.activatedRoute.data.subscribe(({ cari }) => {
+        this.updateForm(cari);
+      });
+    }
   }
 
   updateForm(cari: ICari) {
@@ -133,12 +138,17 @@ export class CariUpdateComponent implements OnInit {
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<ICari>>) {
-    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
+    result.subscribe(res => this.onSaveSuccess(res.body), () => this.onSaveError());
   }
 
-  protected onSaveSuccess() {
+  protected onSaveSuccess(savedCari: ICari) {
     this.isSaving = false;
-    this.previousState();
+    if (this.isAltComponent) {
+      this.editForm.patchValue({ id: savedCari.id });
+      this.saved.emit(savedCari);
+    } else {
+      this.previousState();
+    }
   }
 
   protected onSaveError() {

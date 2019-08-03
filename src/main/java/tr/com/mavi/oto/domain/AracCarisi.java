@@ -37,11 +37,10 @@ public class AracCarisi implements Serializable {
     private Boolean aktif;
 
     @ManyToOne
-    @JsonIgnoreProperties("aracCarisis")
+    @JsonIgnoreProperties("caris")
     private Arac arac;
 
     @ManyToOne
-    @JsonIgnoreProperties("aracCarisis")
     private Cari cari;
 
     public Boolean isAktif() {

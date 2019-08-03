@@ -5,5 +5,6 @@
         </div>
     </div>
     <jhi-arac-update *ngIf="activeIndex===0" [isAltComponent]="true" (saved)="aracSaved($event)"></jhi-arac-update>
-    <jhi-cari-update *ngIf="activeIndex===1"></jhi-cari-update>
+    <jhi-cari-update *ngIf="activeIndex===1" [isAltComponent]="true" (saved)="cariSaved($event)"></jhi-cari-update>
+    <jhi-is-emri-update *ngIf="activeIndex===2" [arac]="arac"></jhi-is-emri-update>
 </div>

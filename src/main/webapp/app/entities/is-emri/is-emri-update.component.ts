@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -18,6 +18,7 @@ import { AracService } from 'app/entities/arac';
 })
 export class IsEmriUpdateComponent implements OnInit {
   isSaving: boolean;
+  @Input() arac: IArac;
 
   aracs: IArac[];
 
@@ -40,9 +41,16 @@ export class IsEmriUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.isSaving = false;
-    this.activatedRoute.data.subscribe(({ isEmri }) => {
+    if (this.arac === undefined) {
+      this.activatedRoute.data.subscribe(({ isEmri }) => {
+        this.updateForm(isEmri);
+      });
+    } else {
+      const isEmri = new IsEmri();
+      isEmri.arac = this.arac;
       this.updateForm(isEmri);
-    });
+    }
+
     this.aracService
       .query()
       .pipe(

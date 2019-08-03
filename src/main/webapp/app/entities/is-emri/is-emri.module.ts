@@ -7,7 +7,6 @@ import { OtoBakimSharedModule } from 'app/shared';
 import {
   IsEmriComponent,
   IsEmriDetailComponent,
-  IsEmriUpdateComponent,
   IsEmriDeletePopupComponent,
   IsEmriDeleteDialogComponent,
   isEmriRoute,
@@ -18,8 +17,8 @@ const ENTITY_STATES = [...isEmriRoute, ...isEmriPopupRoute];
 
 @NgModule({
   imports: [OtoBakimSharedModule, RouterModule.forChild(ENTITY_STATES)],
-  declarations: [IsEmriComponent, IsEmriDetailComponent, IsEmriUpdateComponent, IsEmriDeleteDialogComponent, IsEmriDeletePopupComponent],
-  entryComponents: [IsEmriComponent, IsEmriUpdateComponent, IsEmriDeleteDialogComponent, IsEmriDeletePopupComponent],
+  declarations: [IsEmriComponent, IsEmriDetailComponent, IsEmriDeleteDialogComponent, IsEmriDeletePopupComponent],
+  entryComponents: [IsEmriComponent, IsEmriDeleteDialogComponent, IsEmriDeletePopupComponent],
   providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

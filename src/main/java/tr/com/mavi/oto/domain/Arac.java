@@ -43,7 +43,7 @@ public class Arac implements Serializable {
     private Long id;
 
     @NotNull
-    @Column(name = "plaka_no", nullable = false)
+    @Column(name = "plaka_no", nullable = false, unique = true)
     @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Keyword)
     private String plakaNo;
 

@@ -117,6 +117,7 @@ export class AracUpdateComponent implements OnInit {
   protected onSaveSuccess(savedArac: IArac) {
     this.isSaving = false;
     if (this.isAltComponent) {
+      this.editForm.patchValue({ id: savedArac.id });
       this.saved.emit(savedArac);
     } else {
       this.previousState();
