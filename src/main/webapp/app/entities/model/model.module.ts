@@ -7,7 +7,6 @@ import { OtoBakimSharedModule } from 'app/shared';
 import {
   ModelComponent,
   ModelDetailComponent,
-  ModelUpdateComponent,
   ModelDeletePopupComponent,
   ModelDeleteDialogComponent,
   modelRoute,
@@ -19,7 +18,7 @@ const ENTITY_STATES = [...modelRoute, ...modelPopupRoute];
 @NgModule({
   imports: [OtoBakimSharedModule, RouterModule.forChild(ENTITY_STATES)],
   declarations: [ModelComponent, ModelDetailComponent, ModelDeleteDialogComponent, ModelDeletePopupComponent],
-  entryComponents: [ModelComponent, ModelUpdateComponent, ModelDeleteDialogComponent, ModelDeletePopupComponent],
+  entryComponents: [ModelComponent, ModelDeleteDialogComponent, ModelDeletePopupComponent],
   providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

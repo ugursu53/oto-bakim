@@ -1,0 +1,9 @@
+<div>
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <p-steps [model]="items" [readonly]="false" [activeIndex]="activeIndex"></p-steps>
+        </div>
+    </div>
+    <jhi-arac-update *ngIf="activeIndex===0" [isAltComponent]="true" (saved)="aracSaved($event)"></jhi-arac-update>
+    <jhi-cari-update *ngIf="activeIndex===1"></jhi-cari-update>
+</div>

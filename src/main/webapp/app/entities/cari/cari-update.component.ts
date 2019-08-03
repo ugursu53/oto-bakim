@@ -75,11 +75,11 @@ export class CariUpdateComponent implements OnInit {
       efaturaKullanimi: cari.efaturaKullanimi,
       aciklama: cari.aciklama,
       varsayilanIsEmriTipi: cari.varsayilanIsEmriTipi,
-      hesapId: cari.hesap === null ? null : cari.hesap.id,
-      banka: cari.hesap === null ? null : cari.hesap.banka,
-      sube: cari.hesap === null ? null : cari.hesap.sube,
-      hesapNo: cari.hesap === null ? null : cari.hesap.hesapNo,
-      iban: cari.hesap === null ? null : cari.hesap.iban
+      hesapId: cari.hesap === undefined ? null : cari.hesap.id,
+      banka: cari.hesap === undefined ? null : cari.hesap.banka,
+      sube: cari.hesap === undefined ? null : cari.hesap.sube,
+      hesapNo: cari.hesap === undefined ? null : cari.hesap.hesapNo,
+      iban: cari.hesap === undefined ? null : cari.hesap.iban
     });
   }
 

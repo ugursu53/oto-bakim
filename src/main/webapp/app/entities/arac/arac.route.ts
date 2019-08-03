@@ -12,6 +12,7 @@ import { AracDetailComponent } from './arac-detail.component';
 import { AracUpdateComponent } from './arac-update.component';
 import { AracDeletePopupComponent } from './arac-delete-dialog.component';
 import { IArac } from 'app/shared/model/arac.model';
+import { ArackabulComponent } from 'app/entities/arac/arackabul.component';
 
 @Injectable({ providedIn: 'root' })
 export class AracResolve implements Resolve<IArac> {
@@ -61,6 +62,18 @@ export const aracRoute: Routes = [
   {
     path: 'new',
     component: AracUpdateComponent,
+    resolve: {
+      arac: AracResolve
+    },
+    data: {
+      authorities: ['ROLE_USER'],
+      pageTitle: 'otoBakimApp.arac.home.title'
+    },
+    canActivate: [UserRouteAccessService]
+  },
+  {
+    path: 'arackabul',
+    component: ArackabulComponent,
     resolve: {
       arac: AracResolve
     },

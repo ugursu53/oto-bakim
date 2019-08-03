@@ -4,22 +4,14 @@ import { JhiLanguageService } from 'ng-jhipster';
 import { JhiLanguageHelper } from 'app/core';
 
 import { OtoBakimSharedModule } from 'app/shared';
-import {
-  CariComponent,
-  CariDetailComponent,
-  CariUpdateComponent,
-  CariDeletePopupComponent,
-  CariDeleteDialogComponent,
-  cariRoute,
-  cariPopupRoute
-} from './';
+import { CariComponent, CariDetailComponent, CariDeletePopupComponent, CariDeleteDialogComponent, cariRoute, cariPopupRoute } from './';
 
 const ENTITY_STATES = [...cariRoute, ...cariPopupRoute];
 
 @NgModule({
   imports: [OtoBakimSharedModule, RouterModule.forChild(ENTITY_STATES)],
-  declarations: [CariComponent, CariDetailComponent, CariUpdateComponent, CariDeleteDialogComponent, CariDeletePopupComponent],
-  entryComponents: [CariComponent, CariUpdateComponent, CariDeleteDialogComponent, CariDeletePopupComponent],
+  declarations: [CariComponent, CariDetailComponent, CariDeleteDialogComponent, CariDeletePopupComponent],
+  entryComponents: [CariComponent, CariDeleteDialogComponent, CariDeletePopupComponent],
   providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

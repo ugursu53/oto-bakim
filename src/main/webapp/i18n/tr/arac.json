@@ -4,6 +4,7 @@
       "home": {
         "title": "Araçlar",
         "createLabel": "Yeni Araç",
+        "aracKabul": "Araç Kabul",
         "createOrEditLabel": "Araç",
         "search": "Araç Ara",
         "notFound": "Araç Bulunamadı"

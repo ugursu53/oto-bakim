@@ -1,6 +1,13 @@
 <div>
     <h2 id="page-heading">
         <span jhiTranslate="otoBakimApp.arac.home.title">Aracs</span>
+        <button id="jh-arac-kabul" class="btn btn-dark float-right jh-create-entity create-arac" [routerLink]="['/arac/arackabul']"
+                [queryParams]="{'query': currentSearch}" >
+            <fa-icon [icon]="'plus'"></fa-icon>
+            <span class="hidden-sm-down"  jhiTranslate="otoBakimApp.arac.home.aracKabul">
+            Arac Kabul
+            </span>
+        </button>
         <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-arac" [routerLink]="['/arac/new']"
                 [queryParams]="{'query': currentSearch}" >
             <fa-icon [icon]="'plus'"></fa-icon>

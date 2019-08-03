@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -17,6 +17,8 @@ import { ModelService } from 'app/entities/model';
 export class AracUpdateComponent implements OnInit {
   isSaving: boolean;
   modelDisplay: boolean;
+  @Input() isAltComponent: boolean;
+  @Output() saved = new EventEmitter();
 
   models: IModel[];
   filteredModels: any[];
@@ -109,12 +111,16 @@ export class AracUpdateComponent implements OnInit {
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IArac>>) {
-    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
+    result.subscribe(res => this.onSaveSuccess(res.body), () => this.onSaveError());
   }
 
-  protected onSaveSuccess() {
+  protected onSaveSuccess(savedArac: IArac) {
     this.isSaving = false;
-    this.previousState();
+    if (this.isAltComponent) {
+      this.saved.emit(savedArac);
+    } else {
+      this.previousState();
+    }
   }
 
   protected onSaveError() {

@@ -25,7 +25,9 @@ export class CariResolve implements Resolve<ICari> {
         map((cari: HttpResponse<Cari>) => cari.body)
       );
     }
-    return of(new Cari());
+    const cari = new Cari();
+    cari.aktif = true;
+    return of(cari);
   }
 }
 

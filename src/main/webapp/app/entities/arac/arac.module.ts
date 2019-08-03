@@ -10,6 +10,7 @@ import {
   AracUpdateComponent,
   AracDeletePopupComponent,
   AracDeleteDialogComponent,
+  ArackabulComponent,
   aracRoute,
   aracPopupRoute
 } from './';
@@ -18,8 +19,15 @@ const ENTITY_STATES = [...aracRoute, ...aracPopupRoute];
 
 @NgModule({
   imports: [OtoBakimSharedModule, RouterModule.forChild(ENTITY_STATES)],
-  declarations: [AracComponent, AracDetailComponent, AracUpdateComponent, AracDeleteDialogComponent, AracDeletePopupComponent],
-  entryComponents: [AracComponent, AracUpdateComponent, AracDeleteDialogComponent, AracDeletePopupComponent],
+  declarations: [
+    AracComponent,
+    AracDetailComponent,
+    AracUpdateComponent,
+    AracDeleteDialogComponent,
+    AracDeletePopupComponent,
+    ArackabulComponent
+  ],
+  entryComponents: [AracComponent, AracUpdateComponent, AracDeleteDialogComponent, AracDeletePopupComponent, ArackabulComponent],
   providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
