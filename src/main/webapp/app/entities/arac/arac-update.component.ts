@@ -16,6 +16,7 @@ import { ModelService } from 'app/entities/model';
 })
 export class AracUpdateComponent implements OnInit {
   isSaving: boolean;
+  modelDisplay: boolean;
 
   models: IModel[];
   filteredModels: any[];
@@ -139,5 +140,14 @@ export class AracUpdateComponent implements OnInit {
         this.filteredModels.push(model);
       }
     }
+  }
+
+  showModelDialog() {
+    this.modelDisplay = true;
+  }
+
+  modelSaved(model) {
+    this.editForm.patchValue({ model: model });
+    this.modelDisplay = false;
   }
 }

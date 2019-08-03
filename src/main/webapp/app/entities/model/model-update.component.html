@@ -4,15 +4,16 @@
             <h2 id="jhi-model-heading" jhiTranslate="otoBakimApp.model.home.createOrEditLabel">Create or edit a Model</h2>
             <div>
                 <jhi-alert-error></jhi-alert-error>
-                <div class="form-group" [hidden]="!editForm.get('id').value">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
-                        readonly />
-                </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.model.ad" for="field_ad">Ad</label>
                     <input type="text" class="form-control" name="ad" id="field_ad"
                            formControlName="ad"/>
+                    <div *ngIf="editForm.get('ad').invalid && (editForm.get('ad').dirty || editForm.get('ad').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('ad').errors.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
                 </div>
 
                 <div class="form-group">
@@ -21,6 +22,12 @@
                         <option [ngValue]="null"></option>
                         <option [ngValue]="markaOption.id === editForm.get('marka').value?.id ? editForm.get('marka').value : markaOption" *ngFor="let markaOption of markas; trackBy: trackMarkaById">{{markaOption.ad}}</option>
                     </select>
+                    <div *ngIf="editForm.get('marka').invalid && (editForm.get('marka').dirty || editForm.get('marka').touched)">
+                        <small class="form-text text-danger"
+                               *ngIf="editForm.get('marka').errors.required" jhiTranslate="entity.validation.required">
+                            This field is required.
+                        </small>
+                    </div>
                 </div>
             </div>
             <div>

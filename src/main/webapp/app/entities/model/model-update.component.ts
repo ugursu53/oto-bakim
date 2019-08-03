@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, Output, OnInit, EventEmitter } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -16,13 +16,15 @@ import { MarkaService } from 'app/entities/marka';
 })
 export class ModelUpdateComponent implements OnInit {
   isSaving: boolean;
+  @Input() isPopup: boolean;
+  @Output() saved = new EventEmitter();
 
   markas: IMarka[];
 
   editForm = this.fb.group({
     id: [],
-    ad: [],
-    marka: []
+    ad: [null, [Validators.required]],
+    marka: [null, [Validators.required]]
   });
 
   constructor(
@@ -33,11 +35,21 @@ export class ModelUpdateComponent implements OnInit {
     private fb: FormBuilder
   ) {}
 
+  @Input() set modelAdi(modelAdi: string) {
+    this.editForm.patchValue({
+      id: null,
+      ad: modelAdi,
+      marka: []
+    });
+  }
+
   ngOnInit() {
     this.isSaving = false;
-    this.activatedRoute.data.subscribe(({ model }) => {
-      this.updateForm(model);
-    });
+    if (!this.isPopup) {
+      this.activatedRoute.data.subscribe(({ model }) => {
+        this.updateForm(model);
+      });
+    }
     this.markaService
       .query()
       .pipe(
@@ -62,7 +74,7 @@ export class ModelUpdateComponent implements OnInit {
   save() {
     this.isSaving = true;
     const model = this.createFromForm();
-    if (model.id !== undefined) {
+    if (model.id !== undefined && model.id != null) {
       this.subscribeToSaveResponse(this.modelService.update(model));
     } else {
       this.subscribeToSaveResponse(this.modelService.create(model));
@@ -79,12 +91,16 @@ export class ModelUpdateComponent implements OnInit {
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IModel>>) {
-    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
+    result.subscribe(res => this.onSaveSuccess(res.body), () => this.onSaveError());
   }
 
-  protected onSaveSuccess() {
+  protected onSaveSuccess(model: any) {
     this.isSaving = false;
-    this.previousState();
+    if (this.isPopup) {
+      this.saved.emit(model);
+    } else {
+      this.previousState();
+    }
   }
 
   protected onSaveError() {

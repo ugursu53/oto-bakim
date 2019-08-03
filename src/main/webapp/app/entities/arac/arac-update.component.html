@@ -113,10 +113,9 @@
                             {{model.ad}}
                         </ng-template>
                     </p-autoComplete>
-                    <div *ngIf="!editForm.get('model').value.id && filteredModels.length === 0">
-                        <button id="jh-create-entity" class="btn btn-primary float-right btn-sm"
-                                [routerLink]="['/model/new']" title="{{'otoBakimApp.model.home.createLabel' | translate}}"
-                                [queryParams] = "{'modelAdi': modelQuery}" >
+                    <div *ngIf="!editForm.get('model').value.id && (!filteredModels || filteredModels.length === 0)">
+                        <button type="button" id="jh-create-entity" class="btn btn-primary float-right btn-sm"
+                                (click)="showModelDialog()" title="{{'otoBakimApp.model.home.createLabel' | translate}}">
                             <fa-icon [icon]="'plus'"></fa-icon>
                         </button>
                     </div>
@@ -139,3 +138,6 @@
         </form>
     </div>
 </div>
+<p-dialog header="Title" [(visible)]="modelDisplay" height="500px">
+    <jhi-model-update [isPopup]="true" [modelAdi]="modelQuery" (saved)="modelSaved($event)"></jhi-model-update>
+</p-dialog>
