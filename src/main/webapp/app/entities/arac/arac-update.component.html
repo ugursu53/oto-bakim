@@ -113,7 +113,7 @@
                             {{model.ad}}
                         </ng-template>
                     </p-autoComplete>
-                    <div *ngIf="!editForm.get('model').value.id && (!filteredModels || filteredModels.length === 0)">
+                    <div *ngIf="editForm.get('model').value && !editForm.get('model').value.id && (!filteredModels || filteredModels.length === 0)">
                         <button type="button" id="jh-create-entity" class="btn btn-primary float-right btn-sm"
                                 (click)="showModelDialog()" title="{{'otoBakimApp.model.home.createLabel' | translate}}">
                             <fa-icon [icon]="'plus'"></fa-icon>
