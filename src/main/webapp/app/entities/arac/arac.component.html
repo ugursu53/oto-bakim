@@ -2,7 +2,7 @@
     <h2 id="page-heading">
         <span jhiTranslate="otoBakimApp.arac.home.title">Aracs</span>
         <button id="jh-arac-kabul" class="btn btn-dark float-right jh-create-entity create-arac" [routerLink]="['/arac/arackabul']"
-                [queryParams]="{'query': currentSearch}" >
+                [queryParams]="{'query': currentSearch}" [disabled]="!aracKabulEnable" >
             <fa-icon [icon]="'plus'"></fa-icon>
             <span class="hidden-sm-down"  jhiTranslate="otoBakimApp.arac.home.aracKabul">
             Arac Kabul

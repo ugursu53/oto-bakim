@@ -164,4 +164,8 @@ export class AracComponent implements OnInit, OnDestroy {
   protected onError(errorMessage: string) {
     this.jhiAlertService.error(errorMessage, null, null);
   }
+
+  get aracKabulEnable(): boolean {
+    return this.currentSearch !== undefined && this.currentSearch.length > 0 && this.totalItems === 0;
+  }
 }
