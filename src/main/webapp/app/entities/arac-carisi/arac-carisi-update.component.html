@@ -25,14 +25,14 @@
                     <label class="form-control-label" jhiTranslate="otoBakimApp.aracCarisi.arac" for="field_arac">Arac</label>
                     <select class="form-control" id="field_arac" name="arac" formControlName="arac">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="aracOption.id === editForm.get('arac').value?.id ? editForm.get('arac').value : aracOption" *ngFor="let aracOption of aracs; trackBy: trackAracById">{{aracOption.id}}</option>
+                        <option [ngValue]="aracOption.id === editForm.get('arac').value?.id ? editForm.get('arac').value : aracOption" *ngFor="let aracOption of aracs; trackBy: trackAracById">{{aracOption.plakaNo}}</option>
                     </select>
                 </div>
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.aracCarisi.cari" for="field_cari">Cari</label>
                     <select class="form-control" id="field_cari" name="cari" formControlName="cari">
                         <option [ngValue]="null"></option>
-                        <option [ngValue]="cariOption.id === editForm.get('cari').value?.id ? editForm.get('cari').value : cariOption" *ngFor="let cariOption of caris; trackBy: trackCariById">{{cariOption.id}}</option>
+                        <option [ngValue]="cariOption.id === editForm.get('cari').value?.id ? editForm.get('cari').value : cariOption" *ngFor="let cariOption of caris; trackBy: trackCariById">{{cariOption.ad}}</option>
                     </select>
                 </div>
             </div>

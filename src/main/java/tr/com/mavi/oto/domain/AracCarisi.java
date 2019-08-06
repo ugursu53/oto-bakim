@@ -10,6 +10,7 @@ import org.hibernate.annotations.CacheConcurrencyStrategy;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
+import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 import java.io.Serializable;
 import java.util.Objects;
@@ -29,15 +30,16 @@ public class AracCarisi implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
-    @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Keyword)
     private Long id;
 
     @NotNull
     @Column(name = "aktif", nullable = false)
+    @Field(type = FieldType.Nested, includeInParent = true)
     private Boolean aktif;
 
     @ManyToOne
     @JsonIgnoreProperties("caris")
+    @Field(type = FieldType.Nested, includeInParent = true)
     private Arac arac;
 
     @ManyToOne

@@ -45,12 +45,12 @@
                 <td>{{aracCarisi.aktif}}</td>
                 <td>
                     <div *ngIf="aracCarisi.arac">
-                        <a [routerLink]="['../arac', aracCarisi.arac?.id, 'view' ]" >{{aracCarisi.arac?.id}}</a>
+                        <a [routerLink]="['../arac', aracCarisi.arac?.id, 'view' ]" >{{aracCarisi.arac?.plakaNo}}</a>
                     </div>
                 </td>
                 <td>
                     <div *ngIf="aracCarisi.cari">
-                        <a [routerLink]="['../cari', aracCarisi.cari?.id, 'view' ]" >{{aracCarisi.cari?.id}}</a>
+                        <a [routerLink]="['../cari', aracCarisi.cari?.id, 'view' ]" >{{aracCarisi.cari?.ad}}</a>
                     </div>
                 </td>
                 <td class="text-right">
