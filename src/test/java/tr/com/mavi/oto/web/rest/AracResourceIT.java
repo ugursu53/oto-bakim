@@ -106,7 +106,7 @@ public class AracResourceIT {
     @BeforeEach
     public void setup() {
         MockitoAnnotations.initMocks(this);
-        final AracResource aracResource = new AracResource(aracRepository, mockAracSearchRepository);
+        final AracResource aracResource = new AracResource(aracRepository, mockAracSearchRepository, null);
         this.restAracMockMvc = MockMvcBuilders.standaloneSetup(aracResource)
             .setCustomArgumentResolvers(pageableArgumentResolver)
             .setControllerAdvice(exceptionTranslator)
@@ -308,7 +308,7 @@ public class AracResourceIT {
             .andExpect(jsonPath("$.[*].aracTipi").value(hasItem(DEFAULT_ARAC_TIPI.toString())))
             .andExpect(jsonPath("$.[*].aciklama").value(hasItem(DEFAULT_ACIKLAMA.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getArac() throws Exception {

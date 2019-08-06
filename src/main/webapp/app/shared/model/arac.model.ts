@@ -1,5 +1,5 @@
-import { IAracCarisi } from 'app/shared/model/arac-carisi.model';
 import { IModel } from 'app/shared/model/model.model';
+import { ICari } from 'app/shared/model/cari.model';
 
 export const enum YakitTuru {
   BENZIN = 'BENZIN',
@@ -38,7 +38,7 @@ export interface IArac {
   kullanimSekli?: KullanimSekli;
   aracTipi?: AracTipi;
   aciklama?: string;
-  caris?: IAracCarisi[];
+  aktifCari?: ICari;
   model?: IModel;
 }
 
@@ -55,7 +55,6 @@ export class Arac implements IArac {
     public kullanimSekli?: KullanimSekli,
     public aracTipi?: AracTipi,
     public aciklama?: string,
-    public caris?: IAracCarisi[],
     public model?: IModel
   ) {}
 }

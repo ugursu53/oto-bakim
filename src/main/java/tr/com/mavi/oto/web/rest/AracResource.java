@@ -1,6 +1,7 @@
 package tr.com.mavi.oto.web.rest;
 
 import tr.com.mavi.oto.domain.Arac;
+import tr.com.mavi.oto.repository.AracCarisiRepository;
 import tr.com.mavi.oto.repository.AracRepository;
 import tr.com.mavi.oto.repository.search.AracSearchRepository;
 import tr.com.mavi.oto.web.rest.errors.BadRequestAlertException;
@@ -46,12 +47,13 @@ public class AracResource {
     private String applicationName;
 
     private final AracRepository aracRepository;
-
     private final AracSearchRepository aracSearchRepository;
+    private final AracCarisiRepository aracCarisiRepository;
 
-    public AracResource(AracRepository aracRepository, AracSearchRepository aracSearchRepository) {
+    public AracResource(AracRepository aracRepository, AracSearchRepository aracSearchRepository, AracCarisiRepository aracCarisiRepository) {
         this.aracRepository = aracRepository;
         this.aracSearchRepository = aracSearchRepository;
+        this.aracCarisiRepository = aracCarisiRepository;
     }
 
     /**
@@ -106,6 +108,7 @@ public class AracResource {
     public ResponseEntity<List<Arac>> getAllAracs(Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to get a page of Aracs");
         Page<Arac> page = aracRepository.findAll(pageable);
+        page.getContent().forEach(arac -> arac.setAktifCari(aracCarisiRepository.findFirstByAracIdAndAktifTrue(arac.getId())));
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }
@@ -150,6 +153,7 @@ public class AracResource {
         log.debug("REST request to search for a page of Aracs for query {}", query);
         aracSearchRepository.refresh();
         Page<Arac> page = aracSearchRepository.search(queryStringQuery(query), pageable);
+        page.getContent().forEach(arac -> arac.setAktifCari(aracCarisiRepository.findFirstByAracIdAndAktifTrue(arac.getId())));
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

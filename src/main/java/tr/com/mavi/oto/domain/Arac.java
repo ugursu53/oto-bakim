@@ -3,6 +3,8 @@ package tr.com.mavi.oto.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import lombok.Getter;
 import lombok.Setter;
 import org.hibernate.annotations.Cache;
@@ -12,8 +14,10 @@ import javax.persistence.*;
 import javax.validation.constraints.*;
 
 import org.springframework.data.elasticsearch.annotations.FieldType;
+
 import java.io.Serializable;
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 import java.util.Objects;
 
@@ -81,12 +85,18 @@ public class Arac implements Serializable {
     @Column(name = "aciklama")
     private String aciklama;
 
-    @OneToMany(mappedBy = "arac")
-    private Set<AracCarisi> caris = new HashSet<>();
+    @Transient
+    @JsonSerialize
+    @JsonDeserialize
+    private Cari aktifCari;
 
     @ManyToOne
     @JsonIgnoreProperties("aracs")
     private Model model;
+
+    public void setAktifCari(Optional<AracCarisi> aktifAracCarisi) {
+        aktifCari = aktifAracCarisi.map(AracCarisi::getCari).orElse(null);
+    }
 
     public Arac plakaNo(String plakaNo) {
         this.plakaNo = plakaNo;
@@ -135,23 +145,6 @@ public class Arac implements Serializable {
 
     public Arac aciklama(String aciklama) {
         this.aciklama = aciklama;
-        return this;
-    }
-
-    public Arac caris(Set<AracCarisi> aracCarisis) {
-        this.caris = aracCarisis;
-        return this;
-    }
-
-    public Arac addCari(AracCarisi aracCarisi) {
-        this.caris.add(aracCarisi);
-        aracCarisi.setArac(this);
-        return this;
-    }
-
-    public Arac removeCari(AracCarisi aracCarisi) {
-        this.caris.remove(aracCarisi);
-        aracCarisi.setArac(null);
         return this;
     }
 
