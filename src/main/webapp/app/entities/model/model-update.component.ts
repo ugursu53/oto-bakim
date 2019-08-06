@@ -83,7 +83,9 @@ export class ModelUpdateComponent implements OnInit {
         model.marka = marka.body;
         this.createOrUpdate(model);
       });
+      return;
     }
+    this.createOrUpdate(model);
   }
 
   private createOrUpdate(model: IModel) {
