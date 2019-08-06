@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
+import { HttpResponse, HttpErrorResponse, HttpHeaders } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
@@ -17,6 +17,9 @@ export class CariUpdateComponent implements OnInit {
   isSaving: boolean;
   @Input() isAltComponent: boolean;
   @Output() saved = new EventEmitter();
+  @Input() searchExist: boolean;
+  currentSearch: string;
+  caris: ICari[];
 
   editForm = this.fb.group<>({
     id: [],
@@ -160,5 +163,35 @@ export class CariUpdateComponent implements OnInit {
 
   trackHesapById(index: number, item: IHesap) {
     return item.id;
+  }
+
+  search(query) {
+    this.currentSearch = query;
+    if (this.currentSearch) {
+      this.cariService
+        .search({
+          page: 0,
+          query: this.currentSearch,
+          size: 10
+        })
+        .subscribe(
+          (res: HttpResponse<ICari[]>) => this.paginateCaris(res.body, res.headers),
+          (res: HttpErrorResponse) => this.onError(res.message)
+        );
+    }
+  }
+
+  protected paginateCaris(data: ICari[], headers: HttpHeaders) {
+    this.caris = data;
+    if (data && data.length === 1) {
+      this.selected(data[0]);
+    }
+    if (data && data.length === 0) {
+      this.selected(new Cari());
+    }
+  }
+
+  selected(cari: ICari) {
+    this.updateForm(cari);
   }
 }
