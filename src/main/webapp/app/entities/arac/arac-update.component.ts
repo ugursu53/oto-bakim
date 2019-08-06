@@ -85,6 +85,9 @@ export class AracUpdateComponent implements OnInit {
   save() {
     this.isSaving = true;
     const arac = this.createFromForm();
+    if (arac.model && !arac.model.id) {
+      arac.model = null;
+    }
     if (arac.id !== undefined) {
       this.subscribeToSaveResponse(this.aracService.update(arac));
     } else {
