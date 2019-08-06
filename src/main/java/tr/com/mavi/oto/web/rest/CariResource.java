@@ -1,5 +1,6 @@
 package tr.com.mavi.oto.web.rest;
 
+import org.elasticsearch.index.query.Operator;
 import tr.com.mavi.oto.domain.Cari;
 import tr.com.mavi.oto.repository.CariRepository;
 import tr.com.mavi.oto.repository.search.CariSearchRepository;
@@ -148,7 +149,7 @@ public class CariResource {
     @GetMapping("/_search/caris")
     public ResponseEntity<List<Cari>> searchCaris(@RequestParam String query, Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to search for a page of Caris for query {}", query);
-        Page<Cari> page = cariSearchRepository.search(queryStringQuery(query), pageable);
+        Page<Cari> page = cariSearchRepository.search(queryStringQuery(query).defaultOperator(Operator.AND), pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

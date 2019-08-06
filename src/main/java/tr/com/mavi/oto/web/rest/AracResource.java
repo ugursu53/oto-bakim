@@ -1,5 +1,6 @@
 package tr.com.mavi.oto.web.rest;
 
+import org.elasticsearch.index.query.Operator;
 import tr.com.mavi.oto.domain.Arac;
 import tr.com.mavi.oto.repository.AracCarisiRepository;
 import tr.com.mavi.oto.repository.AracRepository;
@@ -152,7 +153,7 @@ public class AracResource {
     public ResponseEntity<List<Arac>> searchAracs(@RequestParam String query, Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to search for a page of Aracs for query {}", query);
         aracSearchRepository.refresh();
-        Page<Arac> page = aracSearchRepository.search(queryStringQuery(query), pageable);
+        Page<Arac> page = aracSearchRepository.search(queryStringQuery(query).defaultOperator(Operator.AND), pageable);
         page.getContent().forEach(arac -> arac.setAktifCari(aracCarisiRepository.findFirstByAracIdAndAktifTrue(arac.getId())));
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
