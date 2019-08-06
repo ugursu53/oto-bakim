@@ -18,10 +18,17 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.model.marka" for="field_marka">Marka</label>
-                    <select class="form-control" id="field_marka" name="marka" formControlName="marka">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="markaOption.id === editForm.get('marka').value?.id ? editForm.get('marka').value : markaOption" *ngFor="let markaOption of markas; trackBy: trackMarkaById">{{markaOption.ad}}</option>
-                    </select>
+                    <p-autoComplete class="form-control primeng" id="field_marka" name="marka" formControlName="marka"
+                                    [suggestions]="filteredMarkas"
+                                    (completeMethod)="filterMarkas($event)" [size]="10" [required]="true"
+                                    field="ad" [minLength]="1" [dropdown]="true">
+                        <ng-template let-marka pTemplate="item">
+                            {{marka.ad}}
+                        </ng-template>
+                        <ng-template let-model pTemplate="selectedItem">
+                            {{marka.ad}}
+                        </ng-template>
+                    </p-autoComplete>
                     <div *ngIf="editForm.get('marka').invalid && (editForm.get('marka').dirty || editForm.get('marka').touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('marka').errors.required" jhiTranslate="entity.validation.required">

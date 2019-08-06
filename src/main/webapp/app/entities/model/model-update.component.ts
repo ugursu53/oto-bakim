@@ -7,7 +7,7 @@ import { filter, map } from 'rxjs/operators';
 import { JhiAlertService } from 'ng-jhipster';
 import { IModel, Model } from 'app/shared/model/model.model';
 import { ModelService } from './model.service';
-import { IMarka } from 'app/shared/model/marka.model';
+import { IMarka, Marka } from 'app/shared/model/marka.model';
 import { MarkaService } from 'app/entities/marka';
 
 @Component({
@@ -20,6 +20,8 @@ export class ModelUpdateComponent implements OnInit {
   @Output() saved = new EventEmitter();
 
   markas: IMarka[];
+  filteredMarkas: any[];
+  markaQuery: string;
 
   editForm = this.fb.group({
     id: [],
@@ -74,6 +76,17 @@ export class ModelUpdateComponent implements OnInit {
   save() {
     this.isSaving = true;
     const model = this.createFromForm();
+    if (!model.marka.id) {
+      const newMarka = new Marka();
+      newMarka.ad = this.markaQuery;
+      this.markaService.create(newMarka).subscribe(marka => {
+        model.marka = marka.body;
+        this.createOrUpdate(model);
+      });
+    }
+  }
+
+  private createOrUpdate(model: IModel) {
     if (model.id !== undefined && model.id != null) {
       this.subscribeToSaveResponse(this.modelService.update(model));
     } else {
@@ -112,5 +125,16 @@ export class ModelUpdateComponent implements OnInit {
 
   trackMarkaById(index: number, item: IMarka) {
     return item.id;
+  }
+
+  filterMarkas(event) {
+    this.markaQuery = event.query;
+    this.filteredMarkas = [];
+    for (let i = 0; i < this.markas.length; i++) {
+      const marka = this.markas[i];
+      if (marka.ad.toLowerCase().indexOf(this.markaQuery.toLowerCase()) === 0) {
+        this.filteredMarkas.push(marka);
+      }
+    }
   }
 }
