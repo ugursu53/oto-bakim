@@ -34,15 +34,15 @@ public class AracCarisi implements Serializable {
 
     @NotNull
     @Column(name = "aktif", nullable = false)
-    @Field(type = FieldType.Nested, includeInParent = true)
     private Boolean aktif;
 
     @ManyToOne
     @JsonIgnoreProperties("caris")
-    @Field(type = FieldType.Nested, includeInParent = true)
+    //@Field(type = FieldType.Nested, includeInParent = true)
     private Arac arac;
 
     @ManyToOne
+    //@Field(type = FieldType.Nested, includeInParent = true)
     private Cari cari;
 
     public Boolean isAktif() {
