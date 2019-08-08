@@ -66,7 +66,7 @@ export class IsEmriUpdateComponent implements OnInit {
       gelisZamani: isEmri.gelisZamani != null ? isEmri.gelisZamani.format(DATE_TIME_FORMAT) : null,
       aciklama: isEmri.aciklama,
       kabulTarihi: isEmri.kabulTarihi != null ? isEmri.kabulTarihi.format(DATE_TIME_FORMAT) : null,
-      tipi: isEmri.tipi,
+      tipi: isEmri.tipi ? isEmri.tipi : isEmri.arac && isEmri.arac.aktifCari ? isEmri.arac.aktifCari.varsayilanIsEmriTipi : null,
       arac: isEmri.arac
     });
   }

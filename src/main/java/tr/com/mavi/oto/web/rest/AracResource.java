@@ -124,6 +124,7 @@ public class AracResource {
     public ResponseEntity<Arac> getArac(@PathVariable Long id) {
         log.debug("REST request to get Arac : {}", id);
         Optional<Arac> arac = aracRepository.findById(id);
+        arac.ifPresent(a -> a.setAktifCari(aracCarisiRepository.findFirstByAracIdAndAktifTrue(a.getId())));
         return ResponseUtil.wrapOrNotFound(arac);
     }
 

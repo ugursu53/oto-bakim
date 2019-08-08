@@ -58,9 +58,11 @@ public class IsEmri implements Serializable {
     private IsEmriTipi tipi;
 
     @OneToMany(mappedBy = "isEmri", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("isEmri")
     private Set<Iscilik> isciliklers = new HashSet<>();
 
     @OneToMany(mappedBy = "isEmri", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JsonIgnoreProperties("isEmri")
     private Set<Parca> parcalars = new HashSet<>();
 
     @ManyToOne
