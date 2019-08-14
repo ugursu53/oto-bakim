@@ -17,19 +17,19 @@
                 </a>
             </li>
             <li>
-                <a class="nav-link" routerLink="arac" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                <a *ngSwitchCase="true" class="nav-link" routerLink="arac" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                     <fa-icon icon="car" fixedWidth="true"></fa-icon>
                     <span jhiTranslate="global.menu.entities.arac">Arac</span>
                 </a>
             </li>
             <li>
-                <a class="nav-link" routerLink="cari" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                <a *ngSwitchCase="true" class="nav-link" routerLink="cari" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                     <fa-icon icon="user" fixedWidth="true"></fa-icon>
                     <span jhiTranslate="global.menu.entities.cari">Cari</span>
                 </a>
             </li>
             <li>
-                <a class="nav-link" routerLink="is-emri" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
+                <a *ngSwitchCase="true" class="nav-link" routerLink="is-emri" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
                     <fa-icon icon="wrench" fixedWidth="true"></fa-icon>
                     <span jhiTranslate="global.menu.entities.isEmri">Is Emri</span>
                 </a>
@@ -77,13 +77,13 @@
                     </li>
                     <li>
                         <a class="dropdown-item" routerLink="iscilik-tipi" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <fa-icon icon="users-cog" fixedWidth="true"></fa-icon>
                             <span jhiTranslate="global.menu.entities.iscilikTipi">Iscilik Tipi</span>
                         </a>
                     </li>
                     <li>
                         <a class="dropdown-item" routerLink="personel" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <fa-icon icon="user-friends" fixedWidth="true"></fa-icon>
                             <span jhiTranslate="global.menu.entities.personel">Personel</span>
                         </a>
                     </li>
@@ -95,7 +95,7 @@
                     </li>
                     <li>
                         <a class="dropdown-item" routerLink="parca-tipi" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="collapseNavbar()">
-                            <fa-icon icon="asterisk" fixedWidth="true"></fa-icon>
+                            <fa-icon icon="tools" fixedWidth="true"></fa-icon>
                             <span jhiTranslate="global.menu.entities.parcaTipi">Parca Tipi</span>
                         </a>
                     </li>
