@@ -2,28 +2,28 @@
   "otoBakimApp": {
     "isEmri": {
       "home": {
-        "title": "Is Emris",
-        "createLabel": "Create a new Is Emri",
-        "createOrEditLabel": "Create or edit a Is Emri",
-        "search": "Search for Is Emri",
-        "notFound": "No Is Emri found"
+        "title": "Is Emirleri",
+        "createLabel": "Yeni Iş Emri",
+        "createOrEditLabel": "İş Emri",
+        "search": "Iş Emri Ara",
+        "notFound": "İş Emri bulunamadı"
       },
-      "created": "A new Is Emri is created with identifier {{ param }}",
-      "updated": "A Is Emri is updated with identifier {{ param }}",
-      "deleted": "A Is Emri is deleted with identifier {{ param }}",
+      "created": "Yeni İş Emri eklendi. id:{{ param }}",
+      "updated": "İş Emri güncellendi. id:{{ param }}",
+      "deleted": "İş Emri silindi. id:{{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Is Emri {{ id }}?"
+        "question": "İş Emrini silmek istediğinizden emin misiniz? id:{{ id }}?"
       },
       "detail": {
-        "title": "Is Emri"
+        "title": "Iş Emri"
       },
-      "gelisZamani": "Gelis Zamani",
-      "aciklama": "Aciklama",
+      "gelisZamani": "Geliş Zamani",
+      "aciklama": "Açiklama",
       "kabulTarihi": "Kabul Tarihi",
       "tipi": "Tipi",
-      "iscilikler": "Iscilikler",
-      "parcalar": "Parcalar",
-      "arac": "Arac"
+      "iscilikler": "Işçilikler",
+      "parcalar": "Parçalar",
+      "arac": "Araç"
     }
   }
 }

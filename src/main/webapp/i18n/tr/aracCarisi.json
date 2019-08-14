@@ -2,23 +2,23 @@
   "otoBakimApp": {
     "aracCarisi": {
       "home": {
-        "title": "Arac Carisis",
-        "createLabel": "Create a new Arac Carisi",
-        "createOrEditLabel": "Create or edit a Arac Carisi",
-        "search": "Search for Arac Carisi",
-        "notFound": "No Arac Carisi found"
+        "title": "Araç Carileri",
+        "createLabel": "Yeni Araç Caris",
+        "createOrEditLabel": "Araç Carisi",
+        "search": "Arac Carisi Sorgula",
+        "notFound": "Arac Carisi bulunamadı"
       },
-      "created": "A new Arac Carisi is created with identifier {{ param }}",
-      "updated": "A Arac Carisi is updated with identifier {{ param }}",
-      "deleted": "A Arac Carisi is deleted with identifier {{ param }}",
+      "created": "Yeni Arac Carisi eklendi. id:{{ param }}",
+      "updated": "Arac Carisi güncellendi. id:{{ param }}",
+      "deleted": "Arac Carisi silindi. id:{{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Arac Carisi {{ id }}?"
+        "question": "Arac Carisini silmek istediğinizden emin misiniz? id:{{ id }}?"
       },
       "detail": {
-        "title": "Arac Carisi"
+        "title": "Araç Carisi"
       },
       "aktif": "Aktif",
-      "arac": "Arac",
+      "arac": "Araç",
       "cari": "Cari"
     }
   }

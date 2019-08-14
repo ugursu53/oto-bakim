@@ -1,23 +1,23 @@
 <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-10">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <h2 id="jhi-is-emri-heading" jhiTranslate="otoBakimApp.isEmri.home.createOrEditLabel">Create or edit a Is Emri</h2>
-            <div>
+            <div class="row-md ui-g">
                 <jhi-alert-error></jhi-alert-error>
-                <div class="form-group">
+                <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.arac" for="field_arac">Arac</label>
                     <select class="form-control" id="field_arac" name="arac" formControlName="arac">
                         <option [ngValue]="null"></option>
                         <option [ngValue]="aracOption.id === editForm.get('arac').value?.id ? editForm.get('arac').value : aracOption" *ngFor="let aracOption of aracs; trackBy: trackAracById">{{aracOption.plakaNo}}</option>
                     </select>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.gelisZamani" for="field_gelisZamani">Gelis Zamani</label>
                     <div class="d-flex">
                         <input id="field_gelisZamani" type="datetime-local" class="form-control" name="gelisZamani" formControlName="gelisZamani" placeholder="YYYY-MM-DD HH:mm"/>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.aciklama" for="field_aciklama">Aciklama</label>
                     <input type="text" class="form-control" name="aciklama" id="field_aciklama"
                            formControlName="aciklama"/>
@@ -28,7 +28,7 @@
                         </small>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.kabulTarihi" for="field_kabulTarihi">Kabul Tarihi</label>
                     <div class="d-flex">
                         <input id="field_kabulTarihi" type="datetime-local" class="form-control" name="kabulTarihi" formControlName="kabulTarihi" placeholder="YYYY-MM-DD HH:mm"/>
@@ -44,7 +44,7 @@
                         </small>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.tipi" for="field_tipi">Tipi</label>
                     <select class="form-control" name="tipi" formControlName="tipi" id="field_tipi">
                         <option value="SIGORTA">{{'otoBakimApp.IsEmriTipi.SIGORTA' | translate}}</option>

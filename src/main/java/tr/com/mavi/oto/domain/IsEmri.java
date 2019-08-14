@@ -69,6 +69,10 @@ public class IsEmri implements Serializable {
     @JsonIgnoreProperties("isEmris")
     private Arac arac;
 
+    @ManyToOne
+    @JsonIgnoreProperties("isEmris")
+    private Cari cari;
+
     public IsEmri gelisZamani(Instant gelisZamani) {
         this.gelisZamani = gelisZamani;
         return this;

@@ -16,7 +16,7 @@
         "question": "Araç'ı silmek istediğinizden emin misiniz? id:{{ id }}?"
       },
       "detail": {
-        "title": "Arac"
+        "title": "Araç"
       },
       "plakaNo": "Plaka No",
       "modelYili": "Model Yılı",
