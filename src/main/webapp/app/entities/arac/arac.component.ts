@@ -148,11 +148,7 @@ export class AracComponent implements OnInit, OnDestroy {
   }
 
   sort() {
-    const result = [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
-    if (this.predicate !== 'id') {
-      result.push('id');
-    }
-    return result;
+    return [this.predicate + ',' + (this.reverse ? 'asc' : 'desc')];
   }
 
   protected paginateAracs(data: IArac[], headers: HttpHeaders) {

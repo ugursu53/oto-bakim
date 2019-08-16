@@ -53,7 +53,7 @@ export const isEmriRoute: Routes = [
     },
     data: {
       authorities: ['ROLE_USER'],
-      defaultSort: 'id,asc',
+      defaultSort: 'lastModifiedDate,desc',
       pageTitle: 'otoBakimApp.isEmri.home.title'
     },
     canActivate: [UserRouteAccessService]

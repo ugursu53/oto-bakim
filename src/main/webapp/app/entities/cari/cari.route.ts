@@ -40,7 +40,7 @@ export const cariRoute: Routes = [
     },
     data: {
       authorities: ['ROLE_USER'],
-      defaultSort: 'id,asc',
+      defaultSort: 'lastModifiedDate,desc',
       pageTitle: 'otoBakimApp.cari.home.title'
     },
     canActivate: [UserRouteAccessService]
