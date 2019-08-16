@@ -84,7 +84,7 @@
                 <td>{{arac.plakaNo}}</td>
                 <td>
                     <div *ngIf="arac.aktifCari">
-                        <a [routerLink]="['../cari', arac.aktifCari?.id, 'edit' ]">{{arac.aktifCari.ad}}</a>
+                        <a [routerLink]="['../cari', arac.aktifCari?.id, 'view' ]">{{arac.aktifCari.ad}}</a>
                     </div>
                 </td>
                 <td>{{arac.modelYili}}</td>
@@ -98,7 +98,7 @@
                 <!--<td>{{arac.aciklama}}</td> -->
                 <td>
                     <div *ngIf="arac.model">
-                        <a [routerLink]="['../model', arac.model?.id, 'edit' ]">{{arac.model.marka === null ?
+                        <a [routerLink]="['../model', arac.model?.id, 'view' ]">{{arac.model.marka === null ?
                             arac.model.ad : arac.model.marka.ad + ', ' + arac.model.ad}}</a>
                     </div>
                 </td>

@@ -1,16 +1,9 @@
 <div class="row justify-content-center">
     <div class="col-10">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-is-emri-heading" jhiTranslate="otoBakimApp.isEmri.home.createOrEditLabel">Create or edit a Is Emri</h2>
+            <h2 id="jhi-is-emri-heading"><span jhiTranslate="otoBakimApp.isEmri.home.createOrEditLabel">11</span> (<a [routerLink]="['../../arac', editForm.get('arac').value.id, 'view' ]">{{editForm.get('arac').value.plakaNo}}</a>)</h2>
             <div class="row-md ui-g">
                 <jhi-alert-error></jhi-alert-error>
-                <div class="form-group col-lg-4 col-md-6 col-xs-12">
-                    <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.arac" for="field_arac">Arac</label>
-                    <select class="form-control" id="field_arac" name="arac" formControlName="arac">
-                        <option [ngValue]="null"></option>
-                        <option [ngValue]="aracOption.id === editForm.get('arac').value?.id ? editForm.get('arac').value : aracOption" *ngFor="let aracOption of aracs; trackBy: trackAracById">{{aracOption.plakaNo}}</option>
-                    </select>
-                </div>
                 <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.gelisZamani" for="field_gelisZamani">Gelis Zamani</label>
                     <div class="d-flex">

@@ -10,7 +10,6 @@ import { JhiAlertService } from 'ng-jhipster';
 import { IIsEmri, IsEmri } from 'app/shared/model/is-emri.model';
 import { IsEmriService } from './is-emri.service';
 import { IArac } from 'app/shared/model/arac.model';
-import { AracService } from 'app/entities/arac';
 
 @Component({
   selector: 'jhi-is-emri-update',
@@ -19,8 +18,6 @@ import { AracService } from 'app/entities/arac';
 export class IsEmriUpdateComponent implements OnInit {
   isSaving: boolean;
   @Input() arac: IArac;
-
-  aracs: IArac[];
 
   editForm = this.fb.group({
     id: [],
@@ -34,7 +31,6 @@ export class IsEmriUpdateComponent implements OnInit {
   constructor(
     protected jhiAlertService: JhiAlertService,
     protected isEmriService: IsEmriService,
-    protected aracService: AracService,
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder
   ) {}
@@ -50,14 +46,6 @@ export class IsEmriUpdateComponent implements OnInit {
       isEmri.arac = this.arac;
       this.updateForm(isEmri);
     }
-
-    this.aracService
-      .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<IArac[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IArac[]>) => response.body)
-      )
-      .subscribe((res: IArac[]) => (this.aracs = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(isEmri: IIsEmri) {
