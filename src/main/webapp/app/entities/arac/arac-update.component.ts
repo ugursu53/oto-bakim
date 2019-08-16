@@ -20,7 +20,6 @@ export class AracUpdateComponent implements OnInit {
   @Input() isAltComponent: boolean;
   @Output() saved = new EventEmitter();
 
-  models: IModel[];
   filteredModels: any[];
   modelQuery: string;
 
@@ -52,13 +51,6 @@ export class AracUpdateComponent implements OnInit {
     this.activatedRoute.data.subscribe(({ arac }) => {
       this.updateForm(arac);
     });
-    this.modelService
-      .query()
-      .pipe(
-        filter((mayBeOk: HttpResponse<IModel[]>) => mayBeOk.ok),
-        map((response: HttpResponse<IModel[]>) => response.body)
-      )
-      .subscribe((res: IModel[]) => (this.models = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(arac: IArac) {
@@ -140,16 +132,14 @@ export class AracUpdateComponent implements OnInit {
 
   filterModels(event) {
     this.modelQuery = event.query;
-    this.filteredModels = [];
-    for (let i = 0; i < this.models.length; i++) {
-      const model = this.models[i];
-      if (
-        model.ad.toLowerCase().indexOf(event.query.toLowerCase()) === 0 ||
-        (model.marka != null && model.marka.ad.toLowerCase().indexOf(event.query.toLowerCase()) === 0)
-      ) {
-        this.filteredModels.push(model);
-      }
-    }
+
+    this.modelService
+      .search({
+        page: 0,
+        query: this.modelQuery + '*',
+        size: 10
+      })
+      .subscribe((res: HttpResponse<IModel[]>) => (this.filteredModels = res.body), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   showModelDialog() {

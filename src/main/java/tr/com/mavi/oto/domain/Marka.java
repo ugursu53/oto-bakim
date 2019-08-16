@@ -35,6 +35,7 @@ public class Marka implements Serializable {
     private Long id;
 
     @Column(name = "ad")
+    @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Text)
     private String ad;
 
     @OneToMany(mappedBy = "marka")
