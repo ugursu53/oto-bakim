@@ -6,7 +6,15 @@ import { NgJhipsterModule } from 'ng-jhipster';
 import { InfiniteScrollModule } from 'ngx-infinite-scroll';
 import { CookieModule } from 'ngx-cookie';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-import { FieldsetModule, CheckboxModule, DropdownModule, AutoCompleteModule, DialogModule, StepsModule } from 'primeng/primeng';
+import {
+  FieldsetModule,
+  CheckboxModule,
+  DropdownModule,
+  AutoCompleteModule,
+  DialogModule,
+  StepsModule,
+  CalendarModule
+} from 'primeng/primeng';
 import { TableModule } from 'primeng/table';
 
 @NgModule({
@@ -25,7 +33,8 @@ import { TableModule } from 'primeng/table';
     DropdownModule,
     AutoCompleteModule,
     DialogModule,
-    StepsModule
+    StepsModule,
+    CalendarModule
   ]
 })
 export class OtoBakimSharedLibsModule {

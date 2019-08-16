@@ -23,14 +23,9 @@ import java.util.Objects;
 @Entity
 @Table(name = "arac_carisi")
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "araccarisi")
-public class AracCarisi implements Serializable {
+public class AracCarisi extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
-    private Long id;
 
     @NotNull
     @Column(name = "aktif", nullable = false)
@@ -38,11 +33,10 @@ public class AracCarisi implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("caris")
-    //@Field(type = FieldType.Nested, includeInParent = true)
     private Arac arac;
 
     @ManyToOne
-    //@Field(type = FieldType.Nested, includeInParent = true)
+    @JsonIgnoreProperties("aracs")
     private Cari cari;
 
     public Boolean isAktif() {

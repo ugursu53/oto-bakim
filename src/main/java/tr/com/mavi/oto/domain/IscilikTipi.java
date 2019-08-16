@@ -22,15 +22,9 @@ import java.util.Objects;
 @Table(name = "iscilik_tipi")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "isciliktipi")
-public class IscilikTipi implements Serializable {
+public class IscilikTipi extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
-    @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Keyword)
-    private Long id;
 
     @Column(name = "ad")
     private String ad;

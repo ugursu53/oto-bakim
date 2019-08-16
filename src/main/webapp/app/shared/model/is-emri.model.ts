@@ -2,6 +2,7 @@ import { Moment } from 'moment';
 import { IIscilik } from 'app/shared/model/iscilik.model';
 import { IParca } from 'app/shared/model/parca.model';
 import { IArac } from 'app/shared/model/arac.model';
+import { ICari } from 'app/shared/model/cari.model';
 
 export const enum IsEmriTipi {
   SIGORTA = 'SIGORTA',
@@ -18,6 +19,7 @@ export interface IIsEmri {
   isciliklers?: IIscilik[];
   parcalars?: IParca[];
   arac?: IArac;
+  cari?: ICari;
 }
 
 export class IsEmri implements IIsEmri {
@@ -29,6 +31,7 @@ export class IsEmri implements IIsEmri {
     public tipi?: IsEmriTipi,
     public isciliklers?: IIscilik[],
     public parcalars?: IParca[],
-    public arac?: IArac
+    public arac?: IArac,
+    public cari?: ICari
   ) {}
 }

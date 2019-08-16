@@ -22,15 +22,9 @@ import java.util.Objects;
 @Table(name = "personel")
 @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "personel")
-public class Personel implements Serializable {
+public class Personel extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
-    @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Keyword)
-    private Long id;
 
     @NotNull
     @Column(name = "ad", nullable = false)

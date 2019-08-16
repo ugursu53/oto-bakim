@@ -37,4 +37,5 @@
     <include file="config/liquibase/changelog/20190519140014_added_entity_constraints_IscilikTipi.xml" relativeToChangelogFile="false"/>
     <include file="config/liquibase/changelog/20190519140016_added_entity_constraints_Parca.xml" relativeToChangelogFile="false"/>
     <!-- jhipster-needle-liquibase-add-constraints-changelog - JHipster will add liquibase constraints changelogs here -->
+    <include file="config/liquibase/changelog/20190815000001_added_abstract_entity_.xml" relativeToChangelogFile="false"/>
 </databaseChangeLog>

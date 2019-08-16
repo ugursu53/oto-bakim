@@ -31,15 +31,9 @@ import tr.com.mavi.oto.domain.enumeration.IsEmriTipi;
 @Entity
 @Table(name = "is_emri")
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "isemri")
-public class IsEmri implements Serializable {
+public class IsEmri extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
-    @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Keyword)
-    private Long id;
 
     @Column(name = "gelis_zamani")
     private Instant gelisZamani;

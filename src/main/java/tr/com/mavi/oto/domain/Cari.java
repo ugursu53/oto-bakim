@@ -27,14 +27,9 @@ import tr.com.mavi.oto.domain.enumeration.IsEmriTipi;
 @Entity
 @Table(name = "cari")
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "cari")
-public class Cari implements Serializable {
+public class Cari extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
-    private Long id;
 
     @NotNull
     @Enumerated(EnumType.STRING)

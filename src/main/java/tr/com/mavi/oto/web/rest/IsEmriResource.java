@@ -1,6 +1,9 @@
 package tr.com.mavi.oto.web.rest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import tr.com.mavi.oto.domain.AracCarisi;
 import tr.com.mavi.oto.domain.IsEmri;
+import tr.com.mavi.oto.repository.AracCarisiRepository;
 import tr.com.mavi.oto.repository.IsEmriRepository;
 import tr.com.mavi.oto.repository.search.IsEmriSearchRepository;
 import tr.com.mavi.oto.web.rest.errors.BadRequestAlertException;
@@ -49,6 +52,9 @@ public class IsEmriResource {
 
     private final IsEmriSearchRepository isEmriSearchRepository;
 
+    @Autowired
+    private AracCarisiRepository aracCarisiRepository;
+
     public IsEmriResource(IsEmriRepository isEmriRepository, IsEmriSearchRepository isEmriSearchRepository) {
         this.isEmriRepository = isEmriRepository;
         this.isEmriSearchRepository = isEmriSearchRepository;
@@ -67,6 +73,15 @@ public class IsEmriResource {
         if (isEmri.getId() != null) {
             throw new BadRequestAlertException("A new isEmri cannot already have an ID", ENTITY_NAME, "idexists");
         }
+        if(isEmri.getArac() == null) {
+            throw new BadRequestAlertException("Araç alanı boş", ENTITY_NAME, "aracNotFound");
+        }
+        if(isEmri.getArac().getAktifCari() == null) {
+            Optional<AracCarisi> cari =
+                aracCarisiRepository.findFirstByAracIdAndAktifTrue(isEmri.getArac().getId());
+            isEmri.getArac().setAktifCari(cari);
+        }
+        isEmri.setCari(isEmri.getArac().getAktifCari());
         IsEmri result = isEmriRepository.save(isEmri);
         isEmriSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/is-emris/" + result.getId()))

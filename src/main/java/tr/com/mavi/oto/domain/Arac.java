@@ -37,14 +37,9 @@ import tr.com.mavi.oto.domain.enumeration.AracTipi;
 @Entity
 @Table(name = "arac")
 @org.springframework.data.elasticsearch.annotations.Document(indexName = "arac")
-public class Arac implements Serializable {
+public class Arac extends AbstractAuditingEntity implements Serializable {
 
     private static final long serialVersionUID = 1L;
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
-    private Long id;
 
     @NotNull
     @Column(name = "plaka_no", nullable = false, unique = true)
@@ -84,6 +79,9 @@ public class Arac implements Serializable {
 
     @Column(name = "aciklama")
     private String aciklama;
+
+    @OneToMany(mappedBy = "arac")
+    private Set<AracCarisi> caris = new HashSet<>();
 
     @Transient
     @JsonSerialize

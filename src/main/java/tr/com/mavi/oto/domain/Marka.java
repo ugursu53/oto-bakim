@@ -39,7 +39,7 @@ public class Marka implements Serializable {
 
     @OneToMany(mappedBy = "marka")
     @Cache(usage = CacheConcurrencyStrategy.NONSTRICT_READ_WRITE)
-    private Set<Model> modellers = new HashSet<>();
+    private Set<Model> models = new HashSet<>();
 
     public Marka ad(String ad) {
         this.ad = ad;
@@ -47,18 +47,18 @@ public class Marka implements Serializable {
     }
 
     public Marka modellers(Set<Model> models) {
-        this.modellers = models;
+        this.models = models;
         return this;
     }
 
     public Marka addModeller(Model model) {
-        this.modellers.add(model);
+        this.models.add(model);
         model.setMarka(this);
         return this;
     }
 
     public Marka removeModeller(Model model) {
-        this.modellers.remove(model);
+        this.models.remove(model);
         model.setMarka(null);
         return this;
     }

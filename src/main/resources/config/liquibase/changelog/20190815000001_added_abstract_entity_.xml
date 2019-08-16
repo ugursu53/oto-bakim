@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+    xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+    xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.6.xsd
+                        http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd">
+    <changeSet id="20190815000001-1" author="usuicmez">
+        <addColumn tableName="cari">
+            <column name="created_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="cari">
+            <column name="created_date" type="timestamp"/>
+        </addColumn>
+        <addColumn tableName="cari">
+            <column name="last_modified_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="cari">
+            <column name="last_modified_date" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="20190815000001-3" author="usuicmez">
+        <addColumn tableName="arac">
+            <column name="created_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="arac">
+            <column name="created_date" type="timestamp"/>
+        </addColumn>
+        <addColumn tableName="arac">
+            <column name="last_modified_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="arac">
+            <column name="last_modified_date" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="20190815000001-4" author="usuicmez">
+        <addColumn tableName="arac_carisi">
+            <column name="created_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="arac_carisi">
+            <column name="created_date" type="timestamp"/>
+        </addColumn>
+        <addColumn tableName="arac_carisi">
+            <column name="last_modified_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="arac_carisi">
+            <column name="last_modified_date" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="20190815000001-5" author="usuicmez">
+        <addColumn tableName="is_emri">
+            <column name="created_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="is_emri">
+            <column name="created_date" type="timestamp"/>
+        </addColumn>
+        <addColumn tableName="is_emri">
+            <column name="last_modified_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="is_emri">
+            <column name="last_modified_date" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="20190815000001-6" author="usuicmez">
+        <addColumn tableName="model">
+            <column name="created_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="model">
+            <column name="created_date" type="timestamp"/>
+        </addColumn>
+        <addColumn tableName="model">
+            <column name="last_modified_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="model">
+            <column name="last_modified_date" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="20190815000001-7" author="usuicmez">
+        <addColumn tableName="iscilik_grubu">
+            <column name="created_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="iscilik_grubu">
+            <column name="created_date" type="timestamp"/>
+        </addColumn>
+        <addColumn tableName="iscilik_grubu">
+            <column name="last_modified_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="iscilik_grubu">
+            <column name="last_modified_date" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="20190815000001-8" author="usuicmez">
+        <addColumn tableName="iscilik_tipi">
+            <column name="created_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="iscilik_tipi">
+            <column name="created_date" type="timestamp"/>
+        </addColumn>
+        <addColumn tableName="iscilik_tipi">
+            <column name="last_modified_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="iscilik_tipi">
+            <column name="last_modified_date" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="20190815000001-9" author="usuicmez">
+        <addColumn tableName="parca_tipi">
+            <column name="created_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="parca_tipi">
+            <column name="created_date" type="timestamp"/>
+        </addColumn>
+        <addColumn tableName="parca_tipi">
+            <column name="last_modified_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="parca_tipi">
+            <column name="last_modified_date" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="20190815000001-91" author="usuicmez">
+        <addColumn tableName="personel">
+            <column name="created_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="personel">
+            <column name="created_date" type="timestamp"/>
+        </addColumn>
+        <addColumn tableName="personel">
+            <column name="last_modified_by" type="varchar(50)"/>
+        </addColumn>
+        <addColumn tableName="personel">
+            <column name="last_modified_date" type="timestamp"/>
+        </addColumn>
+    </changeSet>
+    <changeSet id="20190815000001-92" author="usuicmez">
+        <addColumn tableName="is_emri">
+            <column name="cari_id" type="bigint"/>
+        </addColumn>
+    </changeSet>
+</databaseChangeLog>

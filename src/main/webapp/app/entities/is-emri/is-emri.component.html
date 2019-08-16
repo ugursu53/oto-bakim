@@ -7,7 +7,8 @@
         <div class="col-sm-12">
             <form name="searchForm" class="form-inline">
                 <div class="input-group w-100 mt-3">
-                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="{{ 'otoBakimApp.isEmri.home.search' | translate }}">
+                    <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch"
+                           name="currentSearch" placeholder="{{ 'otoBakimApp.isEmri.home.search' | translate }}">
                     <button class="input-group-append btn btn-info" (click)="search(currentSearch)">
                         <fa-icon [icon]="'search'"></fa-icon>
                     </button>
@@ -26,12 +27,25 @@
         <table class="table table-striped">
             <thead>
             <tr jhiSort [(predicate)]="predicate" [(ascending)]="reverse" [callback]="transition.bind(this)">
-            <th jhiSortBy="gelisZamani"><span jhiTranslate="otoBakimApp.isEmri.gelisZamani">Gelis Zamani</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="aciklama"><span jhiTranslate="otoBakimApp.isEmri.aciklama">Aciklama</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="kabulTarihi"><span jhiTranslate="otoBakimApp.isEmri.kabulTarihi">Kabul Tarihi</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="tipi"><span jhiTranslate="otoBakimApp.isEmri.tipi">Tipi</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th jhiSortBy="arac.id"><span jhiTranslate="otoBakimApp.isEmri.arac">Arac</span> <fa-icon [icon]="'sort'"></fa-icon></th>
-            <th></th>
+                <th jhiSortBy="gelisZamani"><span jhiTranslate="otoBakimApp.isEmri.gelisZamani">Gelis Zamani</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th jhiSortBy="aciklama"><span jhiTranslate="otoBakimApp.isEmri.aciklama">Aciklama</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th jhiSortBy="kabulTarihi"><span jhiTranslate="otoBakimApp.isEmri.kabulTarihi">Kabul Tarihi</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th jhiSortBy="tipi"><span jhiTranslate="otoBakimApp.isEmri.tipi">Tipi</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th jhiSortBy="arac.plakaNo"><span jhiTranslate="otoBakimApp.isEmri.arac">Arac</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th jhiSortBy="cari.ad"><span jhiTranslate="otoBakimApp.cari.detail.title">Cari</span>
+                    <fa-icon [icon]="'sort'"></fa-icon>
+                </th>
+                <th></th>
             </tr>
             </thead>
             <tbody>
@@ -42,7 +56,12 @@
                 <td jhiTranslate="{{'otoBakimApp.IsEmriTipi.' + isEmri.tipi}}">{{isEmri.tipi}}</td>
                 <td>
                     <div *ngIf="isEmri.arac">
-                        <a [routerLink]="['../arac', isEmri.arac?.id, 'view' ]" >{{isEmri.arac?.plakaNo}}</a>
+                        <a [routerLink]="['../arac', isEmri.arac?.id, 'view' ]">{{isEmri.arac?.plakaNo}}</a>
+                    </div>
+                </td>
+                <td>
+                    <div *ngIf="isEmri.cari">
+                        <a [routerLink]="['../cari', isEmri.cari?.id, 'view' ]">{{isEmri.cari.ad}}</a>
                     </div>
                 </td>
                 <td class="text-right">
@@ -72,10 +91,12 @@
     </div>
     <div [hidden]="isEmris?.length === 0">
         <div class="row justify-content-center">
-            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5" [itemsPerPage]="itemsPerPage"></jhi-item-count>
+            <jhi-item-count [page]="page" [total]="totalItems" [maxSize]="5"
+                            [itemsPerPage]="itemsPerPage"></jhi-item-count>
         </div>
         <div class="row justify-content-center">
-            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5" [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
+            <ngb-pagination [collectionSize]="totalItems" [(page)]="page" [pageSize]="itemsPerPage" [maxSize]="5"
+                            [rotate]="true" [boundaryLinks]="true" (pageChange)="loadPage(page)"></ngb-pagination>
         </div>
     </div>
 </div>
