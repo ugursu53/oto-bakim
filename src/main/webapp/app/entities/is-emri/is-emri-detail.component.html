@@ -5,6 +5,18 @@
             <hr>
             <jhi-alert-error></jhi-alert-error>
             <dl class="row-md jh-entity-details">
+                <dt><span jhiTranslate="otoBakimApp.isEmri.arac">Arac</span></dt>
+                <dd>
+                    <div *ngIf="isEmri.arac">
+                        <a [routerLink]="['/arac', isEmri.arac?.id, 'view']">{{isEmri.arac?.plakaNo}}</a>
+                    </div>
+                </dd>
+                <dt><span jhiTranslate="otoBakimApp.isEmri.cari">Cari</span></dt>
+                <dd>
+                    <div *ngIf="isEmri.cari">
+                        <a [routerLink]="['/cari', isEmri.cari?.id, 'view']">{{isEmri.cari?.ad}}</a>
+                    </div>
+                </dd>
                 <dt><span jhiTranslate="otoBakimApp.isEmri.gelisZamani">Gelis Zamani</span></dt>
                 <dd>
                     <span>{{isEmri.gelisZamani}}</span>
@@ -20,12 +32,6 @@
                 <dt><span jhiTranslate="otoBakimApp.isEmri.tipi">Tipi</span></dt>
                 <dd>
                     <span jhiTranslate="{{'otoBakimApp.IsEmriTipi.' + isEmri.tipi}}">{{isEmri.tipi}}</span>
-                </dd>
-                <dt><span jhiTranslate="otoBakimApp.isEmri.arac">Arac</span></dt>
-                <dd>
-                    <div *ngIf="isEmri.arac">
-                        <a [routerLink]="['/arac', isEmri.arac?.id, 'view']">{{isEmri.arac?.id}}</a>
-                    </div>
                 </dd>
             </dl>
 
