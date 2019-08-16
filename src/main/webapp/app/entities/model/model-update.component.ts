@@ -53,7 +53,7 @@ export class ModelUpdateComponent implements OnInit {
       });
     }
     this.markaService
-      .query()
+      .query({ size: 50 })
       .pipe(
         filter((mayBeOk: HttpResponse<IMarka[]>) => mayBeOk.ok),
         map((response: HttpResponse<IMarka[]>) => response.body)
