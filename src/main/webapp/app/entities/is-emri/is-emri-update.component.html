@@ -2,8 +2,8 @@
     <div class="col-10">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
             <h2 id="jhi-is-emri-heading"><span jhiTranslate="otoBakimApp.isEmri.home.createOrEditLabel">11</span> (<a [routerLink]="['../../arac', editForm.get('arac').value.id, 'view' ]">{{editForm.get('arac').value.plakaNo}}</a>)</h2>
+            <jhi-alert-error></jhi-alert-error>
             <div class="row-md ui-g">
-                <jhi-alert-error></jhi-alert-error>
                 <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.gelisZamani" for="field_gelisZamani">Gelis Zamani</label>
                     <div class="d-flex">

@@ -45,8 +45,8 @@
         </div>
 
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+            <jhi-alert-error></jhi-alert-error>
             <div class="row-md ui-g">
-                <jhi-alert-error></jhi-alert-error>
                 <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.cari.ad" for="field_ad">Ad</label>
                     <input type="text" class="form-control" name="ad" id="field_ad"
