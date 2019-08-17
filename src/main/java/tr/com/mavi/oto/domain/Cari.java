@@ -64,6 +64,7 @@ public class Cari extends AbstractAuditingEntity implements Serializable {
     private String vergiNo;
 
     @Column(name = "yetkili")
+    @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Text)
     private String yetkili;
 
     @Column(name = "fax")
