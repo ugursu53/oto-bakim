@@ -139,6 +139,6 @@
         </form>
     </div>
 </div>
-<p-dialog header="Title" [(visible)]="modelDisplay" height="500px">
+<p-dialog header="Title" [(visible)]="modelDisplay">
     <jhi-model-update [isPopup]="true" [modelAdi]="modelQuery" (saved)="modelSaved($event)"></jhi-model-update>
 </p-dialog>
