@@ -18,10 +18,10 @@
 
                 <div class="form-group">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.model.marka" for="field_marka">Marka</label>
-                    <p-autoComplete class="form-control primeng" id="field_marka" name="marka" formControlName="marka"
+                    <p-autoComplete class="form-control" id="field_marka" name="marka" formControlName="marka"
                                     [suggestions]="filteredMarkas"
                                     (completeMethod)="filterMarkas($event)" [size]="10" [required]="true"
-                                    field="ad" [minLength]="1" [dropdown]="true">
+                                    field="ad">
                         <ng-template let-marka pTemplate="item">
                             {{marka.ad}}
                         </ng-template>

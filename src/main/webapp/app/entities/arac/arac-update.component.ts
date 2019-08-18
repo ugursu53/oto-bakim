@@ -22,6 +22,7 @@ export class AracUpdateComponent implements OnInit {
 
   filteredModels: any[];
   modelQuery: string;
+  modelQuering: boolean;
 
   editForm = this.fb.group({
     id: [],
@@ -132,14 +133,29 @@ export class AracUpdateComponent implements OnInit {
 
   filterModels(event) {
     this.modelQuery = event.query;
-
+    this.modelQuering = true;
     this.modelService
       .search({
         page: 0,
-        query: this.modelQuery + '*',
+        query: this.modelQuery,
         size: 10
       })
-      .subscribe((res: HttpResponse<IModel[]>) => (this.filteredModels = res.body), (res: HttpErrorResponse) => this.onError(res.message));
+      .subscribe(
+        (res: HttpResponse<IModel[]>) => {
+          this.filteredModels = res.body;
+          this.modelQuering = false;
+        },
+        (res: HttpErrorResponse) => this.onError(res.message)
+      );
+  }
+
+  isNewModelButtonRendered(): boolean {
+    return (
+      this.editForm.get('model').value &&
+      !this.editForm.get('model').value.id &&
+      (!this.filteredModels || this.filteredModels.length === 0) &&
+      !this.modelQuering
+    );
   }
 
   showModelDialog() {

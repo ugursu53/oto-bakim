@@ -103,9 +103,9 @@
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.model" for="field_model">Model</label>
-                    <p-autoComplete class="form-control primeng" id="field_model" name="model" formControlName="model" [suggestions]="filteredModels"
+                    <p-autoComplete class="form-control with-new-button" id="field_model" name="model" formControlName="model" [suggestions]="filteredModels"
                                     (completeMethod)="filterModels($event)" [size]="10" [required]="true"
-                                    field="ad" [minLength]="1" [dropdown]="true">
+                                    field="ad">
                         <ng-template let-model pTemplate="item">
                             {{!model.marka ? model.ad : model.marka.ad + ', ' + model.ad}}
                         </ng-template>
@@ -113,7 +113,8 @@
                             {{model.ad}}
                         </ng-template>
                     </p-autoComplete>
-                    <div *ngIf="editForm.get('model').value && !editForm.get('model').value.id && (!filteredModels || filteredModels.length === 0)">
+                    <div class="autocomplete-button-div"
+                        *ngIf="isNewModelButtonRendered()">
                         <button type="button" id="jh-create-entity" class="btn btn-primary float-right btn-sm"
                                 (click)="showModelDialog()" title="{{'otoBakimApp.model.home.createLabel' | translate}}">
                             <fa-icon [icon]="'plus'"></fa-icon>
