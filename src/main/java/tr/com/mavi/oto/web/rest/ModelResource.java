@@ -4,6 +4,7 @@ import org.elasticsearch.index.query.Operator;
 import tr.com.mavi.oto.domain.Model;
 import tr.com.mavi.oto.repository.ModelRepository;
 import tr.com.mavi.oto.repository.search.ModelSearchRepository;
+import tr.com.mavi.oto.service.util.SearchUtil;
 import tr.com.mavi.oto.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -148,7 +149,7 @@ public class ModelResource {
     @GetMapping("/_search/models")
     public ResponseEntity<List<Model>> searchModels(@RequestParam String query, Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to search for a page of Models for query {}", query);
-        Page<Model> page = modelSearchRepository.search(queryStringQuery(query).defaultOperator(Operator.AND), pageable);
+        Page<Model> page = modelSearchRepository.search(queryStringQuery(SearchUtil.normalizedQuery(query)).defaultOperator(Operator.AND), pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

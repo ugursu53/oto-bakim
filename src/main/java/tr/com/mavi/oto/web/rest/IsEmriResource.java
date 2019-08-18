@@ -1,11 +1,13 @@
 package tr.com.mavi.oto.web.rest;
 
+import org.elasticsearch.index.query.Operator;
 import org.springframework.beans.factory.annotation.Autowired;
 import tr.com.mavi.oto.domain.AracCarisi;
 import tr.com.mavi.oto.domain.IsEmri;
 import tr.com.mavi.oto.repository.AracCarisiRepository;
 import tr.com.mavi.oto.repository.IsEmriRepository;
 import tr.com.mavi.oto.repository.search.IsEmriSearchRepository;
+import tr.com.mavi.oto.service.util.SearchUtil;
 import tr.com.mavi.oto.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -163,7 +165,7 @@ public class IsEmriResource {
     @GetMapping("/_search/is-emris")
     public ResponseEntity<List<IsEmri>> searchIsEmris(@RequestParam String query, Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to search for a page of IsEmris for query {}", query);
-        Page<IsEmri> page = isEmriSearchRepository.search(queryStringQuery(query), pageable);
+        Page<IsEmri> page = isEmriSearchRepository.search(queryStringQuery(SearchUtil.normalizedQuery(query)).defaultOperator(Operator.AND), pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

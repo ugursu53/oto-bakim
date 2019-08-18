@@ -1,8 +1,10 @@
 package tr.com.mavi.oto.web.rest;
 
+import org.elasticsearch.index.query.Operator;
 import tr.com.mavi.oto.domain.ParcaTipi;
 import tr.com.mavi.oto.repository.ParcaTipiRepository;
 import tr.com.mavi.oto.repository.search.ParcaTipiSearchRepository;
+import tr.com.mavi.oto.service.util.SearchUtil;
 import tr.com.mavi.oto.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -148,7 +150,7 @@ public class ParcaTipiResource {
     @GetMapping("/_search/parca-tipis")
     public ResponseEntity<List<ParcaTipi>> searchParcaTipis(@RequestParam String query, Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to search for a page of ParcaTipis for query {}", query);
-        Page<ParcaTipi> page = parcaTipiSearchRepository.search(queryStringQuery(query), pageable);
+        Page<ParcaTipi> page = parcaTipiSearchRepository.search(queryStringQuery(SearchUtil.normalizedQuery(query)).defaultOperator(Operator.AND), pageable);
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
     }

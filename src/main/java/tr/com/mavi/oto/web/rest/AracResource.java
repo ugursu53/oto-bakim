@@ -5,6 +5,7 @@ import tr.com.mavi.oto.domain.Arac;
 import tr.com.mavi.oto.repository.AracCarisiRepository;
 import tr.com.mavi.oto.repository.AracRepository;
 import tr.com.mavi.oto.repository.search.AracSearchRepository;
+import tr.com.mavi.oto.service.util.SearchUtil;
 import tr.com.mavi.oto.web.rest.errors.BadRequestAlertException;
 
 import io.github.jhipster.web.util.HeaderUtil;
@@ -154,7 +155,7 @@ public class AracResource {
     public ResponseEntity<List<Arac>> searchAracs(@RequestParam String query, Pageable pageable, @RequestParam MultiValueMap<String, String> queryParams, UriComponentsBuilder uriBuilder) {
         log.debug("REST request to search for a page of Aracs for query {}", query);
         aracSearchRepository.refresh();
-        Page<Arac> page = aracSearchRepository.search(queryStringQuery(query).defaultOperator(Operator.AND), pageable);
+        Page<Arac> page = aracSearchRepository.search(queryStringQuery(SearchUtil.normalizedQuery(query)).defaultOperator(Operator.AND), pageable);
         page.getContent().forEach(arac -> arac.setAktifCari(aracCarisiRepository.findFirstByAracIdAndAktifTrue(arac.getId())));
         HttpHeaders headers = PaginationUtil.generatePaginationHttpHeaders(uriBuilder.queryParams(queryParams), page);
         return ResponseEntity.ok().headers(headers).body(page.getContent());
