@@ -210,4 +210,9 @@ p-autocomplete.form-control.with-new-button {
   width: 5%;
   display: inline-flex;
 }
+.ui-fieldset,
+.ui-fieldset .ui-fieldset-legend {
+  padding-top: 0;
+  padding-bottom: 0;
+}
 /* primeng uyarlaması css */

@@ -1,17 +1,11 @@
 package tr.com.mavi.oto.domain;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
-
-import org.springframework.data.elasticsearch.annotations.FieldType;
 import java.io.Serializable;
-import java.util.Objects;
 
 /**
  * A Parca.
@@ -28,27 +22,16 @@ public class Parca implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
-    @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Keyword)
     private Long id;
 
     @Column(name = "fiyati")
     private Double fiyati;
 
     @ManyToOne
-    @JsonIgnoreProperties("parcas")
-    private IsEmri isEmri;
-
-    @ManyToOne
-    @JsonIgnoreProperties("parcas")
     private ParcaTipi tipi;
 
     public Parca fiyati(Double fiyati) {
         this.fiyati = fiyati;
-        return this;
-    }
-
-    public Parca isEmri(IsEmri isEmri) {
-        this.isEmri = isEmri;
         return this;
     }
 

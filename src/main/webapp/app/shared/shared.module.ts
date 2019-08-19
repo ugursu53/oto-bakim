@@ -3,10 +3,18 @@ import { OtoBakimSharedCommonModule, JhiLoginModalComponent, HasAnyAuthorityDire
 import { ModelUpdateComponent } from 'app/entities/model';
 import { CariUpdateComponent } from 'app/entities/cari';
 import { IsEmriUpdateComponent } from 'app/entities/is-emri';
+import { ParcaTipiUpdateComponent } from 'app/entities/parca-tipi';
 
 @NgModule({
   imports: [OtoBakimSharedCommonModule],
-  declarations: [JhiLoginModalComponent, HasAnyAuthorityDirective, ModelUpdateComponent, CariUpdateComponent, IsEmriUpdateComponent],
+  declarations: [
+    JhiLoginModalComponent,
+    HasAnyAuthorityDirective,
+    ModelUpdateComponent,
+    CariUpdateComponent,
+    IsEmriUpdateComponent,
+    ParcaTipiUpdateComponent
+  ],
   entryComponents: [JhiLoginModalComponent],
   exports: [
     OtoBakimSharedCommonModule,
@@ -14,7 +22,8 @@ import { IsEmriUpdateComponent } from 'app/entities/is-emri';
     HasAnyAuthorityDirective,
     ModelUpdateComponent,
     CariUpdateComponent,
-    IsEmriUpdateComponent
+    IsEmriUpdateComponent,
+    ParcaTipiUpdateComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

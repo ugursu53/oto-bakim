@@ -21,10 +21,13 @@
       "aciklama": "Açiklama",
       "kabulTarihi": "Kabul Tarihi",
       "tipi": "Tipi",
-      "iscilikler": "Işçilikler",
+      "iscilikler": "İşçilikler",
       "parcalar": "Parçalar",
       "arac": "Araç",
-      "cari": "Cari"
+      "cari": "Cari",
+      "parca": "Parça",
+      "iscilik": "İşçilik",
+      "fiyati": "Fiyatı"
     }
   }
 }

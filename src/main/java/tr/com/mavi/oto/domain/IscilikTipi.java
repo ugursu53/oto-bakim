@@ -27,13 +27,13 @@ public class IscilikTipi extends AbstractAuditingEntity implements Serializable 
     private static final long serialVersionUID = 1L;
 
     @Column(name = "ad")
+    @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Text)
     private String ad;
 
     @Column(name = "varsayilan_fiyat")
     private Double varsayilanFiyat;
 
     @ManyToOne
-    @JsonIgnoreProperties("iscilikTipis")
     private IscilikGrubu grubu;
 
     public IscilikTipi ad(String ad) {

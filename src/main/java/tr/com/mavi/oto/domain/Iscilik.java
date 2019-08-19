@@ -28,7 +28,6 @@ public class Iscilik implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
-    @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Keyword)
     private Long id;
 
     @Column(name = "aciklama")
@@ -42,14 +41,9 @@ public class Iscilik implements Serializable {
 
     @ManyToOne
     @JsonIgnoreProperties("isciliks")
-    private IsEmri isEmri;
-
-    @ManyToOne
-    @JsonIgnoreProperties("isciliks")
     private IscilikTipi tipi;
 
     @ManyToOne
-    @JsonIgnoreProperties("isciliks")
     private Personel personel;
 
     public Iscilik aciklama(String aciklama) {
@@ -64,11 +58,6 @@ public class Iscilik implements Serializable {
 
     public Iscilik iskonto(Double iskonto) {
         this.iskonto = iskonto;
-        return this;
-    }
-
-    public Iscilik isEmri(IsEmri isEmri) {
-        this.isEmri = isEmri;
         return this;
     }
 

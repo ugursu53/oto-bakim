@@ -26,6 +26,7 @@ public class IscilikGrubu extends AbstractAuditingEntity implements Serializable
     private static final long serialVersionUID = 1L;
 
     @Column(name = "ad")
+    @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Text)
     private String ad;
 
     public IscilikGrubu ad(String ad) {

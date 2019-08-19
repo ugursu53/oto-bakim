@@ -7,7 +7,6 @@ import { OtoBakimSharedModule } from 'app/shared';
 import {
   ParcaTipiComponent,
   ParcaTipiDetailComponent,
-  ParcaTipiUpdateComponent,
   ParcaTipiDeletePopupComponent,
   ParcaTipiDeleteDialogComponent,
   parcaTipiRoute,
@@ -18,14 +17,8 @@ const ENTITY_STATES = [...parcaTipiRoute, ...parcaTipiPopupRoute];
 
 @NgModule({
   imports: [OtoBakimSharedModule, RouterModule.forChild(ENTITY_STATES)],
-  declarations: [
-    ParcaTipiComponent,
-    ParcaTipiDetailComponent,
-    ParcaTipiUpdateComponent,
-    ParcaTipiDeleteDialogComponent,
-    ParcaTipiDeletePopupComponent
-  ],
-  entryComponents: [ParcaTipiComponent, ParcaTipiUpdateComponent, ParcaTipiDeleteDialogComponent, ParcaTipiDeletePopupComponent],
+  declarations: [ParcaTipiComponent, ParcaTipiDetailComponent, ParcaTipiDeleteDialogComponent, ParcaTipiDeletePopupComponent],
+  entryComponents: [ParcaTipiComponent, ParcaTipiDeleteDialogComponent, ParcaTipiDeletePopupComponent],
   providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

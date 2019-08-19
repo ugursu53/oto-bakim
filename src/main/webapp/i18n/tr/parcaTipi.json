@@ -2,17 +2,17 @@
   "otoBakimApp": {
     "parcaTipi": {
       "home": {
-        "title": "Parca Tipis",
-        "createLabel": "Create a new Parca Tipi",
-        "createOrEditLabel": "Create or edit a Parca Tipi",
-        "search": "Search for Parca Tipi",
-        "notFound": "No Parca Tipi found"
+        "title": "Parca Tipleri",
+        "createLabel": "Yeni Parca Tipi",
+        "createOrEditLabel": "Parca Tipi",
+        "search": "Parca Tipi Ara",
+        "notFound": "Parca Tipi bulunamadı"
       },
-      "created": "A new Parca Tipi is created with identifier {{ param }}",
-      "updated": "A Parca Tipi is updated with identifier {{ param }}",
-      "deleted": "A Parca Tipi is deleted with identifier {{ param }}",
+      "created": "Yeni Parca Tipi eklendi. id:{{ param }}",
+      "updated": "Parca Tipi güncellendi. id:{{ param }}",
+      "deleted": "Parca Tipi silindi. id:{{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Parca Tipi {{ id }}?"
+        "question": "Parca Tipi'ni silmek istediğinizden emin misiniz?. id:{{ id }}?"
       },
       "detail": {
         "title": "Parca Tipi"

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -12,6 +12,8 @@ import { ParcaTipiService } from './parca-tipi.service';
 })
 export class ParcaTipiUpdateComponent implements OnInit {
   isSaving: boolean;
+  @Input() isPopup: boolean;
+  @Output() saved = new EventEmitter();
 
   editForm = this.fb.group({
     id: [],
@@ -21,15 +23,26 @@ export class ParcaTipiUpdateComponent implements OnInit {
     aciklama: []
   });
 
+  @Input() set parcaAdi(parcaAdi: string) {
+    this.editForm.patchValue({
+      id: null,
+      ad: parcaAdi,
+      kodu: null,
+      varsayilanFiyati: null,
+      aciklama: null
+    });
+  }
+
   constructor(protected parcaTipiService: ParcaTipiService, protected activatedRoute: ActivatedRoute, private fb: FormBuilder) {}
 
   ngOnInit() {
     this.isSaving = false;
-    this.activatedRoute.data.subscribe(({ parcaTipi }) => {
-      this.updateForm(parcaTipi);
-    });
+    if (!this.isPopup) {
+      this.activatedRoute.data.subscribe(({ parcaTipi }) => {
+        this.updateForm(parcaTipi);
+      });
+    }
   }
-
   updateForm(parcaTipi: IParcaTipi) {
     this.editForm.patchValue({
       id: parcaTipi.id,
@@ -47,7 +60,7 @@ export class ParcaTipiUpdateComponent implements OnInit {
   save() {
     this.isSaving = true;
     const parcaTipi = this.createFromForm();
-    if (parcaTipi.id !== undefined) {
+    if (parcaTipi.id !== undefined && parcaTipi.id !== null) {
       this.subscribeToSaveResponse(this.parcaTipiService.update(parcaTipi));
     } else {
       this.subscribeToSaveResponse(this.parcaTipiService.create(parcaTipi));
@@ -66,12 +79,16 @@ export class ParcaTipiUpdateComponent implements OnInit {
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IParcaTipi>>) {
-    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
+    result.subscribe(res => this.onSaveSuccess(res.body), () => this.onSaveError());
   }
 
-  protected onSaveSuccess() {
+  protected onSaveSuccess(parcaTipi: any) {
     this.isSaving = false;
-    this.previousState();
+    if (this.isPopup) {
+      this.saved.emit(parcaTipi);
+    } else {
+      this.previousState();
+    }
   }
 
   protected onSaveError() {

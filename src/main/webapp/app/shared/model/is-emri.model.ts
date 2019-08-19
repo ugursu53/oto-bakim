@@ -16,8 +16,8 @@ export interface IIsEmri {
   aciklama?: string;
   kabulTarihi?: Moment;
   tipi?: IsEmriTipi;
-  isciliklers?: IIscilik[];
-  parcalars?: IParca[];
+  isciliks?: IIscilik[];
+  parcas?: IParca[];
   arac?: IArac;
   cari?: ICari;
 }

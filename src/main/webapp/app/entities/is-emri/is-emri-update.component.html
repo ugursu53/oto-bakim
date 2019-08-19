@@ -1,65 +1,144 @@
 <div class="row justify-content-center">
     <div class="col-10">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-is-emri-heading"><span jhiTranslate="otoBakimApp.isEmri.home.createOrEditLabel">11</span> (<a [routerLink]="[editForm.get('id').value ? '../../../arac' : '../../arac', editForm.get('arac').value.id, 'view' ]">{{editForm.get('arac').value.plakaNo}}</a>)</h2>
+            <h2 id="jhi-is-emri-heading"><span jhiTranslate="otoBakimApp.isEmri.home.createOrEditLabel">11</span> (<a
+                [routerLink]="[editForm.get('id').value ? '../../../arac' : '../../arac', editForm.get('arac').value.id, 'view' ]">{{editForm.get('arac').value.plakaNo}}</a>)
+            </h2>
             <jhi-alert-error></jhi-alert-error>
             <div class="row-md ui-g">
                 <div class="form-group col-lg-4 col-md-6 col-xs-12">
-                    <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.gelisZamani" for="field_gelisZamani">Gelis Zamani</label>
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.gelisZamani"
+                           for="field_gelisZamani">Gelis Zamani</label>
                     <div class="d-flex">
-                        <input id="field_gelisZamani" type="datetime-local" class="form-control" name="gelisZamani" formControlName="gelisZamani" placeholder="YYYY-MM-DD HH:mm"/>
+                        <input id="field_gelisZamani" type="datetime-local" class="form-control" name="gelisZamani"
+                               formControlName="gelisZamani" placeholder="YYYY-MM-DD HH:mm"/>
                     </div>
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.aciklama" for="field_aciklama">Aciklama</label>
                     <input type="text" class="form-control" name="aciklama" id="field_aciklama"
                            formControlName="aciklama"/>
-                    <div *ngIf="editForm.get('aciklama').invalid && (editForm.get('aciklama').dirty || editForm.get('aciklama').touched)">
+                    <div
+                        *ngIf="editForm.get('aciklama').invalid && (editForm.get('aciklama').dirty || editForm.get('aciklama').touched)">
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('aciklama').errors.required" jhiTranslate="entity.validation.required">
-                        This field is required.
+                               *ngIf="editForm.get('aciklama').errors.required"
+                               jhiTranslate="entity.validation.required">
+                            This field is required.
                         </small>
                     </div>
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-xs-12">
-                    <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.kabulTarihi" for="field_kabulTarihi">Kabul Tarihi</label>
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.kabulTarihi"
+                           for="field_kabulTarihi">Kabul Tarihi</label>
                     <div class="d-flex">
-                        <input id="field_kabulTarihi" type="datetime-local" class="form-control" name="kabulTarihi" formControlName="kabulTarihi" placeholder="YYYY-MM-DD HH:mm"/>
+                        <input id="field_kabulTarihi" type="datetime-local" class="form-control" name="kabulTarihi"
+                               formControlName="kabulTarihi" placeholder="YYYY-MM-DD HH:mm"/>
                     </div>
-                    <div *ngIf="editForm.get('kabulTarihi').invalid && (editForm.get('kabulTarihi').dirty || editForm.get('kabulTarihi').touched)">
+                    <div
+                        *ngIf="editForm.get('kabulTarihi').invalid && (editForm.get('kabulTarihi').dirty || editForm.get('kabulTarihi').touched)">
                         <small class="form-text text-danger"
-                               *ngIf="editForm.get('kabulTarihi').errors.required" jhiTranslate="entity.validation.required">
-                        This field is required.
+                               *ngIf="editForm.get('kabulTarihi').errors.required"
+                               jhiTranslate="entity.validation.required">
+                            This field is required.
                         </small>
                         <small class="form-text text-danger"
-                            [hidden]="!editForm.get('kabulTarihi').errors?.ZonedDateTimelocal" jhiTranslate="entity.validation.ZonedDateTimelocal">
+                               [hidden]="!editForm.get('kabulTarihi').errors?.ZonedDateTimelocal"
+                               jhiTranslate="entity.validation.ZonedDateTimelocal">
                             This field should be a date and time.
                         </small>
                     </div>
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-xs-12">
-                    <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.tipi" for="field_tipi">Tipi</label>
+                    <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.tipi"
+                           for="field_tipi">Tipi</label>
                     <select class="form-control" name="tipi" formControlName="tipi" id="field_tipi">
                         <option value="SIGORTA">{{'otoBakimApp.IsEmriTipi.SIGORTA' | translate}}</option>
                         <option value="BAKIM">{{'otoBakimApp.IsEmriTipi.BAKIM' | translate}}</option>
                         <option value="HASAR">{{'otoBakimApp.IsEmriTipi.HASAR' | translate}}</option>
                     </select>
-                    <div *ngIf="editForm.get('tipi').invalid && (editForm.get('tipi').dirty || editForm.get('tipi').touched)">
+                    <div
+                        *ngIf="editForm.get('tipi').invalid && (editForm.get('tipi').dirty || editForm.get('tipi').touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('tipi').errors.required" jhiTranslate="entity.validation.required">
-                        This field is required.
+                            This field is required.
                         </small>
                     </div>
                 </div>
             </div>
-            <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
-                    <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
-                </button>
-                <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-                    <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+        </form>
+        <p-fieldset class="col-12">
+            <p-header><span jhiTranslate="otoBakimApp.isEmri.parcalar">Parçalar</span></p-header>
+            <div style="display: flex">
+                <button type="button" id="new-parca-button" class="btn btn-primary float-left btn-sm"
+                        (click)="showParcaDialogToAdd()" title="{{'otoBakimApp.parca.home.createLabel' | translate}}">
+                    <fa-icon [icon]="'plus'"></fa-icon>&nbsp;<span>Ekle</span>
                 </button>
             </div>
-        </form>
+            <p-table [value]="parcas" selectionMode="single" [(selection)]="selectedParca" (onRowSelect)="onParcaRowSelect($event)">
+                <ng-template pTemplate="header">
+                    <tr>
+                        <th><span jhiTranslate="otoBakimApp.isEmri.parca">Parça</span></th>
+                        <th><span jhiTranslate="otoBakimApp.isEmri.fiyati">Fiyati</span></th>
+                    </tr>
+                </ng-template>
+                <ng-template pTemplate="body" let-rowData>
+                    <tr [pSelectableRow]="rowData">
+                        <td>{{rowData.tipi?.ad}}</td>
+                        <td>{{rowData.fiyati}}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+        </p-fieldset>
+
+        <div>
+            <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
+            </button>
+            <button id="save-entity" [disabled]="editForm.invalid || isSaving"
+                    class="btn btn-primary" form="editForm" (click)="save()">
+                <fa-icon [icon]="'save'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.save">Save</span>
+            </button>
+        </div>
     </div>
 </div>
+
+<p-dialog header="Parça" [(visible)]="parcaDialogDisplay" [responsive]="true" showEffect="fade"
+          [modal]="true"  [style]="{width: '400px'}">
+    <div *ngIf="parca">
+        <jhi-alert-error></jhi-alert-error>
+        <div class="form-group">
+            <label class="form-control-label" style="display: block" jhiTranslate="otoBakimApp.parca.tipi" for="field_parca">Tipi</label>
+            <p-autoComplete class="form-control with-new-button" id="field_parca" [size]="10"
+                            [(ngModel)]="parca.tipi" [suggestions]="filteredParcaTipis"
+                            (completeMethod)="filterParcas($event)" [size]="10" [required]="true"
+                            field="ad" (onSelect)="parcaTipiSelect(parca.tipi)">
+                <ng-template let-p pTemplate="item">
+                    {{p.ad}}
+                </ng-template>
+            </p-autoComplete>
+            <div class="autocomplete-button-div"
+                 *ngIf="isNewParcaButtonRendered(parca.tipi)">
+                <button type="button" id="jh-create-entity" class="btn btn-primary float-right btn-sm"
+                        (click)="showParcaTipiDialog()" title="{{'otoBakimApp.model.home.createLabel' | translate}}">
+                    <fa-icon [icon]="'plus'"></fa-icon>
+                </button>
+            </div>
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="otoBakimApp.parca.fiyati" for="field_fiyati">Fiyati</label>
+            <input type="number" class="form-control" name="fiyati" id="field_fiyati"
+                   [(ngModel)]="parca.fiyati" [required]="true"/>
+        </div>
+    </div>
+    <p-footer>
+        <div class="ui-dialog-buttonpane ui-helper-clearfix">
+            <button type="button" pButton icon="fa fa-close" (click)="deleteParca()" label="Sil"></button>
+            <button type="button" pButton icon="fa fa-check" (click)="saveParca()" label="Kaydet"></button>
+        </div>
+    </p-footer>
+</p-dialog>
+
+<p-dialog header="Parça Tipi" [(visible)]="parcaTipiDialogDisplay" [responsive]="true" showEffect="fade"
+          [modal]="true"  [style]="{width: '400px'}">
+    <jhi-parca-tipi-update [isPopup]="true" [parcaAdi]="query" (saved)="parcaTipiSaved($event)"></jhi-parca-tipi-update>
+</p-dialog>

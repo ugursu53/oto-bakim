@@ -1,7 +1,7 @@
 <div class="row justify-content-center">
-    <div class="col-8">
+    <div class="col-10">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-parca-tipi-heading" jhiTranslate="otoBakimApp.parcaTipi.home.createOrEditLabel">Create or edit a Parca Tipi</h2>
+            <h3 *ngIf="!isPopup" id="jhi-parca-tipi-heading" jhiTranslate="otoBakimApp.parcaTipi.home.createOrEditLabel">Create or edit a Parca Tipi</h3>
             <div>
                 <jhi-alert-error></jhi-alert-error>
                 <div class="form-group" [hidden]="!editForm.get('id').value">
@@ -38,7 +38,7 @@
 
             </div>
             <div>
-                <button type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
+                <button *ngIf="!isPopup" type="button" id="cancel-save" class="btn btn-secondary"  (click)="previousState()">
                     <fa-icon [icon]="'ban'"></fa-icon>&nbsp;<span jhiTranslate="entity.action.cancel">Cancel</span>
                 </button>
                 <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">

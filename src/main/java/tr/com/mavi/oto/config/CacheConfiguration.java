@@ -52,8 +52,8 @@ public class CacheConfiguration {
             createCache(cm, tr.com.mavi.oto.domain.Marka.class.getName() + ".modellers");
             createCache(cm, tr.com.mavi.oto.domain.Model.class.getName());
             createCache(cm, tr.com.mavi.oto.domain.IsEmri.class.getName());
-            createCache(cm, tr.com.mavi.oto.domain.IsEmri.class.getName() + ".isciliklers");
-            createCache(cm, tr.com.mavi.oto.domain.IsEmri.class.getName() + ".parcalars");
+            createCache(cm, tr.com.mavi.oto.domain.IsEmri.class.getName() + ".isciliks");
+            createCache(cm, tr.com.mavi.oto.domain.IsEmri.class.getName() + ".parcas");
             createCache(cm, tr.com.mavi.oto.domain.Iscilik.class.getName());
             createCache(cm, tr.com.mavi.oto.domain.IscilikGrubu.class.getName());
             createCache(cm, tr.com.mavi.oto.domain.IscilikTipi.class.getName());

@@ -1,23 +1,18 @@
 package tr.com.mavi.oto.domain;
 
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import io.swagger.annotations.ApiModel;
 import lombok.Getter;
 import lombok.Setter;
-import org.hibernate.annotations.Cache;
-import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
 
-import org.springframework.data.elasticsearch.annotations.FieldType;
 import java.io.Serializable;
 import java.time.Instant;
 import java.util.HashSet;
 import java.util.Set;
-import java.util.Objects;
 
 import tr.com.mavi.oto.domain.enumeration.IsEmriTipi;
 
@@ -51,13 +46,13 @@ public class IsEmri extends AbstractAuditingEntity implements Serializable {
     @Column(name = "tipi", nullable = false)
     private IsEmriTipi tipi;
 
-    @OneToMany(mappedBy = "isEmri", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnoreProperties("isEmri")
-    private Set<Iscilik> isciliklers = new HashSet<>();
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "is_emri_id")
+    private Set<Iscilik> isciliks = new HashSet<>();
 
-    @OneToMany(mappedBy = "isEmri", fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
-    @JsonIgnoreProperties("isEmri")
-    private Set<Parca> parcalars = new HashSet<>();
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "is_emri_id", unique = true)
+    private Set<Parca> parcas = new HashSet<>();
 
     @ManyToOne
     @JsonIgnoreProperties("isEmris")
@@ -88,36 +83,32 @@ public class IsEmri extends AbstractAuditingEntity implements Serializable {
     }
 
     public IsEmri isciliklers(Set<Iscilik> isciliks) {
-        this.isciliklers = isciliks;
+        this.isciliks = isciliks;
         return this;
     }
 
     public IsEmri addIscilikler(Iscilik iscilik) {
-        this.isciliklers.add(iscilik);
-        iscilik.setIsEmri(this);
+        this.isciliks.add(iscilik);
         return this;
     }
 
     public IsEmri removeIscilikler(Iscilik iscilik) {
-        this.isciliklers.remove(iscilik);
-        iscilik.setIsEmri(null);
+        this.isciliks.remove(iscilik);
         return this;
     }
 
     public IsEmri parcalars(Set<Parca> parcas) {
-        this.parcalars = parcas;
+        this.parcas = parcas;
         return this;
     }
 
     public IsEmri addParcalar(Parca parca) {
-        this.parcalars.add(parca);
-        parca.setIsEmri(this);
+        this.parcas.add(parca);
         return this;
     }
 
     public IsEmri removeParcalar(Parca parca) {
-        this.parcalars.remove(parca);
-        parca.setIsEmri(null);
+        this.parcas.remove(parca);
         return this;
     }
 
