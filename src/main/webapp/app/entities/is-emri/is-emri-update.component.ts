@@ -38,6 +38,8 @@ export class IsEmriUpdateComponent implements OnInit {
   iscilikDialogDisplay: boolean;
   iscilikTipiDialogDisplay: boolean;
   personels: IPersonel[];
+  iscilikToplamFiyat: number = 0;
+  iscilikNihaiToplamFiyat: number = 0;
 
   parcas: IParca[];
   selectedParca: IParca;
@@ -88,6 +90,7 @@ export class IsEmriUpdateComponent implements OnInit {
   updateForm(isEmri: IIsEmri) {
     this.parcas = isEmri.parcas ? isEmri.parcas : [];
     this.isciliks = isEmri.isciliks ? isEmri.isciliks : [];
+    this.iscilikFiyatlariniDuzenle();
 
     this.editForm.patchValue({
       id: isEmri.id,
@@ -96,6 +99,16 @@ export class IsEmriUpdateComponent implements OnInit {
       kabulTarihi: isEmri.kabulTarihi != null ? isEmri.kabulTarihi.format(DATE_TIME_FORMAT) : null,
       tipi: isEmri.tipi ? isEmri.tipi : isEmri.arac && isEmri.arac.aktifCari ? isEmri.arac.aktifCari.varsayilanIsEmriTipi : null,
       arac: isEmri.arac
+    });
+  }
+
+  iscilikFiyatlariniDuzenle() {
+    this.iscilikToplamFiyat = 0;
+    this.iscilikNihaiToplamFiyat = 0;
+    this.isciliks.forEach(iscilik => {
+      this.iscilikToplamFiyat = this.iscilikToplamFiyat + iscilik.fiyat;
+      iscilik.nihaiFiyat = iscilik.fiyat - iscilik.fiyat * (iscilik.iskonto ? iscilik.iskonto / 100 : 0);
+      this.iscilikNihaiToplamFiyat = this.iscilikNihaiToplamFiyat + iscilik.nihaiFiyat;
     });
   }
 
@@ -271,6 +284,7 @@ export class IsEmriUpdateComponent implements OnInit {
 
     this.isciliks = isciliks;
     this.iscilik = null;
+    this.iscilikFiyatlariniDuzenle();
     this.iscilikDialogDisplay = false;
   }
 

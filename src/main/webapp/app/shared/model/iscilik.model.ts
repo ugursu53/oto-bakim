@@ -7,6 +7,7 @@ export interface IIscilik {
   aciklama?: string;
   fiyat?: number;
   iskonto?: number;
+  nihaiFiyat?: number;
   isEmri?: IIsEmri;
   tipi?: IIscilikTipi;
   personel?: IPersonel;

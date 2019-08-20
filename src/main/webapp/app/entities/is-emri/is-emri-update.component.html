@@ -75,22 +75,37 @@
                     <fa-icon [icon]="'plus'"></fa-icon>&nbsp;<span>Ekle</span>
                 </button>
             </div>
-            <p-table [value]="isciliks" selectionMode="single" [(selection)]="selectedIscilik" (onRowSelect)="onIscilikRowSelect($event)">
+            <p-table [value]="isciliks" selectionMode="single" [(selection)]="selectedIscilik" (onRowSelect)="onIscilikRowSelect($event)"
+                     [responsive]="true">
                 <ng-template pTemplate="header">
                     <tr>
                         <th><span jhiTranslate="otoBakimApp.isEmri.iscilik">Tipi</span></th>
                         <th><span jhiTranslate="otoBakimApp.iscilik.personel">Personel</span></th>
                         <th><span jhiTranslate="otoBakimApp.iscilik.fiyat">Fiyat</span></th>
                         <th><span jhiTranslate="otoBakimApp.iscilik.iskonto">Iskonto</span></th>
+                        <th><span>Nihai Fiyat</span></th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData>
                     <tr [pSelectableRow]="rowData">
                         <td>{{rowData.tipi?.ad}}</td>
                         <td>{{rowData.personel?.ad}}</td>
-                        <td>{{rowData.fiyat}}</td>
+                        <td style="text-align: right">{{rowData.fiyat | currency : '₺'}}</td>
                         <td>{{rowData.iskonto}}</td>
+                        <td>{{rowData.nihaiFiyat}}</td>
                     </tr>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <td></td>
+                    <td style="text-align: right">Toplam:</td>
+                    <td style="text-align: right">
+                        {{iscilikToplamFiyat | currency : '₺'}}
+                    </td>
+                    <td></td>
+                    <td>
+                        <input type="number" class="form-control" name="iscilik_toplam" id="iscilik_toplam" style="text-align: right"
+                               [(ngModel)]="iscilikNihaiToplamFiyat" />
+                    </td>
                 </ng-template>
             </p-table>
         </p-fieldset>
@@ -103,7 +118,8 @@
                     <fa-icon [icon]="'plus'"></fa-icon>&nbsp;<span>Ekle</span>
                 </button>
             </div>
-            <p-table [value]="parcas" selectionMode="single" [(selection)]="selectedParca" (onRowSelect)="onParcaRowSelect($event)">
+            <p-table [value]="parcas" selectionMode="single" [(selection)]="selectedParca" (onRowSelect)="onParcaRowSelect($event)"
+                     [responsive]="true">
                 <ng-template pTemplate="header">
                     <tr>
                         <th><span jhiTranslate="otoBakimApp.isEmri.parca">Parça</span></th>
@@ -113,7 +129,7 @@
                 <ng-template pTemplate="body" let-rowData>
                     <tr [pSelectableRow]="rowData">
                         <td>{{rowData.tipi?.ad}}</td>
-                        <td>{{rowData.fiyati}}</td>
+                        <td style="text-align: right">{{rowData.fiyati | currency : '₺'}}</td>
                     </tr>
                 </ng-template>
             </p-table>
@@ -162,7 +178,7 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="otoBakimApp.iscilik.fiyat" for="field_i_fiyati">Fiyati</label>
-            <input type="number" class="form-control" name="fiyati" id="field_i_fiyati"
+            <input type="number" class="form-control" name="fiyati" id="field_i_fiyati" style="text-align: right"
                    [(ngModel)]="iscilik.fiyat" [required]="true"/>
         </div>
         <div class="form-group">
@@ -208,8 +224,8 @@
         </div>
         <div class="form-group">
             <label class="form-control-label" jhiTranslate="otoBakimApp.parca.fiyati" for="field_fiyati">Fiyati</label>
-            <input type="number" class="form-control" name="fiyati" id="field_fiyati"
-                   [(ngModel)]="parca.fiyati" [required]="true"/>
+            <input type="number" class="form-control" name="fiyati" id="field_fiyati" style="text-align: right"
+                   [(ngModel)]="parca.fiyati" [required]="true" />
         </div>
     </div>
     <p-footer>

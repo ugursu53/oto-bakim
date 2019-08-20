@@ -4,6 +4,8 @@ import { IParcaTipi } from 'app/shared/model/parca-tipi.model';
 export interface IParca {
   id?: number;
   fiyati?: number;
+  iskonto?: number;
+  nihaiFiyat?: number;
   isEmri?: IIsEmri;
   tipi?: IParcaTipi;
 }
