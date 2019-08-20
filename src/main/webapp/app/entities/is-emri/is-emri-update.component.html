@@ -92,7 +92,7 @@
                         <td>{{rowData.personel?.ad}}</td>
                         <td style="text-align: right">{{rowData.fiyat | currency : '₺'}}</td>
                         <td>{{rowData.iskonto}}</td>
-                        <td>{{rowData.nihaiFiyat}}</td>
+                        <td style="text-align: right">{{rowData.nihaiFiyat | currency : '₺'}}</td>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="footer">
@@ -133,7 +133,7 @@
                         <td>{{rowData.tipi?.ad}}</td>
                         <td style="text-align: right">{{rowData.fiyati | currency : '₺'}}</td>
                         <td>{{rowData.iskonto}}</td>
-                        <td>{{rowData.nihaiFiyat}}</td>
+                        <td style="text-align: right">{{rowData.nihaiFiyat | currency : '₺'}}</td>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="footer">
