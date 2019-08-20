@@ -4,6 +4,7 @@ import { ModelUpdateComponent } from 'app/entities/model';
 import { CariUpdateComponent } from 'app/entities/cari';
 import { IsEmriUpdateComponent } from 'app/entities/is-emri';
 import { ParcaTipiUpdateComponent } from 'app/entities/parca-tipi';
+import { IscilikTipiUpdateComponent } from 'app/entities/iscilik-tipi';
 
 @NgModule({
   imports: [OtoBakimSharedCommonModule],
@@ -13,7 +14,8 @@ import { ParcaTipiUpdateComponent } from 'app/entities/parca-tipi';
     ModelUpdateComponent,
     CariUpdateComponent,
     IsEmriUpdateComponent,
-    ParcaTipiUpdateComponent
+    ParcaTipiUpdateComponent,
+    IscilikTipiUpdateComponent
   ],
   entryComponents: [JhiLoginModalComponent],
   exports: [
@@ -23,7 +25,8 @@ import { ParcaTipiUpdateComponent } from 'app/entities/parca-tipi';
     ModelUpdateComponent,
     CariUpdateComponent,
     IsEmriUpdateComponent,
-    ParcaTipiUpdateComponent
+    ParcaTipiUpdateComponent,
+    IscilikTipiUpdateComponent
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

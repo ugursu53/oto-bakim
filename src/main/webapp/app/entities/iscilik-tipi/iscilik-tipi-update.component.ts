@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
@@ -16,6 +16,8 @@ import { IscilikGrubuService } from 'app/entities/iscilik-grubu';
 })
 export class IscilikTipiUpdateComponent implements OnInit {
   isSaving: boolean;
+  @Input() isPopup: boolean;
+  @Output() saved = new EventEmitter();
 
   iscilikgrubus: IIscilikGrubu[];
 
@@ -25,6 +27,15 @@ export class IscilikTipiUpdateComponent implements OnInit {
     varsayilanFiyat: [],
     grubu: []
   });
+
+  @Input() set iscilikAdi(iscilikAdi: string) {
+    this.editForm.patchValue({
+      id: null,
+      ad: iscilikAdi,
+      varsayilanFiyati: null,
+      grubu: null
+    });
+  }
 
   constructor(
     protected jhiAlertService: JhiAlertService,
@@ -36,9 +47,12 @@ export class IscilikTipiUpdateComponent implements OnInit {
 
   ngOnInit() {
     this.isSaving = false;
-    this.activatedRoute.data.subscribe(({ iscilikTipi }) => {
-      this.updateForm(iscilikTipi);
-    });
+    if (!this.isPopup) {
+      this.activatedRoute.data.subscribe(({ iscilikTipi }) => {
+        this.updateForm(iscilikTipi);
+      });
+    }
+
     this.iscilikGrubuService
       .query()
       .pipe(
@@ -64,7 +78,7 @@ export class IscilikTipiUpdateComponent implements OnInit {
   save() {
     this.isSaving = true;
     const iscilikTipi = this.createFromForm();
-    if (iscilikTipi.id !== undefined) {
+    if (iscilikTipi.id !== undefined && iscilikTipi.id !== null) {
       this.subscribeToSaveResponse(this.iscilikTipiService.update(iscilikTipi));
     } else {
       this.subscribeToSaveResponse(this.iscilikTipiService.create(iscilikTipi));
@@ -82,12 +96,16 @@ export class IscilikTipiUpdateComponent implements OnInit {
   }
 
   protected subscribeToSaveResponse(result: Observable<HttpResponse<IIscilikTipi>>) {
-    result.subscribe(() => this.onSaveSuccess(), () => this.onSaveError());
+    result.subscribe(res => this.onSaveSuccess(res.body), () => this.onSaveError());
   }
 
-  protected onSaveSuccess() {
+  protected onSaveSuccess(iscilikTipi: any) {
     this.isSaving = false;
-    this.previousState();
+    if (this.isPopup) {
+      this.saved.emit(iscilikTipi);
+    } else {
+      this.previousState();
+    }
   }
 
   protected onSaveError() {

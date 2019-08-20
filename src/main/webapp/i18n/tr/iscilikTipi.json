@@ -2,23 +2,23 @@
   "otoBakimApp": {
     "iscilikTipi": {
       "home": {
-        "title": "Iscilik Tipis",
-        "createLabel": "Create a new Iscilik Tipi",
-        "createOrEditLabel": "Create or edit a Iscilik Tipi",
-        "search": "Search for Iscilik Tipi",
-        "notFound": "No Iscilik Tipi found"
+        "title": "İşçilik Tipleri",
+        "createLabel": "Yeni İşçilik Tipi",
+        "createOrEditLabel": "İşçilik Tipi",
+        "search": "İşçilik Tipi ara",
+        "notFound": "İşçilik Tipi bulunamadı"
       },
-      "created": "A new Iscilik Tipi is created with identifier {{ param }}",
-      "updated": "A Iscilik Tipi is updated with identifier {{ param }}",
-      "deleted": "A Iscilik Tipi is deleted with identifier {{ param }}",
+      "created": "Yeni İşçilik Tipi eklendi. id:{{ param }}",
+      "updated": "İşçilik Tipi güncellendi. id:{{ param }}",
+      "deleted": "İşçilik Tipi silindi. id:{{ param }}",
       "delete": {
-        "question": "Are you sure you want to delete Iscilik Tipi {{ id }}?"
+        "question": "İşçilik Tipi'ni silmek istediğinizden emin misiniz? id:{{ id }}?"
       },
       "detail": {
-        "title": "Iscilik Tipi"
+        "title": "İşçilik Tipi"
       },
       "ad": "Ad",
-      "varsayilanFiyat": "Varsayilan Fiyat",
+      "varsayilanFiyat": "Varsayılan Fiyat",
       "grubu": "Grubu"
     }
   }

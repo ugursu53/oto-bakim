@@ -19,7 +19,11 @@
       },
       "fiyati": "Fiyati",
       "isEmri": "Is Emri",
-      "tipi": "Tipi"
+      "tipi": "Tipi",
+      "error": {
+        "tipi": "Parça Tipi seçmelisiniz",
+        "fiyati": "Parça fiyatı girmelisniz"
+      }
     }
   }
 }

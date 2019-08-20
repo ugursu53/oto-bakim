@@ -7,7 +7,6 @@ import { OtoBakimSharedModule } from 'app/shared';
 import {
   IscilikTipiComponent,
   IscilikTipiDetailComponent,
-  IscilikTipiUpdateComponent,
   IscilikTipiDeletePopupComponent,
   IscilikTipiDeleteDialogComponent,
   iscilikTipiRoute,
@@ -18,14 +17,8 @@ const ENTITY_STATES = [...iscilikTipiRoute, ...iscilikTipiPopupRoute];
 
 @NgModule({
   imports: [OtoBakimSharedModule, RouterModule.forChild(ENTITY_STATES)],
-  declarations: [
-    IscilikTipiComponent,
-    IscilikTipiDetailComponent,
-    IscilikTipiUpdateComponent,
-    IscilikTipiDeleteDialogComponent,
-    IscilikTipiDeletePopupComponent
-  ],
-  entryComponents: [IscilikTipiComponent, IscilikTipiUpdateComponent, IscilikTipiDeleteDialogComponent, IscilikTipiDeletePopupComponent],
+  declarations: [IscilikTipiComponent, IscilikTipiDetailComponent, IscilikTipiDeleteDialogComponent, IscilikTipiDeletePopupComponent],
+  entryComponents: [IscilikTipiComponent, IscilikTipiDeleteDialogComponent, IscilikTipiDeletePopupComponent],
   providers: [{ provide: JhiLanguageService, useClass: JhiLanguageService }],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })

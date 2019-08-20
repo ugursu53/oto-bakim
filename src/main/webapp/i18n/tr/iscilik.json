@@ -2,9 +2,9 @@
   "otoBakimApp": {
     "iscilik": {
       "home": {
-        "title": "Isciliks",
-        "createLabel": "Create a new Iscilik",
-        "createOrEditLabel": "Create or edit a Iscilik",
+        "title": "İşcilikler",
+        "createLabel": "Yeni İşcilik",
+        "createOrEditLabel": "İşcilik",
         "search": "Search for Iscilik",
         "notFound": "No Iscilik found"
       },
@@ -22,7 +22,11 @@
       "iskonto": "Iskonto",
       "isEmri": "Is Emri",
       "tipi": "Tipi",
-      "personel": "Personel"
+      "personel": "Personel",
+      "error": {
+        "tipi": "İşçilik Tipi seçmelisiniz",
+        "fiyati": "İşçilik fiyatı girmelisniz"
+      }
     }
   }
 }

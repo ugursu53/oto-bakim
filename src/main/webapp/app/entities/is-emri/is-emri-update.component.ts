@@ -1,22 +1,24 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
-import { filter, map } from 'rxjs/operators';
 import * as moment from 'moment';
 import { DATE_TIME_FORMAT } from 'app/shared/constants/input.constants';
 import { JhiAlertService } from 'ng-jhipster';
 import { IIsEmri, IsEmri } from 'app/shared/model/is-emri.model';
 import { IsEmriService } from './is-emri.service';
 import { IArac } from 'app/shared/model/arac.model';
-import { IParca, Parca } from 'app/shared/model/parca.model';
+import { IParca } from 'app/shared/model/parca.model';
 import { IIscilik } from 'app/shared/model/iscilik.model';
 import { IModel } from 'app/shared/model/model.model';
 import { IParcaTipi } from 'app/shared/model/parca-tipi.model';
 import { ParcaTipiService } from 'app/entities/parca-tipi';
 import { IscilikTipiService } from 'app/entities/iscilik-tipi';
 import { IIscilikTipi } from 'app/shared/model/iscilik-tipi.model';
+import { IPersonel } from 'app/shared/model/personel.model';
+import { filter, map } from 'rxjs/operators';
+import { PersonelService } from 'app/entities/personel';
 
 @Component({
   selector: 'jhi-is-emri-update',
@@ -30,11 +32,12 @@ export class IsEmriUpdateComponent implements OnInit {
   newOne: boolean;
   query: string;
   isciliks: IIscilik[];
-  selectedIsilik: IIscilik;
+  selectedIscilik: IIscilik;
   iscilik: IIscilik;
   filteredIscilikTipis: IIscilikTipi[];
   iscilikDialogDisplay: boolean;
   iscilikTipiDialogDisplay: boolean;
+  personels: IPersonel[];
 
   parcas: IParca[];
   selectedParca: IParca;
@@ -58,7 +61,8 @@ export class IsEmriUpdateComponent implements OnInit {
     protected activatedRoute: ActivatedRoute,
     private fb: FormBuilder,
     private parcaTipiService: ParcaTipiService,
-    private iscilikTipiService: IscilikTipiService
+    private iscilikTipiService: IscilikTipiService,
+    private personelService: PersonelService
   ) {}
 
   ngOnInit() {
@@ -72,6 +76,13 @@ export class IsEmriUpdateComponent implements OnInit {
       isEmri.arac = this.arac;
       this.updateForm(isEmri);
     }
+    this.personelService
+      .query({ size: 20, sort: ['ad,asc'] })
+      .pipe(
+        filter((mayBeOk: HttpResponse<IPersonel[]>) => mayBeOk.ok),
+        map((response: HttpResponse<IPersonel[]>) => response.body)
+      )
+      .subscribe((res: IPersonel[]) => (this.personels = res), (res: HttpErrorResponse) => this.onError(res.message));
   }
 
   updateForm(isEmri: IIsEmri) {
@@ -152,11 +163,11 @@ export class IsEmriUpdateComponent implements OnInit {
 
   saveParca() {
     if (!this.parca.tipi || !this.parca.tipi.id) {
-      this.onError('Parça seçmelisiniz.');
+      this.onError('otoBakimApp.parca.error.tipi');
       return;
     }
     if (!this.parca.fiyati) {
-      this.onError('Fiyatı girmelisiniz.');
+      this.onError('otoBakimApp.parca.error.fiyati');
       return;
     }
 
@@ -241,11 +252,11 @@ export class IsEmriUpdateComponent implements OnInit {
 
   saveIscilik() {
     if (!this.iscilik.tipi || !this.iscilik.tipi.id) {
-      this.onError('İşçilik seçmelisiniz.');
+      this.onError('otoBakimApp.iscilik.error.tipi');
       return;
     }
-    if (!this.iscilik.fiyati) {
-      this.onError('Fiyatı girmelisiniz.');
+    if (!this.iscilik.fiyat) {
+      this.onError('otoBakimApp.iscilik.error.fiyati');
       return;
     }
 
