@@ -46,6 +46,9 @@ public class IsEmri extends AbstractAuditingEntity implements Serializable {
     @Column(name = "tipi", nullable = false)
     private IsEmriTipi tipi;
 
+    @Column(name = "fiyat")
+    private Double fiyat;
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "is_emri_id")
     private Set<Iscilik> isciliks = new HashSet<>();

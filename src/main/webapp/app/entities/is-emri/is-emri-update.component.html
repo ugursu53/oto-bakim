@@ -104,7 +104,7 @@
                     <td></td>
                     <td>
                         <input type="number" class="form-control" name="iscilik_toplam" id="iscilik_toplam" style="text-align: right"
-                               [(ngModel)]="iscilikNihaiToplamFiyat" />
+                               [(ngModel)]="iscilikNihaiToplamFiyat" (blur)="toplamFiyatBelirle()" />
                     </td>
                 </ng-template>
             </p-table>
@@ -124,16 +124,37 @@
                     <tr>
                         <th><span jhiTranslate="otoBakimApp.isEmri.parca">Parça</span></th>
                         <th><span jhiTranslate="otoBakimApp.isEmri.fiyati">Fiyati</span></th>
+                        <th><span jhiTranslate="otoBakimApp.iscilik.iskonto">Iskonto</span></th>
+                        <th><span>Nihai Fiyat</span></th>
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="body" let-rowData>
                     <tr [pSelectableRow]="rowData">
                         <td>{{rowData.tipi?.ad}}</td>
                         <td style="text-align: right">{{rowData.fiyati | currency : '₺'}}</td>
+                        <td>{{rowData.iskonto}}</td>
+                        <td>{{rowData.nihaiFiyat}}</td>
                     </tr>
+                </ng-template>
+                <ng-template pTemplate="footer">
+                    <td style="text-align: right">Toplam:</td>
+                    <td style="text-align: right">
+                        {{parcaToplamFiyat | currency : '₺'}}
+                    </td>
+                    <td></td>
+                    <td>
+                        <input type="number" class="form-control" name="parca_toplam" id="parca_toplam" style="text-align: right"
+                               [(ngModel)]="parcaNihaiToplamFiyat" (blur)="toplamFiyatBelirle()" />
+                    </td>
                 </ng-template>
             </p-table>
         </p-fieldset>
+
+        <div class="form-group col-lg-4 col-md-6 col-xs-12">
+           <label class="form-control-label" for="toplam_fiyat">Toplam Fiyat</label>
+           <input type="number" class="form-control" name="toplam_fiyat" id="toplam_fiyat" style="text-align: right"
+               [(ngModel)]="toplamFiyat" [required]="true"/>
+        </div>
 
         <div>
             <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
@@ -226,6 +247,11 @@
             <label class="form-control-label" jhiTranslate="otoBakimApp.parca.fiyati" for="field_fiyati">Fiyati</label>
             <input type="number" class="form-control" name="fiyati" id="field_fiyati" style="text-align: right"
                    [(ngModel)]="parca.fiyati" [required]="true" />
+        </div>
+        <div class="form-group">
+            <label class="form-control-label" jhiTranslate="otoBakimApp.iscilik.iskonto" for="field_parca_iskonto">Iskonto</label>
+            <input type="number" class="form-control" name="piskonto" id="field_parca_iskonto"
+                   [(ngModel)]="parca.iskonto"/>
         </div>
     </div>
     <p-footer>

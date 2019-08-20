@@ -136,4 +136,14 @@
             <column name="cari_id" type="bigint"/>
         </addColumn>
     </changeSet>
+    <changeSet id="20190815000001-93" author="usuicmez">
+        <addColumn tableName="parca">
+            <column name="iskonto" type="double">
+            </column>
+        </addColumn>
+        <addColumn tableName="is_emri">
+            <column name="fiyat" type="double">
+            </column>
+        </addColumn>
+    </changeSet>
 </databaseChangeLog>

@@ -27,6 +27,9 @@ public class Parca implements Serializable {
     @Column(name = "fiyati")
     private Double fiyati;
 
+    @Column(name = "iskonto")
+    private Double iskonto;
+
     @ManyToOne
     private ParcaTipi tipi;
 

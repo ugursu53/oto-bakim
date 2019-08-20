@@ -16,6 +16,7 @@ export interface IIsEmri {
   aciklama?: string;
   kabulTarihi?: Moment;
   tipi?: IsEmriTipi;
+  fiyat?: number;
   isciliks?: IIscilik[];
   parcas?: IParca[];
   arac?: IArac;
@@ -29,6 +30,7 @@ export class IsEmri implements IIsEmri {
     public aciklama?: string,
     public kabulTarihi?: Moment,
     public tipi?: IsEmriTipi,
+    public fiyat?: number,
     public isciliks?: IIscilik[],
     public parcas?: IParca[],
     public arac?: IArac,

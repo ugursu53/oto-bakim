@@ -38,8 +38,8 @@ export class IsEmriUpdateComponent implements OnInit {
   iscilikDialogDisplay: boolean;
   iscilikTipiDialogDisplay: boolean;
   personels: IPersonel[];
-  iscilikToplamFiyat: number = 0;
-  iscilikNihaiToplamFiyat: number = 0;
+  iscilikToplamFiyat = 0;
+  iscilikNihaiToplamFiyat = 0;
 
   parcas: IParca[];
   selectedParca: IParca;
@@ -47,6 +47,10 @@ export class IsEmriUpdateComponent implements OnInit {
   filteredParcaTipis: IParcaTipi[];
   parcaDialogDisplay: boolean;
   parcaTipiDialogDisplay: boolean;
+  parcaToplamFiyat = 0;
+  parcaNihaiToplamFiyat = 0;
+
+  toplamFiyat = 0;
 
   editForm = this.fb.group({
     id: [],
@@ -89,8 +93,10 @@ export class IsEmriUpdateComponent implements OnInit {
 
   updateForm(isEmri: IIsEmri) {
     this.parcas = isEmri.parcas ? isEmri.parcas : [];
+    this.parcaFiyatlariniDuzenle();
     this.isciliks = isEmri.isciliks ? isEmri.isciliks : [];
     this.iscilikFiyatlariniDuzenle();
+    this.toplamFiyat = isEmri.fiyat;
 
     this.editForm.patchValue({
       id: isEmri.id,
@@ -99,16 +105,6 @@ export class IsEmriUpdateComponent implements OnInit {
       kabulTarihi: isEmri.kabulTarihi != null ? isEmri.kabulTarihi.format(DATE_TIME_FORMAT) : null,
       tipi: isEmri.tipi ? isEmri.tipi : isEmri.arac && isEmri.arac.aktifCari ? isEmri.arac.aktifCari.varsayilanIsEmriTipi : null,
       arac: isEmri.arac
-    });
-  }
-
-  iscilikFiyatlariniDuzenle() {
-    this.iscilikToplamFiyat = 0;
-    this.iscilikNihaiToplamFiyat = 0;
-    this.isciliks.forEach(iscilik => {
-      this.iscilikToplamFiyat = this.iscilikToplamFiyat + iscilik.fiyat;
-      iscilik.nihaiFiyat = iscilik.fiyat - iscilik.fiyat * (iscilik.iskonto ? iscilik.iskonto / 100 : 0);
-      this.iscilikNihaiToplamFiyat = this.iscilikNihaiToplamFiyat + iscilik.nihaiFiyat;
     });
   }
 
@@ -136,6 +132,7 @@ export class IsEmriUpdateComponent implements OnInit {
       kabulTarihi:
         this.editForm.get(['kabulTarihi']).value !== null ? moment(this.editForm.get(['kabulTarihi']).value, DATE_TIME_FORMAT) : undefined,
       tipi: this.editForm.get(['tipi']).value,
+      fiyat: this.toplamFiyat,
       arac: this.editForm.get(['arac']).value,
       isciliks: this.isciliks,
       parcas: this.parcas
@@ -195,6 +192,7 @@ export class IsEmriUpdateComponent implements OnInit {
 
     this.parcas = parcas;
     this.parca = null;
+    this.parcaFiyatlariniDuzenle();
     this.parcaDialogDisplay = false;
   }
 
@@ -202,6 +200,7 @@ export class IsEmriUpdateComponent implements OnInit {
     const index = this.parcas.indexOf(this.selectedParca);
     this.parcas = this.parcas.filter((val, i) => i !== index);
     this.parca = null;
+    this.parcaFiyatlariniDuzenle();
     this.parcaDialogDisplay = false;
   }
 
@@ -249,7 +248,22 @@ export class IsEmriUpdateComponent implements OnInit {
     this.parca.fiyati = parcaTipi.varsayilanFiyati;
   }
 
+  parcaFiyatlariniDuzenle() {
+    this.parcaToplamFiyat = 0;
+    this.parcaNihaiToplamFiyat = 0;
+    this.parcas.forEach(parca => {
+      this.parcaToplamFiyat = this.parcaToplamFiyat + parca.fiyati;
+      parca.nihaiFiyat = parca.fiyati - parca.fiyati * (parca.iskonto ? parca.iskonto / 100 : 0);
+      this.parcaNihaiToplamFiyat = this.parcaNihaiToplamFiyat + parca.nihaiFiyat;
+    });
+    this.toplamFiyatBelirle();
+  }
+
   // parca işlem bitiş
+
+  toplamFiyatBelirle() {
+    this.toplamFiyat = this.parcaNihaiToplamFiyat + this.iscilikNihaiToplamFiyat;
+  }
 
   // iscilik Islem baş
 
@@ -292,6 +306,7 @@ export class IsEmriUpdateComponent implements OnInit {
     const index = this.isciliks.indexOf(this.selectedIscilik);
     this.isciliks = this.isciliks.filter((val, i) => i !== index);
     this.iscilik = null;
+    this.iscilikFiyatlariniDuzenle();
     this.iscilikDialogDisplay = false;
   }
 
@@ -337,5 +352,16 @@ export class IsEmriUpdateComponent implements OnInit {
 
   iscilikTipiSelect(iscilikTipi: IIscilikTipi) {
     this.iscilik.fiyat = iscilikTipi.varsayilanFiyat;
+  }
+
+  private iscilikFiyatlariniDuzenle() {
+    this.iscilikToplamFiyat = 0;
+    this.iscilikNihaiToplamFiyat = 0;
+    this.isciliks.forEach(iscilik => {
+      this.iscilikToplamFiyat = this.iscilikToplamFiyat + iscilik.fiyat;
+      iscilik.nihaiFiyat = iscilik.fiyat - iscilik.fiyat * (iscilik.iskonto ? iscilik.iskonto / 100 : 0);
+      this.iscilikNihaiToplamFiyat = this.iscilikNihaiToplamFiyat + iscilik.nihaiFiyat;
+    });
+    this.toplamFiyatBelirle();
   }
 }
