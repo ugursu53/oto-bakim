@@ -29,8 +29,8 @@ export class IsEmri implements IIsEmri {
     public aciklama?: string,
     public kabulTarihi?: Moment,
     public tipi?: IsEmriTipi,
-    public isciliklers?: IIscilik[],
-    public parcalars?: IParca[],
+    public isciliks?: IIscilik[],
+    public parcas?: IParca[],
     public arac?: IArac,
     public cari?: ICari
   ) {}

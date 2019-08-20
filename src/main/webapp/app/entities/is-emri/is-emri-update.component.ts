@@ -86,14 +86,14 @@ export class IsEmriUpdateComponent implements OnInit {
   }
 
   updateForm(isEmri: IIsEmri) {
-    this.parcas = isEmri.parcas;
-    this.isciliks = isEmri.isciliks;
+    this.parcas = isEmri.parcas ? isEmri.parcas : [];
+    this.isciliks = isEmri.isciliks ? isEmri.isciliks : [];
 
     this.editForm.patchValue({
       id: isEmri.id,
-      gelisZamani: isEmri.gelisZamani !== null ? isEmri.gelisZamani.format(DATE_TIME_FORMAT) : null,
+      gelisZamani: isEmri.gelisZamani != null ? isEmri.gelisZamani.format(DATE_TIME_FORMAT) : null,
       aciklama: isEmri.aciklama,
-      kabulTarihi: isEmri.kabulTarihi !== null ? isEmri.kabulTarihi.format(DATE_TIME_FORMAT) : null,
+      kabulTarihi: isEmri.kabulTarihi != null ? isEmri.kabulTarihi.format(DATE_TIME_FORMAT) : null,
       tipi: isEmri.tipi ? isEmri.tipi : isEmri.arac && isEmri.arac.aktifCari ? isEmri.arac.aktifCari.varsayilanIsEmriTipi : null,
       arac: isEmri.arac
     });
@@ -123,7 +123,9 @@ export class IsEmriUpdateComponent implements OnInit {
       kabulTarihi:
         this.editForm.get(['kabulTarihi']).value !== null ? moment(this.editForm.get(['kabulTarihi']).value, DATE_TIME_FORMAT) : undefined,
       tipi: this.editForm.get(['tipi']).value,
-      arac: this.editForm.get(['arac']).value
+      arac: this.editForm.get(['arac']).value,
+      isciliks: this.isciliks,
+      parcas: this.parcas
     };
   }
 
