@@ -3,6 +3,7 @@ import { IParcaTipi } from 'app/shared/model/parca-tipi.model';
 
 export interface IParca {
   id?: number;
+  alisFiyati?: number;
   fiyati?: number;
   iskonto?: number;
   nihaiFiyat?: number;
@@ -11,5 +12,5 @@ export interface IParca {
 }
 
 export class Parca implements IParca {
-  constructor(public id?: number, public fiyati?: number, public isEmri?: IIsEmri, public tipi?: IParcaTipi) {}
+  constructor(public id?: number, public alisFiyati?: number, public fiyati?: number, public isEmri?: IIsEmri, public tipi?: IParcaTipi) {}
 }

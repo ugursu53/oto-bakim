@@ -9,14 +9,6 @@
             Arac Kabul
             </span>
         </button>
-        <button id="jh-create-entity" class="btn btn-primary float-right jh-create-entity create-arac"
-                [routerLink]="['/arac/new']"
-                [queryParams]="{'query': currentSearch}">
-            <fa-icon [icon]="'plus'"></fa-icon>
-            <span class="hidden-sm-down" jhiTranslate="otoBakimApp.arac.home.createLabel">
-            Create new Arac
-            </span>
-        </button>
     </h2>
     <jhi-alert></jhi-alert>
     <div class="row">
@@ -104,7 +96,8 @@
                 </td>
                 <td class="text-right">
                     <div class="btn-group">
-                        <button type="submit" title="{{'otoBakimApp.isEmri.home.createLabel' | translate}}"
+                        <button *ngIf="arac.aktifCari"
+                                type="submit" title="{{'otoBakimApp.isEmri.home.createLabel' | translate}}"
                                 [routerLink]="['/is-emri/new']"
                                 [queryParams]="{'aracId': arac.id}"
                                 class="btn btn-dark btn-sm">

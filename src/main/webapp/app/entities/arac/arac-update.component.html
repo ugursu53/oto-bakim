@@ -1,15 +1,9 @@
 <div class="row justify-content-center">
     <div class="col-10">
         <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-arac-heading" jhiTranslate="otoBakimApp.arac.home.createOrEditLabel">Create or edit a Arac</h2>
+            <h2 *ngIf="!isAltComponent" id="jhi-arac-heading" jhiTranslate="otoBakimApp.arac.home.createOrEditLabel">Create or edit a Arac</h2>
             <jhi-alert-error></jhi-alert-error>
             <div class="row-md ui-g">
-        <!--        <div class="form-group" [hidden]="!editForm.get('id').value">
-                    <label for="id" jhiTranslate="global.field.id">ID</label>
-                    <input type="text" class="form-control" id="id" name="id" formControlName="id"
-                        readonly />
-              </div>
--->
                 <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.plakaNo" for="field_plakaNo">Plaka No</label>
                     <input type="text" class="form-control" name="plakaNo" id="field_plakaNo"
@@ -26,10 +20,12 @@
                     <input type="number" class="form-control" name="modelYili" id="field_modelYili"
                            formControlName="modelYili"/>
                     <div *ngIf="editForm.get('modelYili').invalid && (editForm.get('modelYili').dirty || editForm.get('modelYili').touched)">
+                        <!--
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('modelYili').errors.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
+                        -->
                         <small class="form-text text-danger"
                             [hidden]="!editForm.get('modelYili')?.errors?.number" jhiTranslate="entity.validation.number">
                             This field should be a number.
@@ -50,12 +46,14 @@
                         <option value="HYBRID">{{'otoBakimApp.YakitTuru.HYBRID' | translate}}</option>
                         <option value="ELEKTRIK">{{'otoBakimApp.YakitTuru.ELEKTRIK' | translate}}</option>
                     </select>
+                    <!--
                     <div *ngIf="editForm.get('yakitTuru').invalid && (editForm.get('yakitTuru').dirty || editForm.get('yakitTuru').touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('yakitTuru').errors.required" jhiTranslate="entity.validation.required">
                         This field is required.
                         </small>
                     </div>
+                    -->
                 </div>
                 <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.vitesTuru" for="field_vitesTuru">Vites Turu</label>
@@ -104,7 +102,7 @@
                 <div class="form-group col-lg-4 col-md-6 col-xs-12">
                     <label class="form-control-label" jhiTranslate="otoBakimApp.arac.model" for="field_model">Model</label>
                     <p-autoComplete class="form-control with-new-button" id="field_model" name="model" formControlName="model" [suggestions]="filteredModels"
-                                    (completeMethod)="filterModels($event)" [size]="10" [required]="true"
+                                    (completeMethod)="filterModels($event)" [size]="10"
                                     field="ad">
                         <ng-template let-model pTemplate="item">
                             {{!model.marka ? model.ad : model.marka.ad + ', ' + model.ad}}
@@ -120,12 +118,14 @@
                             <fa-icon [icon]="'plus'"></fa-icon>
                         </button>
                     </div>
+                    <!--
                     <div *ngIf="editForm.get('model').invalid && (editForm.get('model').dirty || editForm.get('model').touched)">
                         <small class="form-text text-danger"
                                *ngIf="editForm.get('model').errors.required" jhiTranslate="entity.validation.required">
                             This field is required.
                         </small>
                     </div>
+                    -->
                 </div>
             </div>
             <div>

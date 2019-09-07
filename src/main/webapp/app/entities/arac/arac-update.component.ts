@@ -27,10 +27,10 @@ export class AracUpdateComponent implements OnInit {
   editForm = this.fb.group({
     id: [],
     plakaNo: [null, [Validators.required]],
-    modelYili: [null, [Validators.required]],
+    modelYili: [],
     rengi: [],
-    yakitTuru: [null, [Validators.required]],
-    vitesTuru: [null, [Validators.required]],
+    yakitTuru: [],
+    vitesTuru: [],
     motorNo: [],
     sasiNo: [],
     kullanimSekli: [],

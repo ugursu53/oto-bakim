@@ -20,7 +20,7 @@
             </column>
 
             <column name="model_yili" type="integer">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
 
             <column name="rengi" type="varchar(255)">
@@ -28,11 +28,11 @@
             </column>
 
             <column name="yakit_turu" type="varchar(255)">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
 
             <column name="vites_turu" type="varchar(255)">
-                <constraints nullable="false" />
+                <constraints nullable="true" />
             </column>
 
             <column name="motor_no" type="varchar(255)">

@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 import java.io.Serializable;
 
 /**
@@ -24,12 +25,18 @@ public class Parca implements Serializable {
     @SequenceGenerator(name = "sequenceGenerator")
     private Long id;
 
+    @NotNull
+    @Column(name = "alis_fiyati")
+    private Double alisFiyati;
+
+    @NotNull
     @Column(name = "fiyati")
     private Double fiyati;
 
     @Column(name = "iskonto")
     private Double iskonto;
 
+    @NotNull
     @ManyToOne
     private ParcaTipi tipi;
 

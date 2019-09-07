@@ -49,6 +49,9 @@ public class IsEmri extends AbstractAuditingEntity implements Serializable {
     @Column(name = "fiyat")
     private Double fiyat;
 
+    @Column(name = "iskonto")
+    private Double iskonto;
+
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "is_emri_id")
     private Set<Iscilik> isciliks = new HashSet<>();
@@ -57,6 +60,7 @@ public class IsEmri extends AbstractAuditingEntity implements Serializable {
     @JoinColumn(name = "is_emri_id", unique = true)
     private Set<Parca> parcas = new HashSet<>();
 
+    @NotNull
     @ManyToOne
     @JsonIgnoreProperties("isEmris")
     private Arac arac;

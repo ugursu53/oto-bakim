@@ -8,6 +8,7 @@ import org.hibernate.annotations.Cache;
 import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotNull;
 
 import org.springframework.data.elasticsearch.annotations.FieldType;
 import java.io.Serializable;
@@ -33,12 +34,14 @@ public class Iscilik implements Serializable {
     @Column(name = "aciklama")
     private String aciklama;
 
+    @NotNull
     @Column(name = "fiyat")
     private Double fiyat;
 
     @Column(name = "iskonto")
     private Double iskonto;
 
+    @NotNull
     @ManyToOne
     @JsonIgnoreProperties("isciliks")
     private IscilikTipi tipi;

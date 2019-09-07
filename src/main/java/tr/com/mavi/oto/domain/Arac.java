@@ -46,21 +46,18 @@ public class Arac extends AbstractAuditingEntity implements Serializable {
     @org.springframework.data.elasticsearch.annotations.Field(type = FieldType.Keyword)
     private String plakaNo;
 
-    @NotNull
-    @Column(name = "model_yili", nullable = false)
+    @Column(name = "model_yili")
     private Integer modelYili;
 
     @Column(name = "rengi")
     private String rengi;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "yakit_turu", nullable = false)
+    @Column(name = "yakit_turu")
     private YakitTuru yakitTuru;
 
-    @NotNull
     @Enumerated(EnumType.STRING)
-    @Column(name = "vites_turu", nullable = false)
+    @Column(name = "vites_turu")
     private VitesTuru vitesTuru;
 
     @Column(name = "motor_no")

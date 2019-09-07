@@ -5,7 +5,7 @@ import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { filter, map } from 'rxjs/operators';
 import { JhiAlertService } from 'ng-jhipster';
-import { ICari, Cari } from 'app/shared/model/cari.model';
+import { ICari, Cari, CariTipi } from 'app/shared/model/cari.model';
 import { CariService } from './cari.service';
 import { Hesap, IHesap } from 'app/shared/model/hesap.model';
 
@@ -56,7 +56,10 @@ export class CariUpdateComponent implements OnInit {
   ngOnInit() {
     this.isSaving = false;
     if (this.isAltComponent) {
-      this.updateForm(new Cari());
+      const cari = new Cari();
+      cari.tipi = CariTipi.MUSTERI;
+      cari.aktif = true;
+      this.updateForm(cari);
     } else {
       this.activatedRoute.data.subscribe(({ cari }) => {
         this.updateForm(cari);
@@ -183,12 +186,6 @@ export class CariUpdateComponent implements OnInit {
 
   protected paginateCaris(data: ICari[], headers: HttpHeaders) {
     this.caris = data;
-    if (data && data.length === 1) {
-      this.selected(data[0]);
-    }
-    if (data && data.length === 0) {
-      this.selected(new Cari());
-    }
   }
 
   selected(cari: ICari) {
