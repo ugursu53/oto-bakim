@@ -14,7 +14,8 @@ import {
   DialogModule,
   StepsModule,
   CalendarModule,
-  TabViewModule
+  TabViewModule,
+  TooltipModule
 } from 'primeng/primeng';
 import { TableModule } from 'primeng/table';
 
@@ -36,7 +37,8 @@ import { TableModule } from 'primeng/table';
     DialogModule,
     StepsModule,
     CalendarModule,
-    TabViewModule
+    TabViewModule,
+    TooltipModule
   ]
 })
 export class OtoBakimSharedLibsModule {

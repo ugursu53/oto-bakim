@@ -139,7 +139,7 @@
                         </ng-template>
                         <ng-template pTemplate="body" let-rowData>
                             <tr [pSelectableRow]="rowData">
-                                <td>{{rowData.tipi?.ad}}</td>
+                                <td><span pTooltip="Alış: {{rowData.alisFiyati | currency : '₺'}}">{{rowData.tipi?.ad}}</span></td>
                                 <td style="text-align: right">{{rowData.fiyati | currency : '₺'}}</td>
                                 <td>{{rowData.iskonto}}</td>
                                 <td style="text-align: right">{{rowData.nihaiFiyat | currency : '₺'}}</td>
