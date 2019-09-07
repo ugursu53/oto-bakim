@@ -55,6 +55,7 @@ export class Arac implements IArac {
     public kullanimSekli?: KullanimSekli,
     public aracTipi?: AracTipi,
     public aciklama?: string,
+    public aktifCari?: ICari,
     public model?: IModel
   ) {}
 }
