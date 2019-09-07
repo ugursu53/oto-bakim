@@ -29,6 +29,7 @@ export class ArackabulComponent implements OnInit {
   }
 
   cariSaved(cari: ICari) {
+    this.arac.aktifCari = cari;
     const aracCarisi = {
       ...new AracCarisi(),
       id: null,

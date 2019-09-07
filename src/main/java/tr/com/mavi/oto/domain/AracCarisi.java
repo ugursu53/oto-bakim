@@ -32,7 +32,7 @@ public class AracCarisi extends AbstractAuditingEntity implements Serializable {
     private Boolean aktif;
 
     @ManyToOne
-    @JsonIgnoreProperties("caris")
+    @JsonIgnoreProperties({"caris", "aktifCari"})
     private Arac arac;
 
     @ManyToOne
