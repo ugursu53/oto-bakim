@@ -58,7 +58,8 @@ export class IsEmriUpdateComponent implements OnInit {
     aciklama: [null, [Validators.required]],
     kabulTarihi: [null, [Validators.required]],
     tipi: [null, [Validators.required]],
-    arac: []
+    arac: [],
+    cari: []
   });
 
   constructor(
@@ -80,6 +81,7 @@ export class IsEmriUpdateComponent implements OnInit {
     } else {
       const isEmri = new IsEmri();
       isEmri.arac = this.arac;
+      isEmri.cari = this.arac.aktifCari;
       this.updateForm(isEmri);
     }
     this.personelService
@@ -104,7 +106,8 @@ export class IsEmriUpdateComponent implements OnInit {
       aciklama: isEmri.aciklama,
       kabulTarihi: isEmri.kabulTarihi != null ? isEmri.kabulTarihi.format(DATE_TIME_FORMAT) : null,
       tipi: isEmri.tipi ? isEmri.tipi : isEmri.arac && isEmri.arac.aktifCari ? isEmri.arac.aktifCari.varsayilanIsEmriTipi : null,
-      arac: isEmri.arac
+      arac: isEmri.arac,
+      cari: isEmri.cari
     });
   }
 
@@ -134,6 +137,7 @@ export class IsEmriUpdateComponent implements OnInit {
       tipi: this.editForm.get(['tipi']).value,
       fiyat: this.toplamFiyat,
       arac: this.editForm.get(['arac']).value,
+      cari: this.editForm.get(['cari']).value,
       isciliks: this.isciliks,
       parcas: this.parcas
     };

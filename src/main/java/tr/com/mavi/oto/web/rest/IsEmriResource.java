@@ -78,7 +78,7 @@ public class IsEmriResource {
         if(isEmri.getArac() == null) {
             throw new BadRequestAlertException("Araç alanı boş", ENTITY_NAME, "aracNotFound");
         }
-        if(isEmri.getArac().getAktifCari() == null) {
+        if(isEmri.getCari() == null) {
             Optional<AracCarisi> cari =
                 aracCarisiRepository.findFirstByAracIdAndAktifTrue(isEmri.getArac().getId());
             isEmri.getArac().setAktifCari(cari);

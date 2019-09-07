@@ -35,6 +35,7 @@ export class IsEmriResolve implements Resolve<IIsEmri> {
         map((arac: HttpResponse<Arac>) => {
           const isEmri = new IsEmri();
           isEmri.arac = arac.body;
+          isEmri.cari = arac.body.aktifCari;
           return isEmri;
         })
       );
