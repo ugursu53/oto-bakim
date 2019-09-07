@@ -83,7 +83,6 @@ public class IsEmriResource {
                 aracCarisiRepository.findFirstByAracIdAndAktifTrue(isEmri.getArac().getId());
             isEmri.getArac().setAktifCari(cari);
         }
-        isEmri.setCari(isEmri.getArac().getAktifCari());
         IsEmri result = isEmriRepository.save(isEmri);
         isEmriSearchRepository.save(result);
         return ResponseEntity.created(new URI("/api/is-emris/" + result.getId()))

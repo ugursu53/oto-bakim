@@ -19,10 +19,12 @@ import { IIscilikTipi } from 'app/shared/model/iscilik-tipi.model';
 import { IPersonel } from 'app/shared/model/personel.model';
 import { filter, map } from 'rxjs/operators';
 import { PersonelService } from 'app/entities/personel';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'jhi-is-emri-update',
-  templateUrl: './is-emri-update.component.html'
+  templateUrl: './is-emri-update.component.html',
+  providers: [DatePipe]
 })
 export class IsEmriUpdateComponent implements OnInit {
   isSaving: boolean;

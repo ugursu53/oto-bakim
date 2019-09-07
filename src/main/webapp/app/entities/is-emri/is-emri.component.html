@@ -50,9 +50,9 @@
             </thead>
             <tbody>
             <tr *ngFor="let isEmri of isEmris ;trackBy: trackId">
-                <td>{{isEmri.gelisZamani | date:'medium'}}</td>
+                <td>{{isEmri.gelisZamani | date:'dd.MM.yyyy'}}</td>
                 <td>{{isEmri.aciklama}}</td>
-                <td>{{isEmri.kabulTarihi | date:'medium'}}</td>
+                <td>{{isEmri.kabulTarihi | date:'dd.MM.yyyy'}}</td>
                 <td jhiTranslate="{{'otoBakimApp.IsEmriTipi.' + isEmri.tipi}}">{{isEmri.tipi}}</td>
                 <td>
                     <div *ngIf="isEmri.arac">
