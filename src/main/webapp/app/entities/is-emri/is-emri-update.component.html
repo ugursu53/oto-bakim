@@ -1,160 +1,171 @@
 <div class="row justify-content-center">
     <div class="col-10">
-        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-            <h2 id="jhi-is-emri-heading"><span jhiTranslate="otoBakimApp.isEmri.home.createOrEditLabel">11</span> (<a
+        <h2 id="jhi-is-emri-heading"><span
+            jhiTranslate="otoBakimApp.isEmri.home.createOrEditLabel">11</span>
+            (<a
                 [routerLink]="[editForm.get('id').value ? '../../../arac' : '../../arac', editForm.get('arac').value?.id, 'view' ]">{{editForm.get('arac').value?.plakaNo}}</a>)
-            </h2>
-            <jhi-alert></jhi-alert>
-            <div class="row-md ui-g">
-                <div class="form-group col-lg-4 col-md-6 col-xs-12">
-                    <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.kabulTarihi"
-                           for="field_kabulTarihi">Kabul Tarihi</label>
-                    <div class="d-flex">
-                        <input id="field_kabulTarihi" type="datetime-local" class="form-control" name="kabulTarihi"
-                               formControlName="kabulTarihi" placeholder="YYYY-MM-DD HH:mm"/>
+        </h2>
+        <jhi-alert></jhi-alert>
+        <p-tabView>
+            <p-tabPanel header="Yapılacak İşler">
+                <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+                    <div class="row-md ui-g">
+                        <div class="form-group col-lg-4 col-md-6 col-xs-12">
+                            <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.kabulTarihi"
+                                   for="field_kabulTarihi">Kabul Tarihi</label>
+                            <div class="d-flex">
+                                <input id="field_kabulTarihi" type="datetime-local" class="form-control"
+                                       name="kabulTarihi"
+                                       formControlName="kabulTarihi" placeholder="YYYY-MM-DD HH:mm"/>
+                            </div>
+                            <div
+                                *ngIf="editForm.get('kabulTarihi').invalid && (editForm.get('kabulTarihi').dirty || editForm.get('kabulTarihi').touched)">
+                                <small class="form-text text-danger"
+                                       *ngIf="editForm.get('kabulTarihi').errors.required"
+                                       jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                                <small class="form-text text-danger"
+                                       [hidden]="!editForm.get('kabulTarihi').errors?.ZonedDateTimelocal"
+                                       jhiTranslate="entity.validation.ZonedDateTimelocal">
+                                    This field should be a date and time.
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-6 col-xs-12">
+                            <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.gelisZamani"
+                                   for="field_gelisZamani">Gelis Zamani</label>
+                            <div class="d-flex">
+                                <input id="field_gelisZamani" type="datetime-local" class="form-control"
+                                       name="gelisZamani"
+                                       formControlName="gelisZamani" placeholder="YYYY-MM-DD HH:mm"/>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-4 col-md-6 col-xs-12">
+                            <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.tipi"
+                                   for="field_tipi">Tipi</label>
+                            <select class="form-control" name="tipi" formControlName="tipi" id="field_tipi">
+                                <option value="SIGORTA">{{'otoBakimApp.IsEmriTipi.SIGORTA' | translate}}</option>
+                                <option value="BAKIM">{{'otoBakimApp.IsEmriTipi.BAKIM' | translate}}</option>
+                                <option value="HASAR">{{'otoBakimApp.IsEmriTipi.HASAR' | translate}}</option>
+                            </select>
+                            <div
+                                *ngIf="editForm.get('tipi').invalid && (editForm.get('tipi').dirty || editForm.get('tipi').touched)">
+                                <small class="form-text text-danger"
+                                       *ngIf="editForm.get('tipi').errors.required"
+                                       jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-12 col-md-12 col-xs-12">
+                            <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.aciklama"
+                                   for="field_aciklama">Aciklama</label>
+                            <textarea type="text" class="form-control" rows="5" name="aciklama" id="field_aciklama"
+                                      formControlName="aciklama"></textarea>
+                            <div
+                                *ngIf="editForm.get('aciklama').invalid && (editForm.get('aciklama').dirty || editForm.get('aciklama').touched)">
+                                <small class="form-text text-danger"
+                                       *ngIf="editForm.get('aciklama').errors.required"
+                                       jhiTranslate="entity.validation.required">
+                                    This field is required.
+                                </small>
+                            </div>
+                        </div>
                     </div>
-                    <div
-                        *ngIf="editForm.get('kabulTarihi').invalid && (editForm.get('kabulTarihi').dirty || editForm.get('kabulTarihi').touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('kabulTarihi').errors.required"
-                               jhiTranslate="entity.validation.required">
-                            This field is required.
-                        </small>
-                        <small class="form-text text-danger"
-                               [hidden]="!editForm.get('kabulTarihi').errors?.ZonedDateTimelocal"
-                               jhiTranslate="entity.validation.ZonedDateTimelocal">
-                            This field should be a date and time.
-                        </small>
+                </form>
+            </p-tabPanel>
+            <p-tabPanel header="İşçilik/Parça">
+                <p-fieldset class="col-12">
+                    <p-header><span jhiTranslate="otoBakimApp.isEmri.iscilikler">İşçilikler</span></p-header>
+                    <div style="display: flex">
+                        <button type="button" id="new-isclik-button" class="btn btn-primary float-left btn-sm"
+                                (click)="showIscilikDialogToAdd()" title="{{'otoBakimApp.iscilik.home.createLabel' | translate}}">
+                            <fa-icon [icon]="'plus'"></fa-icon>&nbsp;<span>Ekle</span>
+                        </button>
                     </div>
-                </div>
-                <div class="form-group col-lg-4 col-md-6 col-xs-12">
-                    <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.gelisZamani"
-                           for="field_gelisZamani">Gelis Zamani</label>
-                    <div class="d-flex">
-                        <input id="field_gelisZamani" type="datetime-local" class="form-control" name="gelisZamani"
-                               formControlName="gelisZamani" placeholder="YYYY-MM-DD HH:mm"/>
-                    </div>
-                </div>
-                <div class="form-group col-lg-4 col-md-6 col-xs-12">
-                    <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.tipi"
-                           for="field_tipi">Tipi</label>
-                    <select class="form-control" name="tipi" formControlName="tipi" id="field_tipi">
-                        <option value="SIGORTA">{{'otoBakimApp.IsEmriTipi.SIGORTA' | translate}}</option>
-                        <option value="BAKIM">{{'otoBakimApp.IsEmriTipi.BAKIM' | translate}}</option>
-                        <option value="HASAR">{{'otoBakimApp.IsEmriTipi.HASAR' | translate}}</option>
-                    </select>
-                    <div
-                        *ngIf="editForm.get('tipi').invalid && (editForm.get('tipi').dirty || editForm.get('tipi').touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('tipi').errors.required" jhiTranslate="entity.validation.required">
-                            This field is required.
-                        </small>
-                    </div>
-                </div>
-                <div class="form-group col-lg-12 col-md-12 col-xs-12">
-                    <label class="form-control-label" jhiTranslate="otoBakimApp.isEmri.aciklama" for="field_aciklama">Aciklama</label>
-                    <textarea type="text" class="form-control" rows="5" name="aciklama" id="field_aciklama"
-                              formControlName="aciklama"></textarea>
-                    <div
-                        *ngIf="editForm.get('aciklama').invalid && (editForm.get('aciklama').dirty || editForm.get('aciklama').touched)">
-                        <small class="form-text text-danger"
-                               *ngIf="editForm.get('aciklama').errors.required"
-                               jhiTranslate="entity.validation.required">
-                            This field is required.
-                        </small>
-                    </div>
-                </div>
-            </div>
-        </form>
+                    <p-table [value]="isciliks" selectionMode="single" [(selection)]="selectedIscilik" (onRowSelect)="onIscilikRowSelect($event)"
+                             [responsive]="true">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th><span jhiTranslate="otoBakimApp.isEmri.iscilik">Tipi</span></th>
+                                <th><span jhiTranslate="otoBakimApp.iscilik.personel">Personel</span></th>
+                                <th><span jhiTranslate="otoBakimApp.iscilik.fiyat">Fiyat</span></th>
+                                <th><span jhiTranslate="otoBakimApp.iscilik.iskonto">Iskonto</span></th>
+                                <th><span>Nihai Fiyat</span></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData>
+                            <tr [pSelectableRow]="rowData">
+                                <td>{{rowData.tipi?.ad}}</td>
+                                <td>{{rowData.personel?.ad}}</td>
+                                <td style="text-align: right">{{rowData.fiyat | currency : '₺'}}</td>
+                                <td>{{rowData.iskonto}}</td>
+                                <td style="text-align: right">{{rowData.nihaiFiyat | currency : '₺'}}</td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="footer">
+                            <td></td>
+                            <td style="text-align: right">Toplam:</td>
+                            <td style="text-align: right">
+                                {{iscilikToplamFiyat | currency : '₺'}}
+                            </td>
+                            <td></td>
+                            <td>
+                                <input type="number" class="form-control" name="iscilik_toplam" id="iscilik_toplam" style="text-align: right"
+                                       [(ngModel)]="iscilikNihaiToplamFiyat" (blur)="toplamFiyatBelirle()" />
+                            </td>
+                        </ng-template>
+                    </p-table>
+                </p-fieldset>
 
-        <p-fieldset class="col-12">
-            <p-header><span jhiTranslate="otoBakimApp.isEmri.iscilikler">İşçilikler</span></p-header>
-            <div style="display: flex">
-                <button type="button" id="new-isclik-button" class="btn btn-primary float-left btn-sm"
-                        (click)="showIscilikDialogToAdd()" title="{{'otoBakimApp.iscilik.home.createLabel' | translate}}">
-                    <fa-icon [icon]="'plus'"></fa-icon>&nbsp;<span>Ekle</span>
-                </button>
-            </div>
-            <p-table [value]="isciliks" selectionMode="single" [(selection)]="selectedIscilik" (onRowSelect)="onIscilikRowSelect($event)"
-                     [responsive]="true">
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th><span jhiTranslate="otoBakimApp.isEmri.iscilik">Tipi</span></th>
-                        <th><span jhiTranslate="otoBakimApp.iscilik.personel">Personel</span></th>
-                        <th><span jhiTranslate="otoBakimApp.iscilik.fiyat">Fiyat</span></th>
-                        <th><span jhiTranslate="otoBakimApp.iscilik.iskonto">Iskonto</span></th>
-                        <th><span>Nihai Fiyat</span></th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-rowData>
-                    <tr [pSelectableRow]="rowData">
-                        <td>{{rowData.tipi?.ad}}</td>
-                        <td>{{rowData.personel?.ad}}</td>
-                        <td style="text-align: right">{{rowData.fiyat | currency : '₺'}}</td>
-                        <td>{{rowData.iskonto}}</td>
-                        <td style="text-align: right">{{rowData.nihaiFiyat | currency : '₺'}}</td>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="footer">
-                    <td></td>
-                    <td style="text-align: right">Toplam:</td>
-                    <td style="text-align: right">
-                        {{iscilikToplamFiyat | currency : '₺'}}
-                    </td>
-                    <td></td>
-                    <td>
-                        <input type="number" class="form-control" name="iscilik_toplam" id="iscilik_toplam" style="text-align: right"
-                               [(ngModel)]="iscilikNihaiToplamFiyat" (blur)="toplamFiyatBelirle()" />
-                    </td>
-                </ng-template>
-            </p-table>
-        </p-fieldset>
+                <p-fieldset class="col-12">
+                    <p-header><span jhiTranslate="otoBakimApp.isEmri.parcalar">Parçalar</span></p-header>
+                    <div style="display: flex">
+                        <button type="button" id="new-parca-button" class="btn btn-primary float-left btn-sm"
+                                (click)="showParcaDialogToAdd()" title="{{'otoBakimApp.parca.home.createLabel' | translate}}">
+                            <fa-icon [icon]="'plus'"></fa-icon>&nbsp;<span>Ekle</span>
+                        </button>
+                    </div>
+                    <p-table [value]="parcas" selectionMode="single" [(selection)]="selectedParca" (onRowSelect)="onParcaRowSelect($event)"
+                             [responsive]="true">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th><span jhiTranslate="otoBakimApp.isEmri.parca">Parça</span></th>
+                                <th><span jhiTranslate="otoBakimApp.isEmri.fiyati">Fiyati</span></th>
+                                <th><span jhiTranslate="otoBakimApp.iscilik.iskonto">Iskonto</span></th>
+                                <th><span>Nihai Fiyat</span></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-rowData>
+                            <tr [pSelectableRow]="rowData">
+                                <td>{{rowData.tipi?.ad}}</td>
+                                <td style="text-align: right">{{rowData.fiyati | currency : '₺'}}</td>
+                                <td>{{rowData.iskonto}}</td>
+                                <td style="text-align: right">{{rowData.nihaiFiyat | currency : '₺'}}</td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="footer">
+                            <td style="text-align: right">Toplam:</td>
+                            <td style="text-align: right">
+                                {{parcaToplamFiyat | currency : '₺'}}
+                            </td>
+                            <td></td>
+                            <td>
+                                <input type="number" class="form-control" name="parca_toplam" id="parca_toplam" style="text-align: right"
+                                       [(ngModel)]="parcaNihaiToplamFiyat" (blur)="toplamFiyatBelirle()" />
+                            </td>
+                        </ng-template>
+                    </p-table>
+                </p-fieldset>
 
-        <p-fieldset class="col-12">
-            <p-header><span jhiTranslate="otoBakimApp.isEmri.parcalar">Parçalar</span></p-header>
-            <div style="display: flex">
-                <button type="button" id="new-parca-button" class="btn btn-primary float-left btn-sm"
-                        (click)="showParcaDialogToAdd()" title="{{'otoBakimApp.parca.home.createLabel' | translate}}">
-                    <fa-icon [icon]="'plus'"></fa-icon>&nbsp;<span>Ekle</span>
-                </button>
-            </div>
-            <p-table [value]="parcas" selectionMode="single" [(selection)]="selectedParca" (onRowSelect)="onParcaRowSelect($event)"
-                     [responsive]="true">
-                <ng-template pTemplate="header">
-                    <tr>
-                        <th><span jhiTranslate="otoBakimApp.isEmri.parca">Parça</span></th>
-                        <th><span jhiTranslate="otoBakimApp.isEmri.fiyati">Fiyati</span></th>
-                        <th><span jhiTranslate="otoBakimApp.iscilik.iskonto">Iskonto</span></th>
-                        <th><span>Nihai Fiyat</span></th>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="body" let-rowData>
-                    <tr [pSelectableRow]="rowData">
-                        <td>{{rowData.tipi?.ad}}</td>
-                        <td style="text-align: right">{{rowData.fiyati | currency : '₺'}}</td>
-                        <td>{{rowData.iskonto}}</td>
-                        <td style="text-align: right">{{rowData.nihaiFiyat | currency : '₺'}}</td>
-                    </tr>
-                </ng-template>
-                <ng-template pTemplate="footer">
-                    <td style="text-align: right">Toplam:</td>
-                    <td style="text-align: right">
-                        {{parcaToplamFiyat | currency : '₺'}}
-                    </td>
-                    <td></td>
-                    <td>
-                        <input type="number" class="form-control" name="parca_toplam" id="parca_toplam" style="text-align: right"
-                               [(ngModel)]="parcaNihaiToplamFiyat" (blur)="toplamFiyatBelirle()" />
-                    </td>
-                </ng-template>
-            </p-table>
-        </p-fieldset>
-
-        <div class="form-group col-lg-4 col-md-6 col-xs-12">
-           <label class="form-control-label" for="toplam_fiyat">Toplam Fiyat</label>
-           <input type="number" class="form-control" name="toplam_fiyat" id="toplam_fiyat" style="text-align: right"
-               [(ngModel)]="toplamFiyat" />
-        </div>
+                <div class="form-group col-lg-4 col-md-6 col-xs-12">
+                    <label class="form-control-label" for="toplam_fiyat">Toplam Fiyat</label>
+                    <input type="number" class="form-control" name="toplam_fiyat" id="toplam_fiyat" style="text-align: right"
+                           [(ngModel)]="toplamFiyat" />
+                </div>
+            </p-tabPanel>
+        </p-tabView>
 
         <div>
             <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
