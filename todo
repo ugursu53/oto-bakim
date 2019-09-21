@@ -1,0 +1,42 @@
+kabul tarihi ve geliş tarihi otomatik bu gün sadece tarih
+önceki iskonto alttakindekinde de yazdı.
+toplama 2. iskonto da yazılacak
+
+iş emrinde sigorta girilirse sigorta firmasi seçilmelidir.
+iş emri ilgili personel danışman seçilecek
+iş emri tipleri
+   mekanik,boya, kaporta,elektrik
+iş emri cari referanstanda aranabilecek
+iş emri fiyatlar (parça ve işçilik) zorunlu değil
+iş emri parça da tookitte "Alış:" ibaresi yazmayacak
+iş emrine km eklencek
+iş emrinde parça fiyatı girerken eski değer varsa kırmızı ile eski fiyat ibaresi olarak gösterilecek
+iş emrinde parçanın fiyat yazan kısım satış fiyatı olarak değiştirilecek
+iş emri rapor ekranları. iş emri kapat butonu ile fatura raporu gösterilecek isterse çıktı alabilecekler istemezlerse iş emrini kapatık hayatlarına devam edecekler
+Cari üzerinden iş emirleri fiyatları ve tahsilat listesi sunulacak. Altta toplam borç,ödenen,kalan miktarları gösterilecek
+Tüm Carilerin toplam borç,alacak,vereceklerinin listelendiği bir rapor tablosu sunulacak. Çıktı alınabilecek.
+
+tedarikçi alış faturası ve ödeme bilgisi, tahsilat
+müşteri satış faturası
+cari ekstresi
+müşteride borç tedarikçide alacak.
+
+iş emri state: açık, kapalı
+tahsilat: tarih, açıklama, tipi (borç, alacak)
+alış faturası: fatura no, tarih, bedel, iskonto, tedarikçi, kdv (parçalar ve işçilik) (muhtelif işçilik ve parça olunca açıklama girilecek)
+iş emri sorgulamada cari, araç, durumu (defaultda açık) kabul tarihi aralığı sorgulanabilecek.
+elasticsearch reindex modulu eklenecek.
+araç sorgulamada model link kalkacak
+iş emri tarih componeti düzeltilmeli
+iş emri görüntüleme butonu kalkacak.
+iş emri güncellemede kapat kombosu, iş emri açılınca default açık olacak. kapat seçilince kapatma tarihi bugün seçili gelecek. fatura kes butonu açılacak.
+fatura kesildi mi alanı fatura kesilince true olacak. fatura kes butonu iş emri kapalı ve fatura kesildi false ise buton aktif olacak.
+iş emri durumu açık yapılınca fatura kesildimi false yapılacak.
+iş emri yazdır eklenecek
+araç carisi ekleme searcheable olacak. aracın farklı carisi varsa diğerlerinin durumu pasif yapılacak. "araç carisi" ismi "araç sahipliği" olarak değişecek
+personel ekranı isimlemeler değişecek.
+
+cari güncellede borç/alcak hesapla ve cari ekstresi üstte olsun.
+
+
+
